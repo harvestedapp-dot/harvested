@@ -171,6 +171,14 @@ export default async function CoursePage({ params }: CoursePageProps) {
             )}
           </div>
 
+          <img
+            src="https://images.unsplash.com/photo-1598565296723-98537e27d824?auto=format&fit=crop&w=1200&h=675&q=80"
+            alt="Healthy young cannabis seedling growing in a clay pot at home — beginner indoor cannabis growing course from seed to harvest"
+            width={1200}
+            height={675}
+            className="mt-8 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
+          />
+
           {course.outcomes && course.outcomes.length > 0 && (
             <section className="mt-12">
               <h2 className="font-heading text-2xl font-semibold text-foreground">
