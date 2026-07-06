@@ -14,6 +14,12 @@ export const articles: Article[] = [
     category: "Germination",
     publishedAt: "2026-07-03",
     readingTime: "6 min read",
+    heroImage: {
+      src: "https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=1200&h=675&q=80",
+      alt: "Hands planting a freshly germinated cannabis seedling into moist soil",
+      caption:
+        "A germinated seed goes into the soil taproot-down — the first hands-on step of every grow.",
+    },
     intro: [
       "Every successful harvest starts with a single germinated seed — and germination is where many first grows quietly fail. Seeds that never crack, taproots that snap during transplanting, seedlings that damp off in soggy soil: almost all of these losses are preventable with a little technique.",
       "This guide covers what a cannabis seed needs to germinate, the two most reliable methods for beginners, and the early mistakes that cost new growers the most.",
@@ -46,6 +52,12 @@ export const articles: Article[] = [
           "Planting seeds straight into their starting medium skips the riskiest step of the paper towel method: handling a fragile taproot. Bury the seed about half an inch deep in pre-moistened, light soil or a starter plug, cover loosely, and keep the surface damp — never waterlogged — until the seedling emerges.",
           "The trade-off is visibility. You won't know whether a seed failed or is simply slow until several days have passed. For beginners with a limited number of seeds, this method is the gentler option; the paper towel method is better when you want certainty fast.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1598565296723-98537e27d824?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Healthy young cannabis seedling with its first serrated leaves growing in a clay pot",
+          caption:
+            "A seedling that germinated directly in its pot — no fragile taproot handling required.",
+        },
       },
       {
         heading: "The mistakes that kill the most seeds",
@@ -65,6 +77,12 @@ export const articles: Article[] = [
         paragraphs: [
           "Once your seedling breaks the surface and opens its first round cotyledon leaves, it enters the seedling stage — a period with its own rules for light, watering, and humidity. Getting those fundamentals right is exactly what a structured course is for: germination is lesson one of many, and each stage builds on the last.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1598564461136-b8fa70685944?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
+          alt: "Top-down view of a young cannabis seedling with a symmetrical rosette of leaves in a pot of soil",
+          caption:
+            "A few weeks after germination: the seedling stage, where light and watering rules take over.",
+        },
       },
     ],
   },
@@ -76,6 +94,12 @@ export const articles: Article[] = [
     category: "Vegetative Growth",
     publishedAt: "2026-07-03",
     readingTime: "7 min read",
+    heroImage: {
+      src: "https://images.unsplash.com/photo-1636775861341-9acbbdcdf976?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
+      alt: "Green cannabis plant in the vegetative stage growing under an LED panel light indoors",
+      caption:
+        "Indoors, your lamp and timer play the role of the sun — and the seasons.",
+    },
     intro: [
       "Cannabis is a photoperiod plant: it decides when to grow and when to flower based on how many hours of uninterrupted darkness it receives. That single fact explains most of what indoor growers do with their lights — and most of what goes wrong when a grow stalls or flowers too early.",
       "This guide explains the standard light cycles, what actually happens inside the plant when you change them, and how to avoid the light-related mistakes that cost beginners entire harvests.",
@@ -94,6 +118,12 @@ export const articles: Article[] = [
           "During vegetative growth, most indoor growers run 18 hours of light and 6 of darkness. Long days keep the plant firmly in growth mode, building the roots, stems, and fan leaves that will later support heavy flowers.",
           "Some growers run 20/4 or even 24/0 to push faster growth, but 18/6 remains the beginner-friendly default: plants get a genuine rest period, electricity costs stay manageable, and heat is easier to control.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1626083541467-192e31f06e77?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Cannabis plants in the vegetative stage under bright strip lights inside a reflective grow room",
+          caption:
+            "Vegetative plants under long light hours — 18/6 keeps them building roots, stems, and leaves.",
+        },
       },
       {
         heading: "12/12 — the flowering trigger",
@@ -101,6 +131,12 @@ export const articles: Article[] = [
           "Switching your timer to 12 hours on, 12 hours off is how indoor growers start flowering on demand. Within one to three weeks, plants show their sex and begin developing buds. From that point, the dark period is sacred: even brief interruptions from an unsealed tent zipper, an equipment LED, or an impatient peek with a flashlight can cause stress, delayed flowering, or hermaphroditism.",
           "Outdoors, nature moves the switch for you — plants begin flowering as nights lengthen in late summer. That's also why growing outdoors requires planning around your local season rather than a timer.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1693317436887-3cff65e4d17e?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Flowering cannabis plants developing buds under purple-red LED grow lights",
+          caption:
+            "After the flip to 12/12: buds form while the dark period stays strictly uninterrupted.",
+        },
       },
       {
         heading: "When should you switch?",
@@ -135,6 +171,12 @@ export const articles: Article[] = [
     category: "Harvest",
     publishedAt: "2026-07-03",
     readingTime: "6 min read",
+    heroImage: {
+      src: "https://images.unsplash.com/photo-1569530162313-5d6cfaf19010?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
+      alt: "Mature cannabis cola covered in frosty trichomes approaching harvest time",
+      caption:
+        "A ripening cola: the frosty coating is trichomes — your most reliable harvest signal.",
+    },
     intro: [
       "After months of care, the harvest decision comes down to a window of about one to two weeks. Cut too early and the buds haven't reached full potency; wait too long and the chemical profile shifts toward a heavier, sleepier effect with degraded THC.",
       "The good news: the plant tells you exactly when it's ready. You just need to know where to look — and a cheap magnifier to look with.",
@@ -159,6 +201,12 @@ export const articles: Article[] = [
           "Pistils — the hair-like strands covering the buds — offer a rougher signal you can read without magnification. Early in flower they're white and stand straight out. As the plant matures they darken to orange-brown and curl inward.",
           "A common rule of thumb: when 70–90% of pistils have darkened and curled, the plant is in or near its harvest window. Use pistils to know when to start checking trichomes, not as the final word — environmental stress can darken pistils early and mislead you.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1626083550733-dd013e97d2bd?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Cannabis buds with darkened orange pistils in a warm indoor grow room late in flowering",
+          caption:
+            "Darkened, curled pistils like these mean it's time to get the loupe out and check trichomes.",
+        },
       },
       {
         heading: "Other signs the window is close",
@@ -178,6 +226,12 @@ export const articles: Article[] = [
           "Impatience is the number one killer of otherwise excellent grows. After months of waiting, the urge to chop at the first sign of ripeness is strong — but a week of patience at the end can be the difference between mediocre and exceptional results.",
           "The second mistake is judging the whole plant by its top cola. Buds lower on the plant ripen days later than the tops. Some growers even harvest in two passes: tops first, lower buds a week later once they've caught up.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1672692757383-cf554b9268b6?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "A canopy of flowering cannabis plants at different ripeness levels inside a grow tent",
+          caption:
+            "Tops ripen first: buds lower in the canopy can need several extra days to catch up.",
+        },
       },
       {
         heading: "Harvest is only half the job",
@@ -195,6 +249,12 @@ export const articles: Article[] = [
     category: "Post-Harvest",
     publishedAt: "2026-07-03",
     readingTime: "7 min read",
+    heroImage: {
+      src: "https://images.unsplash.com/photo-1457573294499-86ac96b336ba?auto=format&fit=crop&w=1200&h=675&q=80",
+      alt: "Open glass jars filled with dried and cured cannabis buds",
+      caption:
+        "Glass jars at 58–62% humidity: where a good harvest becomes a great one.",
+    },
     intro: [
       "More quality is lost in the two weeks after harvest than in any other stage of cultivation. A grower can do everything right for four months and still end up with harsh, hay-smelling buds — because drying and curing are where aroma, smoothness, and shelf life are actually decided.",
       "The process isn't difficult, but it punishes shortcuts. Here's how it works and how to get it right the first time.",
@@ -219,6 +279,12 @@ export const articles: Article[] = [
           "Keep the space dark; light degrades THC.",
           "Test readiness with the snap test: small stems should snap rather than bend, typically after 7–14 days.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1617101814633-c8a6cfd159cc?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Harvested cannabis branches with dense buds resting in a dark room",
+          caption:
+            "Dark, cool, and slow: buds should lose their moisture over 7–14 days, never over a weekend.",
+        },
       },
       {
         heading: "How to cure: patience in a jar",
@@ -226,6 +292,12 @@ export const articles: Article[] = [
           "Once stems snap, trim the buds and place them loosely into airtight glass jars, filled about three-quarters full. Store the jars in a cool, dark place at roughly 58–62% relative humidity — small hygrometers that fit inside jars remove all the guesswork.",
           "For the first week, open each jar once or twice a day for a few minutes. This 'burping' releases moisture and replenishes oxygen. After that, burp every few days. A minimum cure is two weeks; most connoisseur growers cure four to eight, and the improvement in smoothness and aroma is unmistakable.",
         ],
+        image: {
+          src: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Close-up of a properly dried and cured cannabis bud showing intact trichomes",
+          caption:
+            "The payoff of a patient cure: dense, aromatic buds with trichomes intact.",
+        },
       },
       {
         heading: "Warning signs to catch early",

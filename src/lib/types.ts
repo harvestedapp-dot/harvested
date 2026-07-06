@@ -24,11 +24,20 @@ export interface Course {
   audience?: string[];
 }
 
+export interface ArticleImage {
+  src: string;
+  alt: string;
+  /** Optional caption rendered under the image. */
+  caption?: string;
+}
+
 export interface ArticleSection {
   heading: string;
   paragraphs: string[];
   /** Optional bullet list rendered after the paragraphs. */
   list?: string[];
+  /** Optional illustration rendered at the end of the section. */
+  image?: ArticleImage;
 }
 
 export interface Article {
@@ -40,6 +49,8 @@ export interface Article {
   /** ISO date, e.g. "2026-07-03" */
   publishedAt: string;
   readingTime: string;
+  /** Lead image shown under the title and as the card thumbnail on /learn. */
+  heroImage?: ArticleImage;
   intro: string[];
   sections: ArticleSection[];
 }

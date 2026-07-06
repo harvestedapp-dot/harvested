@@ -33,9 +33,20 @@ export default function LearnIndexPage() {
           <li key={article.slug}>
             <Link
               href={`/learn/${article.slug}`}
-              className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-md"
             >
-              <div className="flex items-center justify-between gap-3">
+              {article.heroImage && (
+                <img
+                  src={article.heroImage.src}
+                  alt={article.heroImage.alt}
+                  width={1200}
+                  height={675}
+                  loading="lazy"
+                  className="h-44 w-full border-b border-border object-cover"
+                />
+              )}
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-center justify-between gap-3">
                 <p className="text-xs font-semibold tracking-wide text-primary uppercase">
                   {article.category}
                 </p>
@@ -50,9 +61,10 @@ export default function LearnIndexPage() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {article.excerpt}
               </p>
-              <span className="mt-4 pt-2 text-sm font-semibold text-primary">
-                Read the guide →
-              </span>
+                <span className="mt-4 pt-2 text-sm font-semibold text-primary">
+                  Read the guide →
+                </span>
+              </div>
             </Link>
           </li>
         ))}

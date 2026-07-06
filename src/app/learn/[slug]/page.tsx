@@ -105,7 +105,24 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {article.title}
         </h1>
 
-        <div className="mt-6 space-y-4">
+        {article.heroImage && (
+          <figure className="mt-8">
+            <img
+              src={article.heroImage.src}
+              alt={article.heroImage.alt}
+              width={1200}
+              height={675}
+              className="aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
+            />
+            {article.heroImage.caption && (
+              <figcaption className="mt-2.5 text-center text-sm text-muted-foreground">
+                {article.heroImage.caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
+
+        <div className="mt-8 space-y-4">
           {article.intro.map((paragraph) => (
             <p
               key={paragraph}
@@ -140,6 +157,23 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   </li>
                 ))}
               </ul>
+            )}
+            {section.image && (
+              <figure className="mt-6">
+                <img
+                  src={section.image.src}
+                  alt={section.image.alt}
+                  width={1200}
+                  height={675}
+                  loading="lazy"
+                  className="aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
+                />
+                {section.image.caption && (
+                  <figcaption className="mt-2.5 text-center text-sm text-muted-foreground">
+                    {section.image.caption}
+                  </figcaption>
+                )}
+              </figure>
             )}
           </section>
         ))}
