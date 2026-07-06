@@ -80,10 +80,10 @@ export function FaqSection() {
       />
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="text-center">
-          <h2 className="font-heading text-[44px] leading-[1.12] font-semibold tracking-tight text-foreground sm:text-[56px]">
+          <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-xl text-muted-foreground">
+          <p className="mt-4 text-lg text-muted-foreground">
             Everything you need to know before you start learning.
           </p>
         </div>
@@ -91,7 +91,7 @@ export function FaqSection() {
         <Accordion className="mt-12 rounded-2xl border border-border bg-card px-8" multiple={false}>
           {faqs.map((faq, index) => (
             <AccordionItem key={faq.question} value={`faq-${index}`}>
-              <AccordionTrigger className="py-6 text-[18px]">
+              <AccordionTrigger className="py-6 text-[17px]">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-[16px] leading-[1.65]">

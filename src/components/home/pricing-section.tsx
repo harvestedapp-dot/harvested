@@ -28,7 +28,7 @@ export function PricingSection() {
                 Everything you need to grow, for less than a single failed
                 harvest
               </h2>
-              <p className="mt-4 max-w-xl text-xl text-white/80">
+              <p className="mt-4 max-w-xl text-lg text-white/80">
                 One mistake with lighting, watering, or timing can cost you an
                 entire crop and hundreds of dollars in wasted equipment and
                 seeds. Basic Cannabis Cultivation teaches you to get it right
@@ -55,7 +55,7 @@ export function PricingSection() {
               <p className="text-[16px] font-medium text-muted-foreground">
                 Basic Cannabis Cultivation
               </p>
-              <p className="mt-2 font-heading text-[56px] leading-none font-semibold">
+              <p className="mt-2 font-heading text-[48px] leading-none font-semibold">
                 $69
                 <span className="ml-2 text-[17px] font-normal text-muted-foreground">
                   one-time payment

@@ -30,10 +30,10 @@ export function CoursesSection() {
     <section id="courses" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-[44px] leading-[1.12] font-semibold tracking-tight text-foreground sm:text-[56px]">
+          <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             Cannabis Cultivation Courses
           </h2>
-          <p className="mt-4 text-xl text-muted-foreground">
+          <p className="mt-4 text-lg text-muted-foreground">
             Start growing your skills with our beginner course today. New
             cannabis growing courses join the library as they&rsquo;re
             released.
@@ -76,7 +76,7 @@ export function CoursesSection() {
                       <Lock className="size-4 text-muted-foreground" />
                     )}
                   </div>
-                  <CardTitle className="mt-3 text-[22px]">
+                  <CardTitle className="mt-3 text-xl">
                     {course.title}
                   </CardTitle>
                   <CardDescription className="text-[16px] leading-[1.6]">

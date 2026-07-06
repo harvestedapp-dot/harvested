@@ -40,13 +40,13 @@ export function ContactSection() {
     <section id="contact" className="bg-[#1a3320] py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-6">
         <div className="text-center">
-          <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2 text-[16px] font-semibold tracking-[0.06em] text-white/70 uppercase">
+          <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-4 py-1.5 text-[14px] font-semibold tracking-[0.06em] text-white/70 uppercase">
             Contact
           </p>
-          <h2 className="font-heading text-[44px] leading-[1.12] font-semibold tracking-tight text-white sm:text-[56px]">
+          <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-white sm:text-[44px]">
             Get in Touch
           </h2>
-          <p className="mt-4 text-xl text-white/65">
+          <p className="mt-4 text-lg text-white/65">
             Questions about the cannabis cultivation course, enrollment, or
             the platform? Send us a message and we&rsquo;ll get back to you
             within one business day.
@@ -77,7 +77,7 @@ export function ContactSection() {
                     name="name"
                     required
                     maxLength={120}
-                    className="h-13 px-4 text-[17px]"
+                    className="h-12 px-4 text-[16px]"
                   />
                 </div>
                 <div className="grid gap-2.5">
@@ -90,7 +90,7 @@ export function ContactSection() {
                     type="email"
                     required
                     maxLength={200}
-                    className="h-13 px-4 text-[17px]"
+                    className="h-12 px-4 text-[16px]"
                   />
                 </div>
               </div>
@@ -102,9 +102,9 @@ export function ContactSection() {
                   id="message"
                   name="message"
                   required
-                  rows={7}
+                  rows={6}
                   maxLength={2000}
-                  className="px-4 py-3.5 text-[17px]"
+                  className="px-4 py-3 text-[16px]"
                 />
               </div>
 
@@ -120,7 +120,7 @@ export function ContactSection() {
                   type="submit"
                   size="lg"
                   disabled={status === "submitting"}
-                  className="h-13 min-w-48 px-8 text-[17px]"
+                  className="h-12 min-w-44 px-8 text-[16px]"
                 >
                   {status === "submitting" ? (
                     <>

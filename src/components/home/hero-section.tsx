@@ -47,7 +47,7 @@ function Joint({
       />
       {/* tapered paper cone: side-lit for roundness, charred band at the lit end */}
       <span
-        className="-mt-px w-8"
+        className="-mt-px w-6 sm:w-8"
         style={{
           height,
           background:
@@ -84,7 +84,7 @@ export function HeroSection() {
             Cannabis Cultivation Course
           </p>
 
-          <h1 className="mb-10 font-heading text-[52px] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[72px]">
+          <h1 className="mb-10 font-heading text-[52px] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]">
             Stop buying joints.
             <br />
             <span className="bg-gradient-to-r from-[#d3f2a6] via-[#a8d878] to-[#8ec95f] bg-clip-text text-transparent drop-shadow-[0_0_26px_rgba(168,216,120,0.3)]">
@@ -95,8 +95,10 @@ export function HeroSection() {
           </h1>
 
           <p className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
-            <s className="text-3xl font-medium text-white/50">$179</s>
-            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-heading text-[80px] leading-none font-bold tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)]">
+            <s className="text-2xl font-medium text-white/50 sm:text-3xl">
+              $179
+            </s>
+            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-heading text-[64px] leading-none font-bold tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:text-[72px]">
               $69
             </span>
             <span
@@ -126,7 +128,7 @@ export function HeroSection() {
 
           <Link
             href="/course/basic-cannabis-cultivation"
-            className="group mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5.5 text-[19px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Enroll Now
             <ArrowRight
@@ -152,20 +154,20 @@ export function HeroSection() {
           </ul>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border-[0.5px] border-white/15 bg-white/[0.07] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_24px_60px_rgba(0,0,0,0.35)] backdrop-blur-md sm:p-11">
+        <div className="relative overflow-hidden rounded-3xl border-[0.5px] border-white/15 bg-white/[0.07] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_24px_60px_rgba(0,0,0,0.35)] backdrop-blur-md sm:p-11">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-24 -right-20 size-64 rounded-full bg-[radial-gradient(closest-side,rgba(168,216,120,0.16),transparent_70%)] blur-2xl"
           />
 
           {/* The core hook, drawn as an equation: 3–4 joints ≈ the whole course */}
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 rounded-2xl border-[0.5px] border-white/10 bg-[#081408]/45 px-5 py-7 sm:gap-6">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-2xl border-[0.5px] border-white/10 bg-[#081408]/45 px-2.5 py-6 sm:gap-6 sm:px-5 sm:py-7">
             <div className="relative flex flex-col items-center">
               <span
                 aria-hidden
                 className="pointer-events-none absolute -inset-x-2 -top-4 bottom-2 rounded-full bg-[radial-gradient(closest-side,rgba(232,147,90,0.14),transparent_72%)]"
               />
-              <div aria-hidden className="flex items-end gap-3.5 pt-5">
+              <div aria-hidden className="flex items-end gap-2 pt-5 sm:gap-3.5">
                 {joints.map(([height, tilt, delay], index) => (
                   <Joint
                     key={index}
@@ -185,7 +187,7 @@ export function HeroSection() {
 
             <span
               aria-hidden
-              className="pb-12 font-heading text-4xl font-medium text-white/45"
+              className="pb-9 font-heading text-2xl font-medium text-white/45 sm:pb-12 sm:text-4xl"
             >
               &asymp;
             </span>
@@ -196,7 +198,7 @@ export function HeroSection() {
                 className="pointer-events-none absolute -inset-x-2 -top-4 bottom-2 rounded-full bg-[radial-gradient(closest-side,rgba(168,216,120,0.15),transparent_72%)]"
               />
               <p
-                className="flex h-[162px] items-center font-heading text-[80px] leading-none font-bold tracking-tight drop-shadow-[0_0_24px_rgba(168,216,120,0.35)]"
+                className="flex h-[120px] items-center font-heading text-[52px] leading-none font-bold tracking-tight drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:h-[150px] sm:text-[72px]"
                 style={{ color: ACCENT }}
               >
                 $69

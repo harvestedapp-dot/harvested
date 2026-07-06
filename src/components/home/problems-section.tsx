@@ -26,21 +26,21 @@ export function ProblemsSection() {
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="mb-10 text-center">
-          <p className="mb-5 inline-block rounded-full border-[0.5px] border-[#f5c6c0] bg-[#fdf0ee] px-5 py-2 text-[16px] font-semibold tracking-[0.06em] text-[#c0392b] uppercase">
+          <p className="mb-5 inline-block rounded-full border-[0.5px] border-[#f5c6c0] bg-[#fdf0ee] px-4 py-1.5 text-[14px] font-semibold tracking-[0.06em] text-[#c0392b] uppercase">
             Sound familiar?
           </p>
-          <h2 className="mb-4 font-heading text-[44px] leading-[1.12] font-semibold text-[#1a1a19] sm:text-[56px]">
+          <h2 className="mb-4 font-heading text-[36px] leading-[1.15] font-semibold text-[#1a1a19] sm:text-[44px]">
             Every grower hits these walls.
           </h2>
-          <p className="text-[20px] text-[#52514e]">
+          <p className="text-[18px] text-[#52514e]">
             If any of these sound like you &mdash; Harvested was built exactly
             for this.
           </p>
         </div>
 
         <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border-[0.5px] border-[#dddbd2] bg-white p-10">
-            <p className="mb-7 text-[16px] font-semibold tracking-[0.06em] text-[#c0392b] uppercase">
+          <div className="rounded-2xl border-[0.5px] border-[#dddbd2] bg-white p-8">
+            <p className="mb-6 text-[14px] font-semibold tracking-[0.06em] text-[#c0392b] uppercase">
               &#10007; Without Harvested
             </p>
             <ul>
@@ -51,11 +51,11 @@ export function ProblemsSection() {
                 >
                   <span
                     aria-hidden
-                    className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#fdf0ee] text-[15px] text-[#c0392b]"
+                    className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#fdf0ee] text-[13px] text-[#c0392b]"
                   >
                     &#10007;
                   </span>
-                  <span className="text-[17px] leading-[1.5] text-[#52514e]">
+                  <span className="text-[16px] leading-[1.5] text-[#52514e]">
                     {pain}
                   </span>
                 </li>
@@ -63,8 +63,8 @@ export function ProblemsSection() {
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-[#1a3320] p-10">
-            <p className="mb-7 text-[16px] font-semibold tracking-[0.06em] text-[#a8d878] uppercase">
+          <div className="rounded-2xl bg-[#1a3320] p-8">
+            <p className="mb-6 text-[14px] font-semibold tracking-[0.06em] text-[#a8d878] uppercase">
               &#10003; With Harvested
             </p>
             <ul>
@@ -75,11 +75,11 @@ export function ProblemsSection() {
                 >
                   <span
                     aria-hidden
-                    className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[rgba(168,216,120,0.15)] text-[15px] text-[#a8d878]"
+                    className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[rgba(168,216,120,0.15)] text-[13px] text-[#a8d878]"
                   >
                     &#10003;
                   </span>
-                  <span className="text-[17px] leading-[1.5] text-white/75">
+                  <span className="text-[16px] leading-[1.5] text-white/75">
                     {solution}
                   </span>
                 </li>

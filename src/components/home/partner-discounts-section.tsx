@@ -28,19 +28,19 @@ export function PartnerDiscountsSection() {
       <div className="mx-auto max-w-[1280px]">
         <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
           <div>
-            <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-4 py-1.5 text-[16px] font-semibold uppercase text-white/70">
+            <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-4 py-1.5 text-[14px] font-semibold uppercase text-white/70">
               Exclusive Partner Discounts
             </p>
-            <h2 className="mb-4 font-heading text-[44px] leading-[1.12] font-semibold text-white sm:text-[56px]">
+            <h2 className="mb-4 font-heading text-[36px] leading-[1.15] font-semibold text-white sm:text-[44px]">
               The course pays for itself.
             </h2>
-            <p className="mb-8 text-[20px] leading-[1.65] text-white/65">
+            <p className="mb-8 text-[18px] leading-[1.7] text-white/65">
               Inside every module we&rsquo;ve included exclusive discount codes
               from our equipment partners. Students save an average of $200+ on
               grow lights, nutrients, tents, and more.
             </p>
             <p className="flex items-center gap-5">
-              <span className="font-heading text-[56px] leading-none font-semibold text-[#a8d878]">
+              <span className="font-heading text-[48px] leading-none font-semibold text-[#a8d878]">
                 $200+
               </span>
               <span className="max-w-[280px] text-[16px] leading-[1.5] text-white/50">
@@ -53,13 +53,13 @@ export function PartnerDiscountsSection() {
             {equipmentItems.map((item) => (
               <li
                 key={item.title}
-                className="flex items-center gap-5 border-b-[0.5px] border-white/10 py-6 last:border-b-0"
+                className="flex items-center gap-5 border-b-[0.5px] border-white/10 py-5 last:border-b-0"
               >
-                <span aria-hidden className="text-4xl">
+                <span aria-hidden className="text-3xl">
                   {item.emoji}
                 </span>
                 <span>
-                  <h3 className="mb-1 text-[19px] font-medium text-white">
+                  <h3 className="mb-1 text-[18px] font-medium text-white">
                     {item.title}
                   </h3>
                   <p className="text-[16px] leading-[1.5] text-white/50">

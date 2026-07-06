@@ -32,10 +32,10 @@ export function HowItWorksSection() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-[44px] leading-[1.12] font-semibold tracking-tight text-foreground sm:text-[56px]">
+          <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             From enrollment to harvest in three steps
           </h2>
-          <p className="mt-4 text-xl text-muted-foreground">
+          <p className="mt-4 text-lg text-muted-foreground">
             No prerequisites, no equipment needed to start — just a clear
             path from complete beginner to confident grower.
           </p>
@@ -53,7 +53,7 @@ export function HowItWorksSection() {
                 </span>
                 <span
                   aria-hidden
-                  className="font-heading text-5xl font-semibold text-border"
+                  className="font-heading text-4xl font-semibold text-border"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -61,7 +61,7 @@ export function HowItWorksSection() {
               <p className="mt-5 text-[13px] font-semibold tracking-wide text-primary uppercase">
                 {step.step}
               </p>
-              <h3 className="mt-1.5 font-heading text-[22px] font-semibold text-foreground">
+              <h3 className="mt-1.5 font-heading text-xl font-semibold text-foreground">
                 {step.title}
               </h3>
               <p className="mt-2 text-[16px] leading-relaxed text-muted-foreground">
