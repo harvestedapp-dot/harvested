@@ -5,7 +5,7 @@ const ACCENT = "#a8d878";
 
 const trustItems = ["Beginner Friendly", "Any Device", "6 Modules"];
 
-/** CSS-drawn burning joints: [height in px, tilt in deg, animation delay in ms]. */
+/** SVG-drawn burning joints: [height in px, tilt in deg, animation delay in ms]. */
 const joints: Array<[number, number, number]> = [
   [124, -8, 0],
   [152, -2.5, 900],
@@ -24,37 +24,135 @@ function Joint({
   height,
   tilt,
   delay,
+  uid,
 }: {
   height: number;
   tilt: number;
   delay: number;
+  uid: number;
 }) {
+  const mouthY = height - 2;
+  const paperTop = 17.5;
+  // herb speckles showing through the paper — deterministic per joint
+  const speckles = [0.3, 0.45, 0.6, 0.74, 0.86].map((t, i) => {
+    const halfWidth = 10.5 - 6 * t;
+    const offset = (((height * (i + 3)) % 7) / 7 - 0.5) * halfWidth * 1.4;
+    return {
+      cx: 15 + offset,
+      cy: paperTop + (mouthY - paperTop) * t,
+      r: 0.55 + ((height + i * 5) % 3) * 0.3,
+    };
+  });
+  const id = (name: string) => `joint-${uid}-${name}`;
+
   return (
     <span
       className="relative flex flex-col items-center"
       style={{ transform: `rotate(${tilt}deg)` }}
     >
-      {/* rising smoke wisp */}
+      {/* rising smoke wisps */}
       <span
         aria-hidden
-        className="hero-joint-smoke pointer-events-none absolute -top-10 h-8 w-[4px] rounded-full bg-white/55 blur-[2px]"
+        className="hero-joint-smoke pointer-events-none absolute -top-9 h-8 w-[4px] rounded-full bg-white/50 blur-[2px]"
         style={{ animationDelay: `${delay}ms` }}
       />
-      {/* glowing ember tip */}
       <span
-        className="hero-joint-ember z-10 h-[10px] w-[22px] rounded-full bg-gradient-to-b from-[#ffb27a] via-[#ec9458] to-[#c9622f]"
+        aria-hidden
+        className="hero-joint-smoke pointer-events-none absolute -top-8 ml-2 h-6 w-[3px] rounded-full bg-white/35 blur-[2px]"
+        style={{ animationDelay: `${delay + 1400}ms`, animationDuration: "4.6s" }}
+      />
+      {/* flickering heat glow over the cherry */}
+      <span
+        aria-hidden
+        className="hero-joint-ember absolute top-[10px] z-10 h-[6px] w-[15px] rounded-full bg-[#ff8a3c]/45 blur-[3px] sm:top-[13px]"
         style={{ animationDelay: `${delay}ms` }}
       />
-      {/* tapered paper cone: side-lit for roundness, charred band at the lit end */}
-      <span
-        className="-mt-px w-6 sm:w-8"
-        style={{
-          height,
-          background:
-            "linear-gradient(180deg, rgba(60,40,25,0.35) 0%, rgba(60,40,25,0) 12%), linear-gradient(100deg, #faf5e9 0%, #ece4d0 52%, #c9bfa5 100%)",
-          clipPath: "polygon(21% 0%, 79% 0%, 60% 100%, 40% 100%)",
-        }}
-      />
+      <svg
+        viewBox={`0 0 30 ${height}`}
+        height={height}
+        aria-hidden
+        className="block h-auto w-[24px] sm:w-[30px]"
+      >
+        <defs>
+          <linearGradient id={id("paper")} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#fbf6ea" />
+            <stop offset="55%" stopColor="#eee4cf" />
+            <stop offset="100%" stopColor="#c3b79c" />
+          </linearGradient>
+          <linearGradient id={id("char")} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(45,28,14,0.92)" />
+            <stop offset="55%" stopColor="rgba(72,45,22,0.4)" />
+            <stop offset="100%" stopColor="rgba(72,45,22,0)" />
+          </linearGradient>
+          <linearGradient id={id("ash")} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#f0eeea" />
+            <stop offset="50%" stopColor="#cecbc4" />
+            <stop offset="100%" stopColor="#a8a49b" />
+          </linearGradient>
+          <radialGradient id={id("ember")} cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stopColor="#ffe2b3" />
+            <stop offset="45%" stopColor="#ff9a4a" />
+            <stop offset="78%" stopColor="#d84f1d" />
+            <stop offset="100%" stopColor="rgba(150,40,10,0)" />
+          </radialGradient>
+        </defs>
+
+        {/* paper cone with a rounded mouth end */}
+        <path
+          d={`M4.5 ${paperTop} L25.5 ${paperTop} L19.2 ${mouthY - 1} Q15 ${mouthY + 1} 10.8 ${mouthY - 1} Z`}
+          fill={`url(#${id("paper")})`}
+        />
+        {/* rolling seam */}
+        <path
+          d={`M13.2 ${paperTop + 5} L11.6 ${mouthY - 6}`}
+          stroke="rgba(120,90,55,0.2)"
+          strokeWidth="0.8"
+        />
+        {speckles.map((s, i) => (
+          <circle
+            key={i}
+            cx={s.cx}
+            cy={s.cy}
+            r={s.r}
+            fill="rgba(105,78,45,0.16)"
+          />
+        ))}
+        {/* scorched band right under the cherry */}
+        <path
+          d={`M4.5 ${paperTop} L25.5 ${paperTop} L23.6 ${paperTop + 10} L6.4 ${paperTop + 10} Z`}
+          fill={`url(#${id("char")})`}
+        />
+        {/* burning cherry */}
+        <ellipse
+          cx="15"
+          cy={paperTop + 0.5}
+          rx="9.8"
+          ry="3.2"
+          fill={`url(#${id("ember")})`}
+        />
+        {/* ash tip: continues the cone taper, crumbly jagged crown */}
+        <path
+          d="M6.8 17 L6.3 10.5 Q6.9 6.6 9.2 4.8 Q10.6 5.6 11.9 3.8 Q13.5 2.6 15.3 3.2 Q17.1 2.6 18.7 4.1 Q20.5 4.3 21.7 6.6 Q23.2 8.8 23.5 11.2 L23.2 17 Z"
+          fill={`url(#${id("ash")})`}
+        />
+        <ellipse cx="11" cy="9.4" rx="2.4" ry="1.5" fill="#a29d93" opacity="0.32" />
+        <ellipse cx="18.2" cy="12" rx="2.7" ry="1.7" fill="#96918a" opacity="0.28" />
+        <ellipse cx="14.6" cy="6" rx="2" ry="1.1" fill="#f7f6f3" opacity="0.55" />
+        <path
+          d="M9.6 14 L11.8 11.2 M16.8 14.4 L19 11.6 M13 13 L14.2 10.8"
+          stroke="#8b867d"
+          strokeWidth="0.55"
+          opacity="0.45"
+        />
+        <path
+          d="M8.4 16.2 L21.8 16.2"
+          stroke="#ff7a2e"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeDasharray="2.4 1.6"
+          opacity="0.55"
+        />
+      </svg>
     </span>
   );
 }
@@ -192,6 +290,7 @@ export function HeroSection() {
                     height={height}
                     tilt={tilt}
                     delay={delay}
+                    uid={index}
                   />
                 ))}
               </div>
