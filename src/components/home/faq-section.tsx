@@ -79,7 +79,10 @@ export function FaqSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="mx-auto max-w-[1280px] px-6">
-        <div className="text-center">
+        <div className="text-center" data-reveal>
+          <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
+            FAQ
+          </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             Frequently Asked Questions
           </h2>
@@ -88,7 +91,12 @@ export function FaqSection() {
           </p>
         </div>
 
-        <Accordion className="mt-12 rounded-2xl border border-border bg-card px-8" multiple={false}>
+        <Accordion
+          className="mt-12 rounded-2xl border border-border bg-card px-8"
+          multiple={false}
+          data-reveal
+          style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
+        >
           {faqs.map((faq, index) => (
             <AccordionItem key={faq.question} value={`faq-${index}`}>
               <AccordionTrigger className="py-6 text-[17px]">

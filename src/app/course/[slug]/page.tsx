@@ -180,7 +180,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           />
 
           {course.outcomes && course.outcomes.length > 0 && (
-            <section className="mt-12">
+            <section className="mt-12" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
                 What You&apos;ll Learn
               </h2>
@@ -196,7 +196,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           )}
 
           {course.curriculum && course.curriculum.length > 0 && (
-            <section id="curriculum" className="mt-12 scroll-mt-24">
+            <section id="curriculum" className="mt-12 scroll-mt-24" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
                 Course Curriculum
               </h2>
@@ -236,7 +236,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           )}
 
           {course.audience && course.audience.length > 0 && (
-            <section className="mt-12">
+            <section className="mt-12" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
                 Who This Course Is For
               </h2>
@@ -255,7 +255,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           )}
 
           {course.requirements && course.requirements.length > 0 && (
-            <section className="mt-12">
+            <section className="mt-12" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
                 Requirements
               </h2>

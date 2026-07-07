@@ -52,7 +52,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-base font-medium transition-colors",
+                "relative text-base font-medium transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
                 isHome
                   ? "text-white/80 hover:text-white"
                   : "text-muted-foreground hover:text-foreground"

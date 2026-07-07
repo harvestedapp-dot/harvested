@@ -75,6 +75,8 @@ export default function Home() {
         <img
           src="https://images.unsplash.com/photo-1498671546682-94a232c26d17?w=1600&q=80"
           alt=""
+          fetchPriority="high"
+          decoding="async"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[rgba(6,18,9,0.85)]" />

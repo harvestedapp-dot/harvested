@@ -130,6 +130,40 @@
 }
 
 @layer components {
+  /* Scroll reveal: JS adds .reveal-ready to <html>, so content stays fully
+     visible without JS (SEO / no-JS safe). Compositor-only properties. */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-ready [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+    .reveal-ready [data-reveal].is-revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Hero entrance: pure CSS, runs on load, no JS dependency */
+    .hero-enter {
+      animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: var(--enter-delay, 0ms);
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   /* Hero "3–4 joints ≈ $69" visual: ember flicker + rising smoke wisps */
   @media (prefers-reduced-motion: no-preference) {
     .hero-joint-ember {

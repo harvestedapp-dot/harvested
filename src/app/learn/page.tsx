@@ -33,17 +33,19 @@ export default function LearnIndexPage() {
           <li key={article.slug}>
             <Link
               href={`/learn/${article.slug}`}
-              className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-md"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-md"
             >
               {article.heroImage && (
-                <img
-                  src={article.heroImage.src}
-                  alt={article.heroImage.alt}
-                  width={1200}
-                  height={675}
-                  loading="lazy"
-                  className="h-44 w-full border-b border-border object-cover"
-                />
+                <div className="overflow-hidden border-b border-border">
+                  <img
+                    src={article.heroImage.src}
+                    alt={article.heroImage.alt}
+                    width={1200}
+                    height={675}
+                    loading="lazy"
+                    className="h-44 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                  />
+                </div>
               )}
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-center justify-between gap-3">

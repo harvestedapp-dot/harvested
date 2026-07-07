@@ -3,6 +3,7 @@ import { Inter, Manrope, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { RevealInit } from "@/components/reveal-init";
 import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
@@ -91,6 +92,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <RevealInit />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

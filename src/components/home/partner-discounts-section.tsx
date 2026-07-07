@@ -1,3 +1,5 @@
+import { CountUp } from "@/components/count-up";
+
 const equipmentItems = [
   {
     emoji: "\u{1F4A1}",
@@ -23,12 +25,12 @@ export function PartnerDiscountsSection() {
   return (
     <section
       aria-label="Cannabis grow equipment discounts included with Harvested course"
-      className="bg-[#1a3320] px-10 py-20 sm:py-28"
+      className="bg-[#1a3320] px-5 py-20 sm:px-10 sm:py-28"
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
-          <div>
-            <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-4 py-1.5 text-[14px] font-semibold uppercase text-white/70">
+          <div data-reveal>
+            <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] uppercase text-white/70">
               Exclusive Partner Discounts
             </p>
             <h2 className="mb-4 font-heading text-[36px] leading-[1.15] font-semibold text-white sm:text-[44px]">
@@ -40,22 +42,31 @@ export function PartnerDiscountsSection() {
               grow lights, nutrients, tents, and more.
             </p>
             <p className="flex items-center gap-5">
-              <span className="font-heading text-[48px] leading-none font-semibold text-[#a8d878]">
-                $200+
-              </span>
+              <CountUp
+                to={200}
+                prefix="$"
+                suffix="+"
+                className="font-heading text-[48px] leading-none font-semibold text-[#a8d878]"
+              />
               <span className="max-w-[280px] text-[16px] leading-[1.5] text-white/50">
                 average savings on grow equipment for Harvested students
               </span>
             </p>
           </div>
 
-          <ul>
+          <ul
+            data-reveal
+            style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+          >
             {equipmentItems.map((item) => (
               <li
                 key={item.title}
-                className="flex items-center gap-5 border-b-[0.5px] border-white/10 py-5 last:border-b-0"
+                className="group flex items-center gap-5 border-b-[0.5px] border-white/10 py-5 transition-transform duration-300 last:border-b-0 hover:translate-x-1"
               >
-                <span aria-hidden className="text-3xl">
+                <span
+                  aria-hidden
+                  className="flex size-13 shrink-0 items-center justify-center rounded-xl border-[0.5px] border-white/10 bg-white/[0.07] text-2xl transition-colors duration-300 group-hover:border-[rgba(168,216,120,0.4)] group-hover:bg-[rgba(168,216,120,0.12)]"
+                >
                   {item.emoji}
                 </span>
                 <span>

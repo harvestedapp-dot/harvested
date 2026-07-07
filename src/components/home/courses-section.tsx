@@ -29,7 +29,10 @@ export function CoursesSection() {
   return (
     <section id="courses" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center" data-reveal>
+          <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
+            Course Library
+          </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             Cannabis Cultivation Courses
           </h2>
@@ -41,7 +44,7 @@ export function CoursesSection() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.slice(0, 3).map((course) => {
+          {courses.slice(0, 3).map((course, index) => {
             const isAvailable = course.status === "available";
             const image = courseImages[course.slug];
 
@@ -49,23 +52,25 @@ export function CoursesSection() {
               <Card
                 className={
                   isAvailable
-                    ? "h-full ring-primary/15 transition-shadow hover:shadow-lg"
-                    : "h-full opacity-70"
+                    ? "h-full pt-0 ring-primary/15 transition-[box-shadow,transform] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
+                    : "h-full pt-0 opacity-70"
                 }
               >
                 {image && (
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    width={800}
-                    height={450}
-                    loading="lazy"
-                    className={
-                      isAvailable
-                        ? "h-40 w-full object-cover"
-                        : "h-40 w-full object-cover grayscale-[35%]"
-                    }
-                  />
+                  <div className="overflow-hidden rounded-t-xl">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      width={800}
+                      height={450}
+                      loading="lazy"
+                      className={
+                        isAvailable
+                          ? "h-40 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                          : "h-40 w-full object-cover grayscale-[35%]"
+                      }
+                    />
+                  </div>
                 )}
                 <CardHeader>
                   <div className="flex items-center justify-between gap-2">
@@ -94,9 +99,18 @@ export function CoursesSection() {
               </Card>
             );
 
+            const revealDelay = {
+              "--reveal-delay": `${index * 100}ms`,
+            } as React.CSSProperties;
+
             if (!isAvailable) {
               return (
-                <div key={course.slug} className="group">
+                <div
+                  key={course.slug}
+                  className="group"
+                  data-reveal
+                  style={revealDelay}
+                >
                   {cardBody}
                 </div>
               );
@@ -107,6 +121,8 @@ export function CoursesSection() {
                 key={course.slug}
                 href={`/course/${course.slug}`}
                 className="group rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                data-reveal
+                style={revealDelay}
               >
                 {cardBody}
               </Link>

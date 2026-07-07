@@ -18,7 +18,7 @@ export function PricingSection() {
       className="border-t border-border py-20 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-6">
-        <div className="overflow-hidden rounded-3xl bg-primary text-white">
+        <div className="overflow-hidden rounded-3xl bg-primary text-white" data-reveal>
           <div className="grid gap-10 p-8 sm:p-12 md:grid-cols-[1.2fr_1fr] md:items-center lg:p-16">
             <div>
               <p className="text-[14px] font-semibold tracking-wide text-white/70 uppercase">
@@ -55,9 +55,14 @@ export function PricingSection() {
               <p className="text-[16px] font-medium text-muted-foreground">
                 Basic Cannabis Cultivation
               </p>
-              <p className="mt-2 font-heading text-[48px] leading-none font-semibold">
-                $69
-                <span className="ml-2 text-[17px] font-normal text-muted-foreground">
+              <p className="mt-2 flex flex-wrap items-baseline gap-x-2.5 font-heading">
+                <s className="text-[22px] font-normal text-muted-foreground/70">
+                  $179
+                </s>
+                <span className="text-[48px] leading-none font-semibold">
+                  $69
+                </span>
+                <span className="text-[17px] font-normal text-muted-foreground">
                   one-time payment
                 </span>
               </p>
@@ -66,7 +71,7 @@ export function PricingSection() {
               </p>
               <Link
                 href="/course/basic-cannabis-cultivation"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-8 py-4 text-[17px] font-medium text-white transition-colors hover:bg-[#254a2e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-8 py-4 text-[17px] font-medium text-white transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#254a2e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Enroll Now
               </Link>

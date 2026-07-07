@@ -31,7 +31,10 @@ export function HowItWorksSection() {
       className="border-t border-border bg-white py-20 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center" data-reveal>
+          <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
+            How It Works
+          </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             From enrollment to harvest in three steps
           </h2>
@@ -45,15 +48,17 @@ export function HowItWorksSection() {
           {steps.map((step, index) => (
             <li
               key={step.title}
-              className="relative rounded-2xl border border-border bg-card p-8"
+              className="group relative rounded-2xl border border-border bg-card p-8 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-primary/30"
+              data-reveal
+              style={{ "--reveal-delay": `${index * 100}ms` } as React.CSSProperties}
             >
               <div className="flex items-center justify-between">
-                <span className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <span className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                   <step.icon className="size-5" aria-hidden />
                 </span>
                 <span
                   aria-hidden
-                  className="font-heading text-4xl font-semibold text-border"
+                  className="font-heading text-4xl font-semibold text-border transition-colors duration-300 group-hover:text-primary/25"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>

@@ -39,8 +39,8 @@ export function ContactSection() {
   return (
     <section id="contact" className="bg-[#1a3320] py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="text-center">
-          <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-4 py-1.5 text-[14px] font-semibold tracking-[0.06em] text-white/70 uppercase">
+        <div className="text-center" data-reveal>
+          <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-white/70 uppercase">
             Contact
           </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-white sm:text-[44px]">
@@ -53,7 +53,11 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="mt-12 rounded-2xl bg-white p-8 shadow-[0_24px_60px_rgba(0,0,0,0.25)] sm:p-12">
+        <div
+          className="mt-12 rounded-2xl bg-white p-8 shadow-[0_24px_60px_rgba(0,0,0,0.25)] sm:p-12"
+          data-reveal
+          style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
+        >
           {status === "success" ? (
             <div className="flex flex-col items-center gap-3 py-10 text-center">
               <CheckCircle2 className="size-10 text-primary" />

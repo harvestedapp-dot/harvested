@@ -70,7 +70,7 @@ export function HeroSection() {
 
       <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 px-5 py-16 md:grid-cols-2 md:gap-14 md:px-8 md:py-24 lg:gap-16">
         <div>
-          <p className="mb-7 inline-flex items-center gap-2.5 rounded-full border-[0.5px] border-white/20 bg-white/[0.08] px-4.5 py-2 text-[14px] font-semibold tracking-[0.18em] text-white/90 uppercase backdrop-blur-sm">
+          <p className="hero-enter mb-7 inline-flex items-center gap-2.5 rounded-full border-[0.5px] border-white/20 bg-white/[0.08] px-4.5 py-2 text-[14px] font-semibold tracking-[0.18em] text-white/90 uppercase backdrop-blur-sm">
             <span aria-hidden className="relative flex size-2.5">
               <span
                 className="absolute inline-flex size-full rounded-full opacity-60 motion-safe:animate-ping"
@@ -84,7 +84,10 @@ export function HeroSection() {
             Cannabis Cultivation Course
           </p>
 
-          <h1 className="mb-10 font-heading text-[52px] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]">
+          <h1
+            className="hero-enter mb-10 font-heading text-[clamp(34px,9vw,52px)] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]"
+            style={{ "--enter-delay": "80ms" } as React.CSSProperties}
+          >
             Stop buying joints.
             <br />
             <span className="bg-gradient-to-r from-[#d3f2a6] via-[#a8d878] to-[#8ec95f] bg-clip-text text-transparent drop-shadow-[0_0_26px_rgba(168,216,120,0.3)]">
@@ -94,7 +97,10 @@ export function HeroSection() {
             &mdash; forever.
           </h1>
 
-          <p className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
+          <p
+            className="hero-enter flex flex-wrap items-baseline gap-x-3.5 gap-y-1"
+            style={{ "--enter-delay": "160ms" } as React.CSSProperties}
+          >
             <s className="text-2xl font-medium text-white/50 sm:text-3xl">
               $179
             </s>
@@ -113,14 +119,19 @@ export function HeroSection() {
             </span>
           </p>
 
-          <p className="mt-4 text-[16px] font-medium tracking-wide text-white/65">
+          <p
+            className="hero-enter mt-4 text-[16px] font-medium tracking-wide text-white/65"
+            style={{ "--enter-delay": "220ms" } as React.CSSProperties}
+          >
             One-time payment &middot; Lifetime access &middot; 30-day
             money-back
           </p>
 
           <p
-            className="mt-1.5 mb-9 text-[12px] font-medium"
-            style={{ color: ACCENT }}
+            className="hero-enter mt-1.5 mb-9 text-[12px] font-medium"
+            style={
+              { color: ACCENT, "--enter-delay": "260ms" } as React.CSSProperties
+            }
           >
             &#10022; Includes exclusive discounts on grow equipment &mdash;
             students save $200+ inside the course
@@ -128,7 +139,8 @@ export function HeroSection() {
 
           <Link
             href="/course/basic-cannabis-cultivation"
-            className="group mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="hero-enter group mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            style={{ "--enter-delay": "320ms" } as React.CSSProperties}
           >
             Enroll Now
             <ArrowRight
@@ -137,7 +149,10 @@ export function HeroSection() {
             />
           </Link>
 
-          <ul className="flex flex-wrap items-center gap-2">
+          <ul
+            className="hero-enter flex flex-wrap items-center gap-2"
+            style={{ "--enter-delay": "400ms" } as React.CSSProperties}
+          >
             {trustItems.map((item) => (
               <li
                 key={item}
@@ -154,7 +169,10 @@ export function HeroSection() {
           </ul>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border-[0.5px] border-white/15 bg-white/[0.07] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_24px_60px_rgba(0,0,0,0.35)] backdrop-blur-md sm:p-11">
+        <div
+          className="hero-enter relative overflow-hidden rounded-3xl border-[0.5px] border-white/15 bg-white/[0.07] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_24px_60px_rgba(0,0,0,0.35)] backdrop-blur-md sm:p-11"
+          style={{ "--enter-delay": "200ms" } as React.CSSProperties}
+        >
           <div
             aria-hidden
             className="pointer-events-none absolute -top-24 -right-20 size-64 rounded-full bg-[radial-gradient(closest-side,rgba(168,216,120,0.16),transparent_70%)] blur-2xl"
