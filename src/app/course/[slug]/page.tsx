@@ -460,7 +460,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
               nativeButton={false}
               render={<a href={enrollHref} />}
             >
-              Enroll Now
+              Let&apos;s Grow
             </Button>
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2.5">
