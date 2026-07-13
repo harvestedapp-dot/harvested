@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function RefundPolicyPage() {
   return (
-    <LegalPage title="Refund Policy" lastUpdated="July 2, 2026">
+    <LegalPage title="Refund Policy" lastUpdated="July 13, 2026">
       <h2>Our Guarantee</h2>
       <p>
         We want you to feel confident enrolling in any {siteConfig.name}
         course. If you&rsquo;re not satisfied, you may request a full refund
-        within 30 days of your purchase date, no questions asked.
+        within 7 days of your purchase date, no questions asked.
       </p>
 
       <h2>How to Request a Refund</h2>
@@ -34,9 +34,9 @@ export default function RefundPolicyPage() {
         additional time for the refund to appear on your statement.
       </p>
 
-      <h2>After 30 Days</h2>
+      <h2>After 7 Days</h2>
       <p>
-        Refund requests made after the 30-day window will be reviewed on a
+        Refund requests made after the 7-day window will be reviewed on a
         case-by-case basis and are not guaranteed.
       </p>
 

@@ -221,7 +221,7 @@ export function HeroSection() {
             className="hero-enter mt-4 text-[16px] font-medium tracking-wide text-white/65"
             style={{ "--enter-delay": "220ms" } as React.CSSProperties}
           >
-            One-time payment &middot; Lifetime access &middot; 30-day
+            One-time payment &middot; Lifetime access &middot; 7-day
             money-back
           </p>
 
@@ -240,7 +240,7 @@ export function HeroSection() {
             className="hero-enter group mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             style={{ "--enter-delay": "320ms" } as React.CSSProperties}
           >
-            Enroll Now
+            Let&apos;s Grow
             <ArrowRight
               className="size-5.5 transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden

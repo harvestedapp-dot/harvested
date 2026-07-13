@@ -41,14 +41,14 @@ export function PartnerDiscountsSection() {
               from our equipment partners. Students save an average of $200+ on
               grow lights, nutrients, tents, and more.
             </p>
-            <p className="flex items-center gap-5">
+            <p>
               <CountUp
                 to={200}
                 prefix="$"
                 suffix="+"
-                className="font-heading text-[48px] leading-none font-semibold text-[#a8d878]"
+                className="block font-heading text-[88px] leading-none font-semibold text-[#a8d878] sm:text-[112px]"
               />
-              <span className="max-w-[280px] text-[16px] leading-[1.5] text-white/50">
+              <span className="mt-4 block max-w-[280px] text-[16px] leading-[1.5] text-white/50">
                 average savings on grow equipment for Harvested students
               </span>
             </p>

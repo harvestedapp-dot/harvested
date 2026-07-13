@@ -3,7 +3,7 @@ import { CheckCircle2, ShieldCheck } from "lucide-react";
 
 const included = [
   "6 structured modules, from germination to curing",
-  "18 on-demand video lessons you can rewatch anytime",
+  "32 on-demand video lessons you can rewatch anytime",
   "Downloadable guides and checklists for every stage",
   "Equipment recommendations for every budget",
   "Lifetime access, including all future course updates",
@@ -73,7 +73,7 @@ export function PricingSection() {
                 href="/course/basic-cannabis-cultivation"
                 className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-8 py-4 text-[17px] font-medium text-white transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#254a2e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
-                Enroll Now
+                Let&apos;s Grow
               </Link>
               <div className="mt-6 flex items-start gap-2.5 rounded-lg bg-secondary p-4.5">
                 <ShieldCheck
@@ -82,10 +82,10 @@ export function PricingSection() {
                 />
                 <p className="text-[14px] leading-relaxed text-muted-foreground">
                   <span className="font-medium text-foreground">
-                    30-day money-back guarantee.
+                    7-day money-back guarantee.
                   </span>{" "}
                   If the course isn&rsquo;t for you, get a full refund within
-                  30 days — no questions asked.{" "}
+                  7 days — no questions asked.{" "}
                   <Link
                     href="/refund-policy"
                     className="underline underline-offset-2 hover:text-foreground"

@@ -78,7 +78,7 @@ export default function LearnIndexPage() {
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-white/80">
           Basic Cannabis Cultivation covers the entire journey — 6 modules and
-          18 lessons from seed to cured harvest, in the right order.
+          32 lessons from seed to cured harvest, in the right order.
         </p>
         <Link
           href="/course/basic-cannabis-cultivation"

@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   CheckCircle2,
   Clock,
+  FileText,
   Layers,
   Monitor,
   ShieldCheck,
@@ -146,9 +147,14 @@ export default async function CoursePage({ params }: CoursePageProps) {
           <h1 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {course.title}
           </h1>
-          <p className="mt-4 text-lg text-pretty text-muted-foreground">
-            {course.heroDescription}
-          </p>
+          {(course.overview ?? [course.heroDescription]).map((paragraph) => (
+            <p
+              key={paragraph}
+              className="mt-4 text-lg text-pretty text-muted-foreground"
+            >
+              {paragraph}
+            </p>
+          ))}
 
           <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
             {course.level && (
@@ -195,6 +201,22 @@ export default async function CoursePage({ params }: CoursePageProps) {
             </section>
           )}
 
+          {course.included && course.included.length > 0 && (
+            <section className="mt-12" data-reveal>
+              <h2 className="font-heading text-2xl font-semibold text-foreground">
+                What&apos;s Included
+              </h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {course.included.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm">
+                    <CheckCircle2 className="mt-0.5 size-4.5 shrink-0 text-primary" />
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {course.curriculum && course.curriculum.length > 0 && (
             <section id="curriculum" className="mt-12 scroll-mt-24" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
@@ -223,15 +245,47 @@ export default async function CoursePage({ params }: CoursePageProps) {
                       </span>
                     </AccordionTrigger>
                     <AccordionContent>
-                      <ul className="space-y-2 text-muted-foreground">
-                        {module.lessons.map((lesson) => (
-                          <li key={lesson}>{lesson}</li>
+                      <ol className="space-y-2 text-muted-foreground">
+                        {module.lessons.map((lesson, lessonIndex) => (
+                          <li key={lesson} className="flex gap-2.5">
+                            <span className="w-5 shrink-0 text-right tabular-nums">
+                              {lessonIndex + 1}.
+                            </span>
+                            {lesson}
+                          </li>
                         ))}
-                      </ul>
+                      </ol>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
+            </section>
+          )}
+
+          {course.bonusResources && course.bonusResources.length > 0 && (
+            <section className="mt-12" data-reveal>
+              <h2 className="font-heading text-2xl font-semibold text-foreground">
+                Bonus learning resources
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                In addition to the video lessons, you get{" "}
+                {course.bonusResources.length} practical resources covering
+                every stage of the grow.
+              </p>
+              <ul className="mt-5 flex flex-wrap gap-2 rounded-2xl border border-border bg-card p-5 sm:p-6">
+                {course.bonusResources.map((resource) => (
+                  <li
+                    key={resource}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3.5 py-1.5 text-[13px] text-foreground"
+                  >
+                    <FileText
+                      className="size-3.5 shrink-0 text-primary"
+                      aria-hidden
+                    />
+                    {resource}
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
 
@@ -311,9 +365,9 @@ export default async function CoursePage({ params }: CoursePageProps) {
               <ShieldCheck className="mt-0.5 size-4.5 shrink-0 text-primary" />
               <p className="text-[13px] leading-relaxed text-muted-foreground">
                 <span className="font-medium text-foreground">
-                  30-day money-back guarantee.
+                  7-day money-back guarantee.
                 </span>{" "}
-                Full refund within 30 days if the course isn&rsquo;t for you.{" "}
+                Full refund within 7 days if the course isn&rsquo;t for you.{" "}
                 <Link
                   href="/refund-policy"
                   className="underline underline-offset-2 hover:text-foreground"

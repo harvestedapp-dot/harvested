@@ -34,7 +34,7 @@ const faqs = [
   {
     question: "What if the course isn't for me?",
     answer:
-      "Every enrollment is covered by a 30-day money-back guarantee. If you decide the course isn't a fit, email us within 30 days of purchase and we'll issue a full refund — no questions asked.",
+      "Every enrollment is covered by a 7-day money-back guarantee. If you decide the course isn't a fit, email us within 7 days of purchase and we'll issue a full refund — no questions asked.",
   },
   {
     question: "How long does the course take to complete?",

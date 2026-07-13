@@ -79,7 +79,7 @@ export default function OpengraphImage() {
           <div>·</div>
           <div>Self-Paced</div>
           <div>·</div>
-          <div>30-Day Guarantee</div>
+          <div>7-Day Guarantee</div>
           <div>·</div>
           <div>harvested.app</div>
         </div>

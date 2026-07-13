@@ -54,7 +54,7 @@ export function ProblemsSection() {
                 >
                   <span
                     aria-hidden
-                    className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#f0efea] text-[13px] text-[#52514e]"
+                    className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#f0efea] text-[13px] text-[#FF3333]"
                   >
                     &#10007;
                   </span>
@@ -82,7 +82,7 @@ export function ProblemsSection() {
                 >
                   <span
                     aria-hidden
-                    className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[rgba(168,216,120,0.15)] text-[13px] text-[#a8d878]"
+                    className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[rgba(168,216,120,0.15)] text-[13px] text-[#AADD00]"
                   >
                     &#10003;
                   </span>

@@ -30,7 +30,7 @@ export function FinalCtaSection() {
           </Link>
         </div>
         <p className="mt-5 text-[15px] text-muted-foreground">
-          Lifetime access &middot; 30-day money-back guarantee &middot; No
+          Lifetime access &middot; 7-day money-back guarantee &middot; No
           subscription
         </p>
       </div>

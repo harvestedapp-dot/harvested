@@ -185,9 +185,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-white/80">
           This guide covers one stage of the journey. Basic Cannabis
-          Cultivation walks you through all of them — 6 modules and 18 video
+          Cultivation walks you through all of them — 6 modules and 32 video
           lessons from seed to cured harvest, with lifetime access and a
-          30-day money-back guarantee.
+          7-day money-back guarantee.
         </p>
         <Link
           href="/course/basic-cannabis-cultivation"
