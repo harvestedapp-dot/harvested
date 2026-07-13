@@ -3,13 +3,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
+  BookOpen,
   CheckCircle2,
+  ClipboardCheck,
   Clock,
   FileText,
+  Infinity as InfinityIcon,
   Layers,
+  LineChart,
+  Library,
+  Lightbulb,
   Monitor,
+  RefreshCw,
   ShieldCheck,
   UserCheck,
+  Video,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +32,38 @@ import { siteConfig } from "@/lib/site-config";
 interface CoursePageProps {
   params: Promise<{ slug: string }>;
 }
+
+/** Icons for the "What's Included" cards, matched to the data order. */
+const includedIcons = [
+  Layers,
+  Video,
+  ClipboardCheck,
+  LineChart,
+  BookOpen,
+  Library,
+  Lightbulb,
+  InfinityIcon,
+  RefreshCw,
+];
+
+/** Photo strip: the grow journey at a glance. */
+const journeyImages = [
+  {
+    src: "https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=800&h=800&q=80",
+    alt: "Cannabis seedling sprouting from soil — the first stage covered in the growing course",
+    label: "Seed & sprout",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1626083541467-192e31f06e77?auto=format&fit=crop&w=800&h=800&q=80",
+    alt: "Healthy cannabis plant in the vegetative growth stage under indoor grow lights",
+    label: "Veg & flower",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=800&h=800&q=80",
+    alt: "Harvested and cured cannabis buds stored in a glass jar after drying",
+    label: "Harvest & cure",
+  },
+];
 
 export function generateStaticParams() {
   return getAvailableCourses().map((course) => ({ slug: course.slug }));
@@ -144,19 +184,23 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_360px]">
         <div>
-          <h1 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h1 className="hero-enter font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {course.title}
           </h1>
           {(course.overview ?? [course.heroDescription]).map((paragraph) => (
             <p
               key={paragraph}
-              className="mt-4 text-lg text-pretty text-muted-foreground"
+              className="hero-enter mt-4 text-lg text-pretty text-muted-foreground"
+              style={{ "--enter-delay": "80ms" } as React.CSSProperties}
             >
               {paragraph}
             </p>
           ))}
 
-          <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
+          <div
+            className="hero-enter mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground"
+            style={{ "--enter-delay": "160ms" } as React.CSSProperties}
+          >
             {course.level && (
               <span className="inline-flex items-center gap-1.5">
                 <Layers className="size-4" />
@@ -182,8 +226,43 @@ export default async function CoursePage({ params }: CoursePageProps) {
             alt="Healthy young cannabis seedling growing in a clay pot at home — beginner indoor cannabis growing course from seed to harvest"
             width={1200}
             height={675}
-            className="mt-8 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
+            className="hero-enter mt-8 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
+            style={{ "--enter-delay": "240ms" } as React.CSSProperties}
           />
+
+          <div
+            className="hero-enter mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4"
+            style={{ "--enter-delay": "320ms" } as React.CSSProperties}
+          >
+            {[
+              { value: course.curriculum?.length ?? 0, label: "modules" },
+              {
+                value:
+                  course.curriculum?.reduce(
+                    (total, unit) => total + unit.lessons.length,
+                    0
+                  ) ?? 0,
+                label: "video lessons",
+              },
+              {
+                value: course.bonusResources?.length ?? 0,
+                label: "bonus resources",
+              },
+              { value: "∞", label: "lifetime access" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-xl border border-border bg-card px-4 py-4 text-center"
+              >
+                <p className="font-heading text-[32px] leading-none font-semibold text-primary">
+                  {stat.value}
+                </p>
+                <p className="mt-1.5 text-[13px] text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
 
           {course.outcomes && course.outcomes.length > 0 && (
             <section className="mt-12" data-reveal>
@@ -201,18 +280,46 @@ export default async function CoursePage({ params }: CoursePageProps) {
             </section>
           )}
 
+          <div className="mt-12 grid grid-cols-3 gap-3" data-reveal>
+            {journeyImages.map((image) => (
+              <figure key={image.label}>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  width={800}
+                  height={800}
+                  loading="lazy"
+                  className="aspect-square w-full rounded-xl border border-border object-cover"
+                />
+                <figcaption className="mt-2 text-center text-[13px] font-medium text-muted-foreground">
+                  {image.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
           {course.included && course.included.length > 0 && (
             <section className="mt-12" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
                 What&apos;s Included
               </h2>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {course.included.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm">
-                    <CheckCircle2 className="mt-0.5 size-4.5 shrink-0 text-primary" />
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
+              <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {course.included.map((item, index) => {
+                  const Icon = includedIcons[index] ?? CheckCircle2;
+                  return (
+                    <li
+                      key={item}
+                      className="rounded-xl border border-border bg-card p-4"
+                    >
+                      <span className="flex size-9 items-center justify-center rounded-lg bg-secondary">
+                        <Icon className="size-4.5 text-primary" aria-hidden />
+                      </span>
+                      <p className="mt-3 text-sm leading-snug text-foreground">
+                        {item}
+                      </p>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           )}
@@ -234,8 +341,8 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 {course.curriculum.map((module, index) => (
                   <AccordionItem key={module.title} value={`module-${index}`}>
                     <AccordionTrigger className="py-5 text-base">
-                      <span className="flex w-full items-baseline">
-                        <span className="mr-2 text-muted-foreground">
+                      <span className="flex w-full items-center">
+                        <span className="mr-3.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-[12px] font-bold text-primary">
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         {module.title}
@@ -263,23 +370,31 @@ export default async function CoursePage({ params }: CoursePageProps) {
           )}
 
           {course.bonusResources && course.bonusResources.length > 0 && (
-            <section className="mt-12" data-reveal>
-              <h2 className="font-heading text-2xl font-semibold text-foreground">
+            <section
+              className="mt-12 rounded-2xl bg-[#1a3320] p-6 sm:p-8"
+              data-reveal
+            >
+              <p className="inline-block rounded-full border-[0.5px] border-[rgba(168,216,120,0.3)] bg-[rgba(168,216,120,0.12)] px-4 py-1.5 text-[13px] font-medium tracking-[0.06em] text-[#a8d878] uppercase">
+                Included free
+              </p>
+              <h2 className="mt-4 font-heading text-2xl font-semibold text-white">
                 Bonus learning resources
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
+              <p className="mt-2 text-sm text-white/65">
                 In addition to the video lessons, you get{" "}
-                {course.bonusResources.length} practical resources covering
-                every stage of the grow.
+                <span className="font-semibold text-[#a8d878]">
+                  {course.bonusResources.length} practical resources
+                </span>{" "}
+                covering every stage of the grow.
               </p>
-              <ul className="mt-5 flex flex-wrap gap-2 rounded-2xl border border-border bg-card p-5 sm:p-6">
+              <ul className="mt-6 flex flex-wrap gap-2">
                 {course.bonusResources.map((resource) => (
                   <li
                     key={resource}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3.5 py-1.5 text-[13px] text-foreground"
+                    className="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-white/10 bg-white/[0.07] px-3.5 py-1.5 text-[13px] text-white/85"
                   >
                     <FileText
-                      className="size-3.5 shrink-0 text-primary"
+                      className="size-3.5 shrink-0 text-[#a8d878]"
                       aria-hidden
                     />
                     {resource}
@@ -326,7 +441,11 @@ export default async function CoursePage({ params }: CoursePageProps) {
         </div>
 
         <aside className="lg:sticky lg:top-24 lg:h-fit">
-          <div id="enroll" className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <div
+            id="enroll"
+            className="hero-enter rounded-2xl border border-border bg-card p-6 shadow-sm"
+            style={{ "--enter-delay": "200ms" } as React.CSSProperties}
+          >
             {course.price && (
               <p className="font-heading text-4xl font-semibold text-foreground">
                 ${course.price}
