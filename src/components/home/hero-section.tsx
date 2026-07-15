@@ -1,8 +1,31 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { FreePreviewCta } from "@/components/free-preview-cta";
+import { cn } from "@/lib/utils";
 
 const ACCENT = "#a8d878";
+
+const GRADIENT_WORD =
+  "bg-gradient-to-r from-[#d3f2a6] via-[#a8d878] to-[#8ec95f] bg-clip-text text-transparent drop-shadow-[0_0_26px_rgba(168,216,120,0.3)]";
+
+function HeadlineWord({
+  index,
+  className,
+  children,
+}: {
+  index: number;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <span
+      className={cn("hero-word", className)}
+      style={{ "--word-delay": `${110 + index * 75}ms` } as React.CSSProperties}
+    >
+      {children}
+    </span>
+  );
+}
 
 const trustItems = ["Beginner Friendly", "Any Device", "6 Modules"];
 
@@ -167,6 +190,15 @@ export function HeroSection() {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(4,14,7,0.65)_0%,rgba(4,14,7,0.3)_45%,transparent_72%)]"
       />
 
+      {/* slow-drifting ambient glow so the dark backdrop never sits still */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <span className="hero-ambient absolute -top-24 right-[6%] size-[26rem] rounded-full bg-[#a8d878]/10 blur-3xl" />
+        <span className="hero-ambient-slow absolute -bottom-32 left-[10%] size-[22rem] rounded-full bg-[#d3f2a6]/[0.07] blur-3xl" />
+      </div>
+
       <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 px-5 py-16 md:grid-cols-2 md:gap-14 md:px-8 md:py-24 lg:gap-16">
         <div>
           <p className="hero-enter mb-7 inline-flex items-center gap-2.5 rounded-full border-[0.5px] border-white/20 bg-white/[0.08] px-4.5 py-2 text-[14px] font-semibold tracking-[0.18em] text-white/90 uppercase backdrop-blur-sm">
@@ -183,17 +215,22 @@ export function HeroSection() {
             Cannabis Cultivation Course
           </p>
 
-          <h1
-            className="hero-enter mb-10 font-heading text-[clamp(34px,9vw,52px)] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]"
-            style={{ "--enter-delay": "80ms" } as React.CSSProperties}
-          >
-            Stop buying joints.
+          <h1 className="mb-10 font-heading text-[clamp(34px,9vw,52px)] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]">
+            <HeadlineWord index={0}>Stop</HeadlineWord>{" "}
+            <HeadlineWord index={1}>buying</HeadlineWord>{" "}
+            <HeadlineWord index={2}>joints.</HeadlineWord>
             <br />
-            <span className="bg-gradient-to-r from-[#d3f2a6] via-[#a8d878] to-[#8ec95f] bg-clip-text text-transparent drop-shadow-[0_0_26px_rgba(168,216,120,0.3)]">
-              Grow your own<span className="sr-only"> cannabis</span>
-            </span>
+            <HeadlineWord index={3} className={GRADIENT_WORD}>
+              Grow
+            </HeadlineWord>{" "}
+            <HeadlineWord index={4} className={GRADIENT_WORD}>
+              your
+            </HeadlineWord>{" "}
+            <HeadlineWord index={5} className={GRADIENT_WORD}>
+              own<span className="sr-only"> cannabis</span>
+            </HeadlineWord>
             <br />
-            &mdash; forever.
+            <HeadlineWord index={6}>&mdash; forever.</HeadlineWord>
           </h1>
 
           <p
@@ -238,9 +275,14 @@ export function HeroSection() {
 
           <Link
             href="/course/basic-cannabis-cultivation"
-            className="hero-enter group mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="hero-enter group relative isolate mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             style={{ "--enter-delay": "320ms" } as React.CSSProperties}
           >
+            {/* soft looping glow behind the button after it lands */}
+            <span
+              aria-hidden
+              className="hero-cta-glow absolute -inset-1 -z-10 rounded-2xl bg-[#a8d878]/35 opacity-40 blur-lg"
+            />
             Let&apos;s Grow
             <ArrowRight
               className="size-5.5 transition-transform duration-200 group-hover:translate-x-1"

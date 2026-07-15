@@ -63,7 +63,7 @@ export function FreePreviewCta({
       data-free-preview
       {...externalProps}
       className={cn(
-        "inline-flex items-center justify-center gap-2.5 rounded-lg px-8 py-4 text-[17px] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+        "inline-flex items-center justify-center gap-2.5 rounded-lg px-8 py-4 text-[17px] font-medium transition duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.99]",
         variant === "solid"
           ? "bg-primary text-white hover:bg-[#254a2e]"
           : "border-[0.5px] border-primary/35 bg-card text-primary hover:bg-primary/[0.06]",

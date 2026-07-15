@@ -21,6 +21,7 @@ import {
   Video,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CountUp } from "@/components/count-up";
 import { FreePreviewCta } from "@/components/free-preview-cta";
 import {
   FREE_PREVIEW_LESSON_COUNT,
@@ -265,7 +266,11 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 className="rounded-xl border border-border bg-card px-4 py-4 text-center"
               >
                 <p className="font-heading text-[32px] leading-none font-semibold text-primary">
-                  {stat.value}
+                  {typeof stat.value === "number" ? (
+                    <CountUp to={stat.value} />
+                  ) : (
+                    stat.value
+                  )}
                 </p>
                 <p className="mt-1.5 text-[13px] text-muted-foreground">
                   {stat.label}
@@ -280,8 +285,17 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 What You&apos;ll Learn
               </h2>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {course.outcomes.map((outcome) => (
-                  <li key={outcome} className="flex items-start gap-2.5 text-sm">
+                {course.outcomes.map((outcome, index) => (
+                  <li
+                    key={outcome}
+                    className="flex items-start gap-2.5 text-sm"
+                    data-reveal
+                    style={
+                      {
+                        "--reveal-delay": `${index * 60}ms`,
+                      } as React.CSSProperties
+                    }
+                  >
                     <CheckCircle2 className="mt-0.5 size-4.5 shrink-0 text-primary" />
                     <span className="text-foreground">{outcome}</span>
                   </li>
@@ -290,17 +304,25 @@ export default async function CoursePage({ params }: CoursePageProps) {
             </section>
           )}
 
-          <div className="mt-12 grid grid-cols-3 gap-3" data-reveal>
-            {journeyImages.map((image) => (
-              <figure key={image.label}>
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  width={800}
-                  height={800}
-                  loading="lazy"
-                  className="aspect-square w-full rounded-xl border border-border object-cover"
-                />
+          <div className="mt-12 grid grid-cols-3 gap-3">
+            {journeyImages.map((image, index) => (
+              <figure
+                key={image.label}
+                data-reveal
+                style={
+                  { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
+                }
+              >
+                <span className="block overflow-hidden rounded-xl border border-border">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    width={800}
+                    height={800}
+                    loading="lazy"
+                    className="aspect-square w-full object-cover transition duration-300 ease-out motion-safe:hover:scale-[1.04]"
+                  />
+                </span>
                 <figcaption className="mt-2 text-center text-[13px] font-medium text-muted-foreground">
                   {image.label}
                 </figcaption>
@@ -309,8 +331,11 @@ export default async function CoursePage({ params }: CoursePageProps) {
           </div>
 
           {course.included && course.included.length > 0 && (
-            <section className="mt-12" data-reveal>
-              <h2 className="font-heading text-2xl font-semibold text-foreground">
+            <section className="mt-12">
+              <h2
+                className="font-heading text-2xl font-semibold text-foreground"
+                data-reveal
+              >
                 What&apos;s Included
               </h2>
               <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -319,7 +344,13 @@ export default async function CoursePage({ params }: CoursePageProps) {
                   return (
                     <li
                       key={item}
-                      className="rounded-xl border border-border bg-card p-4"
+                      className="rounded-xl border border-border bg-card p-4 transition duration-300 ease-out motion-safe:hover:-translate-y-1 hover:border-primary/30"
+                      data-reveal
+                      style={
+                        {
+                          "--reveal-delay": `${index * 60}ms`,
+                        } as React.CSSProperties
+                      }
                     >
                       <span className="flex size-9 items-center justify-center rounded-lg bg-secondary">
                         <Icon className="size-4.5 text-primary" aria-hidden />
@@ -335,21 +366,32 @@ export default async function CoursePage({ params }: CoursePageProps) {
           )}
 
           {course.curriculum && course.curriculum.length > 0 && (
-            <section id="curriculum" className="mt-12 scroll-mt-24" data-reveal>
-              <h2 className="font-heading text-2xl font-semibold text-foreground">
-                Course Curriculum
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {course.curriculum.length} modules &middot;{" "}
-                {course.curriculum.reduce(
-                  (total, unit) => total + unit.lessons.length,
-                  0
-                )}{" "}
-                lessons &middot; {course.duration}
-              </p>
+            <section id="curriculum" className="mt-12 scroll-mt-24">
+              <div data-reveal>
+                <h2 className="font-heading text-2xl font-semibold text-foreground">
+                  Course Curriculum
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {course.curriculum.length} modules &middot;{" "}
+                  {course.curriculum.reduce(
+                    (total, unit) => total + unit.lessons.length,
+                    0
+                  )}{" "}
+                  lessons &middot; {course.duration}
+                </p>
+              </div>
               <Accordion className="mt-5 rounded-2xl border border-border bg-card px-6">
                 {course.curriculum.map((module, index) => (
-                  <AccordionItem key={module.title} value={`module-${index}`}>
+                  <AccordionItem
+                    key={module.title}
+                    value={`module-${index}`}
+                    data-reveal
+                    style={
+                      {
+                        "--reveal-delay": `${index * 70}ms`,
+                      } as React.CSSProperties
+                    }
+                  >
                     <AccordionTrigger className="py-5 text-base">
                       <span className="flex w-full items-center">
                         <span className="mr-3.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-[12px] font-bold text-primary">
@@ -451,7 +493,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 {course.bonusResources.map((resource) => (
                   <li
                     key={resource}
-                    className="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-white/10 bg-white/[0.07] px-3.5 py-1.5 text-[13px] text-white/85"
+                    className="inline-flex items-center gap-1.5 rounded-full border-[0.5px] border-white/10 bg-white/[0.07] px-3.5 py-1.5 text-[13px] text-white/85 transition-colors duration-200 hover:border-white/25 hover:bg-white/[0.15] hover:text-white"
                   >
                     <FileText
                       className="size-3.5 shrink-0 text-[#a8d878]"
@@ -516,7 +558,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
             )}
             <Button
               size="lg"
-              className="mt-5 w-full text-base"
+              className="mt-5 w-full text-base transition duration-200 ease-out motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.99]"
               nativeButton={false}
               render={<a href={enrollHref} />}
             >
