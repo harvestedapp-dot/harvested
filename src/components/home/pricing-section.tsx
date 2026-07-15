@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
+import { FreePreviewCta } from "@/components/free-preview-cta";
 
 const included = [
   "6 structured modules, from germination to curing",
@@ -75,6 +76,12 @@ export function PricingSection() {
               >
                 Let&apos;s Grow
               </Link>
+              <p className="mt-3.5 text-center">
+                <FreePreviewCta
+                  variant="link"
+                  label="or try 2 free lessons first"
+                />
+              </p>
               <div className="mt-6 flex items-start gap-2.5 rounded-lg bg-secondary p-4.5">
                 <ShieldCheck
                   className="mt-0.5 size-4.5 shrink-0 text-primary"

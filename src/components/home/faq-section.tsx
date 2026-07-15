@@ -12,6 +12,31 @@ const faqs = [
       "No. Basic Cannabis Cultivation is a cannabis growing course built for complete beginners — it walks you through every stage of the process step by step, from germination to curing.",
   },
   {
+    question: "Can I try the course before buying?",
+    answer:
+      "Yes. The first two lessons of Basic Cannabis Cultivation are completely free. You can watch them start to finish before deciding whether to enroll — no payment details required.",
+  },
+  {
+    question: "How many free lessons are included?",
+    answer:
+      "Two full lessons from Module 1 are free: the course welcome and a realistic look at what your first grow involves and costs. They're the same full-length lessons paying students get, not a trailer.",
+  },
+  {
+    question: "Do I need to create an account to watch the free lessons?",
+    answer:
+      "Yes — you'll create a free account on our course platform to access the free lessons. It takes under a minute, requires no credit card, and there's nothing to cancel.",
+  },
+  {
+    question: "Will my progress be saved if I decide to buy?",
+    answer:
+      "Yes. The free lessons live in the same course platform as the full course, so when you enroll with the same account, you pick up exactly where you left off.",
+  },
+  {
+    question: "What happens after I finish the free lessons?",
+    answer:
+      "Nothing happens automatically — you'll never be charged without enrolling. If you enjoyed the lessons, you can unlock the remaining 30 lessons with a one-time $69 payment. If not, you simply walk away.",
+  },
+  {
     question: "Is this course legal to take?",
     answer:
       "Yes. Harvested provides educational content only. Cannabis laws vary by state and country, so it's your responsibility to understand and follow the regulations that apply to you.",

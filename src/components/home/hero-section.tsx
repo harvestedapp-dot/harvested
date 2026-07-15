@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import { FreePreviewCta } from "@/components/free-preview-cta";
 
 const ACCENT = "#a8d878";
 
@@ -246,6 +247,16 @@ export function HeroSection() {
               aria-hidden
             />
           </Link>
+
+          <p
+            className="hero-enter -mt-3 mb-7 text-center"
+            style={{ "--enter-delay": "360ms" } as React.CSSProperties}
+          >
+            <FreePreviewCta
+              variant="link-on-dark"
+              label="Not ready? Try 2 free lessons first"
+            />
+          </p>
 
           <ul
             className="hero-enter flex flex-wrap items-center gap-2"

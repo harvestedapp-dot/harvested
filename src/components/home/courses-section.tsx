@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Lock, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -57,7 +57,7 @@ export function CoursesSection() {
                 }
               >
                 {image && (
-                  <div className="overflow-hidden rounded-t-xl">
+                  <div className="relative overflow-hidden rounded-t-xl">
                     <img
                       src={image.src}
                       alt={image.alt}
@@ -70,6 +70,12 @@ export function CoursesSection() {
                           : "h-40 w-full object-cover grayscale-[35%]"
                       }
                     />
+                    {isAvailable && (
+                      <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-[13px] font-medium text-[#3B6D11]">
+                        <Play className="size-3 fill-current" aria-hidden />2
+                        Free Lessons
+                      </span>
+                    )}
                   </div>
                 )}
                 <CardHeader>

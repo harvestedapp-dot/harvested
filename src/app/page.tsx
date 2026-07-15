@@ -5,6 +5,8 @@ import { PartnerDiscountsSection } from "@/components/home/partner-discounts-sec
 import { CoursesSection } from "@/components/home/courses-section";
 import { HowItWorksSection } from "@/components/home/how-it-works-section";
 import { AboutSection } from "@/components/home/about-section";
+import { FreePreviewSection } from "@/components/home/free-preview-section";
+import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { PricingSection } from "@/components/home/pricing-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { ContactSection } from "@/components/home/contact-section";
@@ -88,6 +90,8 @@ export default function Home() {
         <HowItWorksSection />
         <AboutSection />
         <PartnerDiscountsSection />
+        <TestimonialsSection />
+        <FreePreviewSection />
         <PricingSection />
         <FaqSection />
         <ContactSection />

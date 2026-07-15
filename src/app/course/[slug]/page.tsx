@@ -14,12 +14,18 @@ import {
   Library,
   Lightbulb,
   Monitor,
+  Play,
   RefreshCw,
   ShieldCheck,
   UserCheck,
   Video,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FreePreviewCta } from "@/components/free-preview-cta";
+import {
+  FREE_PREVIEW_LESSON_COUNT,
+  FREE_PREVIEW_URL,
+} from "@/lib/site-config";
 import {
   Accordion,
   AccordionContent,
@@ -198,9 +204,13 @@ export default async function CoursePage({ params }: CoursePageProps) {
           ))}
 
           <div
-            className="hero-enter mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground"
+            className="hero-enter mt-6 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-sm text-muted-foreground"
             style={{ "--enter-delay": "160ms" } as React.CSSProperties}
           >
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EAF3DE] px-3.5 py-1.5 font-medium text-[#3B6D11]">
+              <Play className="size-3 fill-current" aria-hidden />
+              First {FREE_PREVIEW_LESSON_COUNT} lessons free
+            </span>
             {course.level && (
               <span className="inline-flex items-center gap-1.5">
                 <Layers className="size-4" />
@@ -353,14 +363,38 @@ export default async function CoursePage({ params }: CoursePageProps) {
                     </AccordionTrigger>
                     <AccordionContent>
                       <ol className="space-y-2 text-muted-foreground">
-                        {module.lessons.map((lesson, lessonIndex) => (
-                          <li key={lesson} className="flex gap-2.5">
-                            <span className="w-5 shrink-0 text-right tabular-nums">
-                              {lessonIndex + 1}.
-                            </span>
-                            {lesson}
-                          </li>
-                        ))}
+                        {module.lessons.map((lesson, lessonIndex) => {
+                          const isFreePreview =
+                            index === 0 &&
+                            lessonIndex < FREE_PREVIEW_LESSON_COUNT;
+                          return (
+                            <li key={lesson} className="flex gap-2.5">
+                              <span className="w-5 shrink-0 text-right tabular-nums">
+                                {lessonIndex + 1}.
+                              </span>
+                              {isFreePreview ? (
+                                <a
+                                  href={FREE_PREVIEW_URL}
+                                  data-free-preview
+                                  className="group/preview inline-flex flex-wrap items-center gap-2 font-medium text-foreground"
+                                >
+                                  <span className="underline-offset-2 group-hover/preview:underline">
+                                    {lesson}
+                                  </span>
+                                  <span className="inline-flex items-center gap-1 rounded-full bg-[#EAF3DE] px-2.5 py-0.5 text-[12px] font-medium text-[#3B6D11]">
+                                    <Play
+                                      className="size-2.5 fill-current"
+                                      aria-hidden
+                                    />
+                                    Free preview
+                                  </span>
+                                </a>
+                              ) : (
+                                lesson
+                              )}
+                            </li>
+                          );
+                        })}
                       </ol>
                     </AccordionContent>
                   </AccordionItem>
@@ -368,6 +402,32 @@ export default async function CoursePage({ params }: CoursePageProps) {
               </Accordion>
             </section>
           )}
+
+          <section
+            aria-label="Try the course for free"
+            className="mt-12 rounded-2xl border-[0.5px] border-primary/20 bg-[#EAF3DE]/45 p-6 text-center sm:p-10"
+            data-reveal
+          >
+            <span
+              aria-hidden
+              className="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-white"
+            >
+              <Play className="size-4.5 fill-current" />
+            </span>
+            <h2 className="mt-4 font-heading text-2xl font-semibold text-foreground">
+              Still not sure?
+            </h2>
+            <p className="mx-auto mt-2 max-w-md text-[16px] text-muted-foreground">
+              Start with the first {FREE_PREVIEW_LESSON_COUNT} lessons for
+              free and experience the course before purchasing. No payment
+              details required.
+            </p>
+            <FreePreviewCta
+              variant="solid"
+              label="Start Free Lessons"
+              className="mt-6"
+            />
+          </section>
 
           {course.bonusResources && course.bonusResources.length > 0 && (
             <section
@@ -462,6 +522,14 @@ export default async function CoursePage({ params }: CoursePageProps) {
             >
               Let&apos;s Grow
             </Button>
+            <FreePreviewCta
+              variant="outline"
+              className="mt-3 w-full py-3 text-[15px]"
+            />
+            <p className="mt-2.5 text-center text-[13px] text-muted-foreground">
+              Watch the first {FREE_PREVIEW_LESSON_COUNT} lessons free — no
+              payment details required.
+            </p>
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2.5">
                 <CheckCircle2 className="size-4 text-primary" />
