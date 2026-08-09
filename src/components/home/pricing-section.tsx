@@ -25,7 +25,7 @@ export function PricingSection() {
               <p className="text-[14px] font-semibold tracking-wide text-white/70 uppercase">
                 Simple, honest pricing
               </p>
-              <h2 className="mt-3 font-display text-[36px] leading-[1.15] font-semibold tracking-tight text-balance sm:text-[44px]">
+              <h2 className="mt-3 font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-balance sm:text-[44px]">
                 Everything you need to grow, for less than a shelf of gear you
                 didn&rsquo;t need
               </h2>

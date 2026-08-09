@@ -33,7 +33,7 @@ export function CoursesSection() {
           <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
             Course Library
           </p>
-          <h2 className="font-display text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
+          <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             Indoor Gardening Courses
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">

@@ -43,7 +43,7 @@ export function ContactSection() {
           <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-white/70 uppercase">
             Contact
           </p>
-          <h2 className="font-display text-[36px] leading-[1.15] font-semibold tracking-tight text-white sm:text-[44px]">
+          <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-white sm:text-[44px]">
             Get in Touch
           </h2>
           <p className="mt-4 text-lg text-white/65">
