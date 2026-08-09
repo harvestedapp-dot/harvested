@@ -24,6 +24,14 @@ in full and can be restored at any time.
   indoors — herbs, leafy greens, tomatoes, peppers, strawberries and flowering
   houseplants — from seed to harvest.
 
+### Bilingual EN / HY (2026-08-09)
+
+The indoor gardening site is now bilingual: English at `/en`, Western
+Armenian (classical orthography) at `/hy`. Routes live under
+`src/app/[locale]`, copy lives in `src/lib/i18n/dictionaries` and per-locale
+content files under `src/lib/content`. Prefix-less URLs from the earlier
+version redirect into `/en`.
+
 ### What changed at a glance
 
 - Course renamed to **Indoor Growing for Beginners**
