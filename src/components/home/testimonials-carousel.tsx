@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { testimonials } from "@/lib/testimonials";
+import type { Testimonial } from "@/lib/testimonials";
 import { cn } from "@/lib/utils";
 
 const AUTO_ADVANCE_MS = 5000;
@@ -43,9 +43,23 @@ function StarIcon({ filled }: { filled: boolean }) {
  * navigation, pauses on touch / hidden tab / reduced motion), static
  * 2-then-3-column grid from `sm` up.
  */
-export function TestimonialsCarousel() {
+export function TestimonialsCarousel({
+  testimonials,
+  ratingLabels,
+  slideLabels,
+}: {
+  testimonials: Testimonial[];
+  /** Pre-formatted on the server: the dictionary's formatter functions
+   *  cannot be serialized across the client boundary. */
+  ratingLabels: string[];
+  slideLabels: string[];
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
-  const pausedUntilRef = useRef(0);
+  /* Auto-advance pauses after any interaction. Tracked as a flag plus a
+     timeout rather than a timestamp, so nothing reads the clock during
+     render. */
+  const isPausedRef = useRef(false);
+  const pauseTimerRef = useRef<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Distance between two slides, including the flex gap.
@@ -56,8 +70,18 @@ export function TestimonialsCarousel() {
     return second.offsetLeft - first.offsetLeft;
   };
 
+  const pauseAutoAdvance = () => {
+    isPausedRef.current = true;
+    if (pauseTimerRef.current !== null) {
+      window.clearTimeout(pauseTimerRef.current);
+    }
+    pauseTimerRef.current = window.setTimeout(() => {
+      isPausedRef.current = false;
+    }, INTERACTION_PAUSE_MS);
+  };
+
   const scrollToSlide = (index: number) => {
-    pausedUntilRef.current = Date.now() + INTERACTION_PAUSE_MS;
+    pauseAutoAdvance();
     trackRef.current?.scrollTo({ left: index * slideStep(), behavior: "smooth" });
   };
 
@@ -69,7 +93,13 @@ export function TestimonialsCarousel() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const pause = () => {
-      pausedUntilRef.current = Date.now() + INTERACTION_PAUSE_MS;
+      isPausedRef.current = true;
+      if (pauseTimerRef.current !== null) {
+        window.clearTimeout(pauseTimerRef.current);
+      }
+      pauseTimerRef.current = window.setTimeout(() => {
+        isPausedRef.current = false;
+      }, INTERACTION_PAUSE_MS);
     };
     track.addEventListener("pointerdown", pause);
     track.addEventListener("touchstart", pause, { passive: true });
@@ -79,22 +109,26 @@ export function TestimonialsCarousel() {
         !isMobile.matches ||
         reducedMotion.matches ||
         document.hidden ||
-        Date.now() < pausedUntilRef.current
+        isPausedRef.current
       ) {
         return;
       }
       const step = slideStep();
       if (!step) return;
-      const next = (Math.round(track.scrollLeft / step) + 1) % testimonials.length;
+      const next =
+        (Math.round(track.scrollLeft / step) + 1) % testimonials.length;
       track.scrollTo({ left: next * step, behavior: "smooth" });
     }, AUTO_ADVANCE_MS);
 
     return () => {
       window.clearInterval(timer);
+      if (pauseTimerRef.current !== null) {
+        window.clearTimeout(pauseTimerRef.current);
+      }
       track.removeEventListener("pointerdown", pause);
       track.removeEventListener("touchstart", pause);
     };
-  }, []);
+  }, [testimonials.length]);
 
   const handleScroll = () => {
     const track = trackRef.current;
@@ -134,7 +168,7 @@ export function TestimonialsCarousel() {
                   <span
                     className="mt-1 flex gap-0.5"
                     role="img"
-                    aria-label={`Rated ${testimonial.rating ?? 0} out of 5 stars`}
+                    aria-label={ratingLabels[index]}
                   >
                     {Array.from({ length: 5 }, (_, starIndex) => (
                       <StarIcon
@@ -158,7 +192,7 @@ export function TestimonialsCarousel() {
           <button
             key={testimonial.name}
             type="button"
-            aria-label={`Go to review ${index + 1} of ${testimonials.length}`}
+            aria-label={slideLabels[index]}
             aria-current={index === activeIndex}
             onClick={() => scrollToSlide(index)}
             className="flex size-6 items-center justify-center"

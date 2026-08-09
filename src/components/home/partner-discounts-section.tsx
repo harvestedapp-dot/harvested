@@ -1,55 +1,37 @@
 import { CountUp } from "@/components/count-up";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
-const equipmentItems = [
-  {
-    emoji: "\u{1F4A1}",
-    title: "Grow Lights",
-    description:
-      "Exclusive discounts on LED grow lights from our lighting partners",
-  },
-  {
-    emoji: "\u{1F331}",
-    title: "Nutrients, Soil & Substrates",
-    description:
-      "Partner codes for quality plant nutrients, soil and growing media",
-  },
-  {
-    emoji: "⛺",
-    title: "Tents & Equipment",
-    description:
-      "Discounts on grow tents, fans, pots, meters, and environmental controls",
-  },
-];
+const emojis = ["\u{1F4A1}", "\u{1F331}", "⛺"];
 
-export function PartnerDiscountsSection() {
+export function PartnerDiscountsSection({ dict }: { dict: Dictionary }) {
+  const copy = dict.partners;
+
   return (
     <section
-      aria-label="Indoor growing equipment discounts included with the Harvested course"
+      aria-label={copy.ariaLabel}
       className="bg-[#1a3320] px-5 py-20 sm:px-10 sm:py-28"
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
           <div data-reveal>
-            <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] uppercase text-white/70">
-              Exclusive Partner Discounts
+            <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-white/70 uppercase">
+              {copy.eyebrow}
             </p>
             <h2 className="mb-4 font-heading text-[36px] leading-[1.15] font-semibold text-white sm:text-[44px]">
-              The course pays for itself.
+              {copy.heading}
             </h2>
             <p className="mb-8 text-[18px] leading-[1.7] text-white/65">
-              Inside every module we&rsquo;ve included exclusive discount codes
-              from our equipment partners. Students save an average of $200+ on
-              grow lights, nutrients, tents, meters, and more.
+              {copy.body}
             </p>
             <p>
               <CountUp
                 to={200}
                 prefix="$"
                 suffix="+"
-                className="block font-display text-[88px] leading-none font-semibold text-[#a8d878] sm:text-[112px]"
+                className="block font-brand text-[88px] leading-none font-semibold text-[#a8d878] sm:text-[112px]"
               />
               <span className="mt-4 block max-w-[280px] text-[16px] leading-[1.5] text-white/50">
-                average savings on indoor growing gear for Harvested students
+                {copy.statCaption}
               </span>
             </p>
           </div>
@@ -58,7 +40,7 @@ export function PartnerDiscountsSection() {
             data-reveal
             style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
           >
-            {equipmentItems.map((item) => (
+            {copy.items.map((item, index) => (
               <li
                 key={item.title}
                 className="group flex items-center gap-5 border-b-[0.5px] border-white/10 py-5 transition-transform duration-300 last:border-b-0 hover:translate-x-1"
@@ -67,7 +49,7 @@ export function PartnerDiscountsSection() {
                   aria-hidden
                   className="flex size-13 shrink-0 items-center justify-center rounded-xl border-[0.5px] border-white/10 bg-white/[0.07] text-2xl transition-colors duration-300 group-hover:border-[rgba(168,216,120,0.4)] group-hover:bg-[rgba(168,216,120,0.12)]"
                 >
-                  {item.emoji}
+                  {emojis[index]}
                 </span>
                 <span>
                   <h3 className="mb-1 text-[18px] font-medium text-white">
@@ -83,10 +65,7 @@ export function PartnerDiscountsSection() {
         </div>
 
         <div className="mt-10 border-t-[0.5px] border-white/10 pt-8">
-          <p className="text-center text-[15px] text-white/40">
-            Partner discount codes are delivered inside the course modules
-            &mdash; available immediately after enrollment.
-          </p>
+          <p className="text-center text-[15px] text-white/40">{copy.note}</p>
         </div>
       </div>
     </section>

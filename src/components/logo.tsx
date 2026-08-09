@@ -2,13 +2,20 @@ import Link from "next/link";
 import { Sprout } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-config";
+import { localePath, type Locale } from "@/lib/i18n/config";
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({
+  locale,
+  className,
+}: {
+  locale: Locale;
+  className?: string;
+}) {
   return (
     <Link
-      href="/"
+      href={localePath(locale)}
       className={cn(
-        "flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-foreground",
+        "flex items-center gap-2 font-brand text-lg font-semibold tracking-tight text-foreground",
         className
       )}
     >

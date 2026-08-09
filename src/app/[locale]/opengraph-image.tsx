@@ -1,11 +1,35 @@
 import { ImageResponse } from "next/og";
+import { isLocale, locales, type Locale } from "@/lib/i18n";
 
-export const alt =
-  "Harvested — Learn Indoor Gardening from Seed to Harvest";
+export const alt = "Harvested — Indoor Gardening Course";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+const copy: Record<Locale, { headline: string; sub: string; trust: string[] }> = {
+  en: {
+    headline: "Learn Indoor Gardening from Seed to Harvest",
+    sub: "A practical, step-by-step online course for beginners — 6 modules, lifetime access, $69 one-time.",
+    trust: ["Beginner Friendly", "Self-Paced", "7-Day Guarantee"],
+  },
+  hy: {
+    headline: "Սորվէ ներսի պարտիզպանութիւն՝ սերմէն մինչեւ բերք",
+    sub: "Գործնական, քայլ առ քայլ առցանց դասընթաց սկսնակներու համար — 6 բաժին, ցմահ մուտք, $69 մէկանգամեայ։",
+    trust: ["Սկսնակներու համար", "Ինքնաշխատ", "7-օրեայ երաշխիք"],
+  },
+};
+
+export default async function OpengraphImage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const text = copy[isLocale(locale) ? locale : "en"];
+
   return new ImageResponse(
     (
       <div
@@ -46,14 +70,14 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div
             style={{
-              fontSize: 64,
+              fontSize: 60,
               fontWeight: 700,
               lineHeight: 1.15,
               letterSpacing: -1.5,
               maxWidth: 950,
             }}
           >
-            Learn Indoor Gardening from Seed to Harvest
+            {text.headline}
           </div>
           <div
             style={{
@@ -62,8 +86,7 @@ export default function OpengraphImage() {
               maxWidth: 850,
             }}
           >
-            A practical, step-by-step online course for beginners — 6 modules,
-            lifetime access, $69 one-time.
+            {text.sub}
           </div>
         </div>
 
@@ -75,11 +98,11 @@ export default function OpengraphImage() {
             color: "rgba(255,255,255,0.85)",
           }}
         >
-          <div>Beginner Friendly</div>
+          <div>{text.trust[0]}</div>
           <div>·</div>
-          <div>Self-Paced</div>
+          <div>{text.trust[1]}</div>
           <div>·</div>
-          <div>7-Day Guarantee</div>
+          <div>{text.trust[2]}</div>
           <div>·</div>
           <div>harvested.app</div>
         </div>

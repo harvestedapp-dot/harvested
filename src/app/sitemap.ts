@@ -1,29 +1,46 @@
 import type { MetadataRoute } from "next";
-import { articles } from "@/lib/articles";
-import { getAvailableCourses } from "@/lib/courses";
+import { getArticlePublishedAt, getArticleSlugs } from "@/lib/articles";
+import { getAvailableCourseSlugs } from "@/lib/courses";
 import { siteConfig } from "@/lib/site-config";
+import { locales } from "@/lib/i18n/config";
+
+/**
+ * Every path is listed once per locale, and each entry carries `alternates`
+ * so search engines can pair the English and Armenian versions.
+ */
+function entry(path: string, lastModified: Date): MetadataRoute.Sitemap {
+  return locales.map((locale) => ({
+    url: `${siteConfig.url}/${locale}${path}`,
+    lastModified,
+    alternates: {
+      languages: Object.fromEntries(
+        locales.map((alt) => [alt, `${siteConfig.url}/${alt}${path}`])
+      ),
+    },
+  }));
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   const staticRoutes = [
     "",
     "/learn",
     "/privacy-policy",
     "/terms-of-service",
     "/refund-policy",
-  ].map((path) => ({
-    url: `${siteConfig.url}${path}`,
-    lastModified: new Date(),
-  }));
+  ].flatMap((path) => entry(path, now));
 
-  const courseRoutes = getAvailableCourses().map((course) => ({
-    url: `${siteConfig.url}/course/${course.slug}`,
-    lastModified: new Date(),
-  }));
+  const courseRoutes = getAvailableCourseSlugs().flatMap((slug) =>
+    entry(`/course/${slug}`, now)
+  );
 
-  const articleRoutes = articles.map((article) => ({
-    url: `${siteConfig.url}/learn/${article.slug}`,
-    lastModified: new Date(article.publishedAt),
-  }));
+  const articleRoutes = getArticleSlugs().flatMap((slug) =>
+    entry(
+      `/learn/${slug}`,
+      new Date(getArticlePublishedAt(slug) ?? now.toISOString())
+    )
+  );
 
   return [...staticRoutes, ...courseRoutes, ...articleRoutes];
 }

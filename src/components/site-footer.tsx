@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { siteConfig } from "@/lib/site-config";
+import { localePath, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
-const legalLinks = [
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms of Service", href: "/terms-of-service" },
-  { label: "Refund Policy", href: "/refund-policy" },
-];
-
-export function SiteFooter() {
+export function SiteFooter({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
   const year = new Date().getFullYear();
 
   return (
@@ -16,22 +18,22 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
         <div className="flex flex-col gap-12 md:flex-row md:justify-between md:gap-10">
           <div className="max-w-sm min-w-0 space-y-4">
-            <Logo />
+            <Logo locale={locale} />
             <p className="text-[16px] leading-[1.6] text-muted-foreground">
-              {siteConfig.description}
+              {dict.siteDescription}
             </p>
           </div>
 
           <div className="grid min-w-0 grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-10 lg:gap-14">
             <div className="space-y-4">
               <p className="font-heading text-[17px] font-semibold text-foreground">
-                Explore
+                {dict.footer.explore}
               </p>
               <ul className="space-y-3 text-[16px] text-muted-foreground">
-                {siteConfig.nav.map((item) => (
+                {dict.nav.map((item) => (
                   <li key={item.href}>
                     <Link
-                      href={item.href}
+                      href={localePath(locale, item.href)}
                       className="transition-colors hover:text-foreground"
                     >
                       {item.label}
@@ -43,13 +45,13 @@ export function SiteFooter() {
 
             <div className="space-y-4">
               <p className="font-heading text-[17px] font-semibold text-foreground">
-                Legal
+                {dict.footer.legal}
               </p>
               <ul className="space-y-3 text-[16px] text-muted-foreground">
-                {legalLinks.map((item) => (
+                {dict.footer.links.map((item) => (
                   <li key={item.href}>
                     <Link
-                      href={item.href}
+                      href={localePath(locale, item.href)}
                       className="transition-colors hover:text-foreground"
                     >
                       {item.label}
@@ -61,7 +63,7 @@ export function SiteFooter() {
 
             <div className="space-y-4">
               <p className="font-heading text-[17px] font-semibold text-foreground">
-                Contact
+                {dict.footer.contact}
               </p>
               <ul className="space-y-3 text-[16px] text-muted-foreground">
                 <li>
@@ -79,12 +81,9 @@ export function SiteFooter() {
 
         <div className="mt-14 flex flex-col gap-2.5 border-t border-border pt-8 text-[14px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {year} {siteConfig.name}. All rights reserved.
+            &copy; {year} {siteConfig.name}. {dict.footer.rights}
           </p>
-          <p>
-            Educational content only. Growing results depend on your space,
-            plants and care.
-          </p>
+          <p>{dict.footer.disclaimer}</p>
         </div>
       </div>
     </footer>

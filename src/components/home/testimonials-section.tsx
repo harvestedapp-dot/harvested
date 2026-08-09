@@ -1,35 +1,44 @@
 import { Sprout } from "lucide-react";
 import { FreePreviewCta } from "@/components/free-preview-cta";
 import { TestimonialsCarousel } from "@/components/home/testimonials-carousel";
-import { testimonials } from "@/lib/testimonials";
+import { getTestimonials } from "@/lib/testimonials";
 import { siteConfig } from "@/lib/site-config";
+import { localeTags, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
 /**
- * Student reviews. While src/lib/testimonials.ts is empty this renders an
- * honest "first reviews coming" invitation instead of quotes; adding real
- * testimonials swaps in the review grid automatically.
+ * Student reviews. While the locale's testimonial list is empty this renders
+ * an honest "first reviews coming" invitation instead of quotes. On
+ * translated locales `translationNotice` states that the quotes are
+ * translations of reviews written in another language.
  */
-export function TestimonialsSection() {
+export function TestimonialsSection({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const testimonials = getTestimonials(locale);
+  const copy = dict.testimonials;
+
   if (testimonials.length === 0) {
     return (
       <section
         id="reviews"
-        aria-label="Student reviews"
+        aria-label={copy.ariaLabel}
         className="border-t border-border py-20 sm:py-28"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="rounded-3xl border-[0.5px] border-border bg-card px-6 py-14 text-center sm:px-12">
             <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
-              Student Reviews
+              {copy.eyebrow}
             </p>
             <h2 className="mx-auto max-w-2xl font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-balance text-foreground sm:text-[44px]">
-              Our first students are growing right now
+              {copy.emptyHeading}
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              The course has just launched, and honest reviews take a full
-              grow cycle to earn. As our first students finish their harvests,
-              their real, unedited feedback will appear here &mdash; good and
-              bad.
+              {copy.emptyBody}
             </p>
             <div className="mx-auto mt-8 flex max-w-md items-start gap-3 rounded-xl bg-secondary p-4 text-left">
               <Sprout
@@ -38,17 +47,13 @@ export function TestimonialsSection() {
               />
               <p className="text-[14px] leading-relaxed text-muted-foreground">
                 <span className="font-medium text-foreground">
-                  Why no reviews yet?
+                  {copy.emptyNoteTitle}
                 </span>{" "}
-                We only publish verified feedback from real students &mdash;
-                no purchased or invented testimonials, ever.
+                {copy.emptyNoteBody}
               </p>
             </div>
             <div className="mt-9">
-              <FreePreviewCta
-                variant="solid"
-                label="Be first — try 2 free lessons"
-              />
+              <FreePreviewCta variant="solid" label={copy.emptyCta} />
             </div>
           </div>
         </div>
@@ -66,12 +71,12 @@ export function TestimonialsSection() {
           "@context": "https://schema.org",
           "@type": "Course",
           name: "Indoor Growing for Beginners",
-          url: `${siteConfig.url}/course/indoor-growing-for-beginners`,
+          url: `${siteConfig.url}/${locale}/course/indoor-growing-for-beginners`,
+          inLanguage: localeTags[locale],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: (
-              ratings.reduce((sum, rating) => sum + rating, 0) /
-              ratings.length
+              ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length
             ).toFixed(1),
             reviewCount: ratings.length,
             bestRating: 5,
@@ -95,7 +100,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="reviews"
-      aria-label="Student reviews"
+      aria-label={copy.ariaLabel}
       className="border-t border-border py-20 sm:py-28"
     >
       {jsonLd && (
@@ -107,18 +112,30 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center" data-reveal>
           <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
-            Student Reviews
+            {copy.eyebrow}
           </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
-            What students say about growing with us
+            {copy.heading}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Real feedback from real students &mdash; unedited, straight from
-            their first indoor grows.
+            {copy.subheading}
           </p>
+          {copy.translationNotice && (
+            <p className="mt-3 text-[14px] text-muted-foreground/80">
+              {copy.translationNotice}
+            </p>
+          )}
         </div>
 
-        <TestimonialsCarousel />
+        <TestimonialsCarousel
+          testimonials={testimonials}
+          ratingLabels={testimonials.map((testimonial) =>
+            copy.ratingLabel(testimonial.rating ?? 0)
+          )}
+          slideLabels={testimonials.map((_, index) =>
+            copy.slideLabel(index + 1, testimonials.length)
+          )}
+        />
       </div>
     </section>
   );

@@ -33,12 +33,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { getAvailableCourses, getCourseBySlug } from "@/lib/courses";
+import { getAvailableCourseSlugs, getCourseBySlug } from "@/lib/courses";
 import { siteConfig } from "@/lib/site-config";
-
-interface CoursePageProps {
-  params: Promise<{ slug: string }>;
-}
+import {
+  getDictionary,
+  isLocale,
+  localePath,
+  locales,
+  localeTags,
+} from "@/lib/i18n";
 
 /** Icons for the "What's Included" cards, matched to the data order. */
 const includedIcons = [
@@ -53,63 +56,94 @@ const includedIcons = [
   RefreshCw,
 ];
 
-/** Photo strip: the indoor grow journey at a glance. */
+/** Photo strip: the indoor grow journey at a glance. Labels come from the
+ *  dictionary so they follow the visitor's locale. */
 const journeyImages = [
   {
     src: "https://images.unsplash.com/photo-1779622520933-79b2926a97dd?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: "Tiny seedlings sprouting from soil in a labelled seed tray — the first stage covered in the indoor growing course",
-    label: "Seed & sprout",
+    alt: {
+      en: "Tiny seedlings sprouting from soil in a labelled seed tray — the first stage covered in the indoor growing course",
+      hy: "Փոքրիկ ծիլեր կը բուսնին հողէն՝ պիտակուած սերմի սկուտեղի մը մէջ — դասընթացին առաջին փուլը",
+    },
   },
   {
     src: "https://images.unsplash.com/photo-1783759935182-6317f3988b0f?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: "Young plants growing indoors under a pink LED grow light",
-    label: "Grow & feed",
+    alt: {
+      en: "Young plants growing indoors under a pink LED grow light",
+      hy: "Երիտասարդ բոյսեր կ՚աճին ներսը՝ վարդագոյն LED աճի լոյսի տակ",
+    },
   },
   {
     src: "https://images.unsplash.com/photo-1635774855717-0aec182f92cc?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: "Basket of freshly harvested homegrown vegetables and salad leaves",
-    label: "Flower & harvest",
+    alt: {
+      en: "Basket of freshly harvested homegrown vegetables and salad leaves",
+      hy: "Զամբիւղ մը՝ նոր հաւաքուած տնական բանջարեղէնով եւ կանաչեղէնով",
+    },
   },
 ];
 
 export function generateStaticParams() {
-  return getAvailableCourses().map((course) => ({ slug: course.slug }));
+  return locales.flatMap((locale) =>
+    getAvailableCourseSlugs().map((slug) => ({ locale, slug }))
+  );
 }
 
 export async function generateMetadata({
   params,
-}: CoursePageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const course = getCourseBySlug(slug);
+}: PageProps<"/[locale]/course/[slug]">): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) return {};
 
+  const course = getCourseBySlug(locale, slug);
   if (!course || course.status !== "available") return {};
 
+  const title =
+    locale === "hy"
+      ? `${course.title} | Ներսի պարտիզպանութեան առցանց դասընթաց`
+      : `${course.title} | Online Indoor Gardening Course`;
+  const description = course.heroDescription ?? course.shortDescription;
+
   return {
-    title: `${course.title} | Online Indoor Gardening Course`,
-    description: course.heroDescription ?? course.shortDescription,
-    keywords: [
-      "indoor gardening course",
-      "indoor growing for beginners",
-      "how to grow plants indoors",
-      "indoor horticulture education",
-      "seed to harvest",
-    ],
-    alternates: { canonical: `/course/${course.slug}` },
-    openGraph: {
-      title: `${course.title} | Online Indoor Gardening Course`,
-      description: course.heroDescription ?? course.shortDescription,
-      type: "website",
+    title,
+    description,
+    keywords:
+      locale === "hy"
+        ? [
+            "ներսի պարտիզպանութեան դասընթաց",
+            "ներսը բոյս աճեցնել",
+            "պարտիզպանութիւն սկսնակներու համար",
+            "սերմէն մինչեւ բերք",
+          ]
+        : [
+            "indoor gardening course",
+            "indoor growing for beginners",
+            "how to grow plants indoors",
+            "indoor horticulture education",
+            "seed to harvest",
+          ],
+    alternates: {
+      canonical: `/${locale}/course/${course.slug}`,
+      languages: {
+        en: `/en/course/${course.slug}`,
+        hy: `/hy/course/${course.slug}`,
+        "x-default": `/en/course/${course.slug}`,
+      },
     },
+    openGraph: { title, description, type: "website" },
   };
 }
 
-export default async function CoursePage({ params }: CoursePageProps) {
-  const { slug } = await params;
-  const course = getCourseBySlug(slug);
+export default async function CoursePage({ params }: PageProps<"/[locale]/course/[slug]">) {
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) notFound();
 
+  const course = getCourseBySlug(locale, slug);
   if (!course || course.status !== "available") {
     notFound();
   }
+
+  const dict = getDictionary(locale);
+  const copy = dict.coursePage;
 
   const enrollHref = `mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent(
     `Enroll in ${course.title}`
@@ -120,8 +154,8 @@ export default async function CoursePage({ params }: CoursePageProps) {
     "@type": "Course",
     name: course.title,
     description: course.heroDescription ?? course.shortDescription,
-    url: `${siteConfig.url}/course/${course.slug}`,
-    inLanguage: "en-US",
+    url: `${siteConfig.url}/${locale}/course/${course.slug}`,
+    inLanguage: localeTags[locale],
     educationalLevel: course.level,
     teaches: course.curriculum?.map((unit) => unit.title),
     provider: {
@@ -152,20 +186,20 @@ export default async function CoursePage({ params }: CoursePageProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
-        item: siteConfig.url,
+        name: dict.nav[0].label,
+        item: `${siteConfig.url}/${locale}`,
       },
       {
         "@type": "ListItem",
         position: 2,
-        name: "Courses",
-        item: `${siteConfig.url}/#courses`,
+        name: dict.nav[1].label,
+        item: `${siteConfig.url}/${locale}/#courses`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: course.title,
-        item: `${siteConfig.url}/course/${course.slug}`,
+        item: `${siteConfig.url}/${locale}/course/${course.slug}`,
       },
     ],
   };
@@ -182,11 +216,11 @@ export default async function CoursePage({ params }: CoursePageProps) {
       />
 
       <Link
-        href="/#courses"
+        href={localePath(locale, "/#courses")}
         className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="size-4" />
-        Back to all courses
+        {copy.backToCourses}
       </Link>
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_360px]">
@@ -210,7 +244,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           >
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EAF3DE] px-3.5 py-1.5 font-medium text-[#3B6D11]">
               <Play className="size-3 fill-current" aria-hidden />
-              First {FREE_PREVIEW_LESSON_COUNT} lessons free
+              {copy.firstLessonsFree(FREE_PREVIEW_LESSON_COUNT)}
             </span>
             {course.level && (
               <span className="inline-flex items-center gap-1.5">
@@ -234,7 +268,11 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
           <img
             src="https://images.unsplash.com/photo-1638777922445-b17e22c87e70?auto=format&fit=crop&w=1200&h=675&q=80"
-            alt="Three young herb plants in pots on a tray, lit by sunlight indoors — beginner indoor gardening course from seed to harvest"
+            alt={
+              locale === "hy"
+                ? "Երեք երիտասարդ խոտաբոյս՝ ամաններու մէջ, ափսէի վրայ, ներսի արեւի լոյսին տակ"
+                : "Three young herb plants in pots on a tray, lit by sunlight indoors — beginner indoor gardening course from seed to harvest"
+            }
             width={1200}
             height={675}
             className="hero-enter mt-8 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
@@ -246,26 +284,26 @@ export default async function CoursePage({ params }: CoursePageProps) {
             style={{ "--enter-delay": "320ms" } as React.CSSProperties}
           >
             {[
-              { value: course.curriculum?.length ?? 0, label: "modules" },
+              { value: course.curriculum?.length ?? 0, label: copy.stats.modules },
               {
                 value:
                   course.curriculum?.reduce(
                     (total, unit) => total + unit.lessons.length,
                     0
                   ) ?? 0,
-                label: "video lessons",
+                label: copy.stats.lessons,
               },
               {
                 value: course.bonusResources?.length ?? 0,
-                label: "bonus resources",
+                label: copy.stats.bonus,
               },
-              { value: "∞", label: "lifetime access" },
+              { value: "∞", label: copy.stats.lifetime },
             ].map((stat) => (
               <div
                 key={stat.label}
                 className="rounded-xl border border-border bg-card px-4 py-4 text-center"
               >
-                <p className="font-display text-[32px] leading-none font-semibold text-primary">
+                <p className="font-brand text-[32px] leading-none font-semibold text-primary">
                   {typeof stat.value === "number" ? (
                     <CountUp to={stat.value} />
                   ) : (
@@ -282,7 +320,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           {course.outcomes && course.outcomes.length > 0 && (
             <section className="mt-12" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
-                What You&apos;ll Learn
+                {copy.whatYouLearn}
               </h2>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {course.outcomes.map((outcome, index) => (
@@ -307,7 +345,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           <div className="mt-12 grid grid-cols-3 gap-3">
             {journeyImages.map((image, index) => (
               <figure
-                key={image.label}
+                key={image.src}
                 data-reveal
                 style={
                   { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
@@ -316,7 +354,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 <span className="block overflow-hidden rounded-xl border border-border">
                   <img
                     src={image.src}
-                    alt={image.alt}
+                    alt={image.alt[locale]}
                     width={800}
                     height={800}
                     loading="lazy"
@@ -324,7 +362,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                   />
                 </span>
                 <figcaption className="mt-2 text-center text-[13px] font-medium text-muted-foreground">
-                  {image.label}
+                  {copy.journeyLabels[index]}
                 </figcaption>
               </figure>
             ))}
@@ -336,7 +374,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 className="font-heading text-2xl font-semibold text-foreground"
                 data-reveal
               >
-                What&apos;s Included
+                {copy.whatsIncluded}
               </h2>
               <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {course.included.map((item, index) => {
@@ -369,15 +407,17 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <section id="curriculum" className="mt-12 scroll-mt-24">
               <div data-reveal>
                 <h2 className="font-heading text-2xl font-semibold text-foreground">
-                  Course Curriculum
+                  {copy.curriculum}
                 </h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {course.curriculum.length} modules &middot;{" "}
-                  {course.curriculum.reduce(
-                    (total, unit) => total + unit.lessons.length,
-                    0
-                  )}{" "}
-                  lessons &middot; {course.duration}
+                  {copy.curriculumMeta(
+                    course.curriculum.length,
+                    course.curriculum.reduce(
+                      (total, unit) => total + unit.lessons.length,
+                      0
+                    ),
+                    course.duration ?? ""
+                  )}
                 </p>
               </div>
               <Accordion className="mt-5 rounded-2xl border border-border bg-card px-6">
@@ -399,7 +439,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                         </span>
                         {module.title}
                         <span className="ml-auto pl-4 text-sm font-normal whitespace-nowrap text-muted-foreground">
-                          {module.lessons.length} lessons
+                          {copy.lessonsCount(module.lessons.length)}
                         </span>
                       </span>
                     </AccordionTrigger>
@@ -428,7 +468,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                                       className="size-2.5 fill-current"
                                       aria-hidden
                                     />
-                                    Free preview
+                                    {dict.common.freePreviewBadge}
                                   </span>
                                 </a>
                               ) : (
@@ -457,16 +497,14 @@ export default async function CoursePage({ params }: CoursePageProps) {
               <Play className="size-4.5 fill-current" />
             </span>
             <h2 className="mt-4 font-heading text-2xl font-semibold text-foreground">
-              Still not sure?
+              {copy.stillNotSure}
             </h2>
             <p className="mx-auto mt-2 max-w-md text-[16px] text-muted-foreground">
-              Start with the first {FREE_PREVIEW_LESSON_COUNT} lessons for
-              free and experience the course before purchasing. No payment
-              details required.
+              {copy.stillNotSureBody(FREE_PREVIEW_LESSON_COUNT)}
             </p>
             <FreePreviewCta
               variant="solid"
-              label="Start Free Lessons"
+              label={copy.startFreeLessons}
               className="mt-6"
             />
           </section>
@@ -477,17 +515,17 @@ export default async function CoursePage({ params }: CoursePageProps) {
               data-reveal
             >
               <p className="inline-block rounded-full border-[0.5px] border-[rgba(168,216,120,0.3)] bg-[rgba(168,216,120,0.12)] px-4 py-1.5 text-[13px] font-medium tracking-[0.06em] text-[#a8d878] uppercase">
-                Included free
+                {copy.bonusEyebrow}
               </p>
               <h2 className="mt-4 font-heading text-2xl font-semibold text-white">
-                Bonus learning resources
+                {copy.bonusHeading}
               </h2>
               <p className="mt-2 text-sm text-white/65">
-                In addition to the video lessons, you get{" "}
+                {copy.bonusBody.before}
                 <span className="font-semibold text-[#a8d878]">
-                  {course.bonusResources.length} practical resources
-                </span>{" "}
-                covering every stage of your indoor grow.
+                  {copy.bonusBody.highlight(course.bonusResources.length)}
+                </span>
+                {copy.bonusBody.after}
               </p>
               <ul className="mt-6 flex flex-wrap gap-2">
                 {course.bonusResources.map((resource) => (
@@ -509,7 +547,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           {course.audience && course.audience.length > 0 && (
             <section className="mt-12" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
-                Who This Course Is For
+                {copy.whoFor}
               </h2>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {course.audience.map((item) => (
@@ -528,7 +566,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           {course.requirements && course.requirements.length > 0 && (
             <section className="mt-12" data-reveal>
               <h2 className="font-heading text-2xl font-semibold text-foreground">
-                Requirements
+                {copy.requirements}
               </h2>
               <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
                 {course.requirements.map((requirement) => (
@@ -550,9 +588,9 @@ export default async function CoursePage({ params }: CoursePageProps) {
           >
             {course.price && (
               <p className="text-4xl font-semibold text-foreground">
-                <span className="font-display">${course.price}</span>
+                <span className="font-brand">${course.price}</span>
                 <span className="ml-1.5 font-sans text-base font-normal text-muted-foreground">
-                  one-time
+                  {copy.oneTime}
                 </span>
               </p>
             )}
@@ -562,46 +600,36 @@ export default async function CoursePage({ params }: CoursePageProps) {
               nativeButton={false}
               render={<a href={enrollHref} />}
             >
-              Let&apos;s Grow
+              {dict.common.letsGrow}
             </Button>
             <FreePreviewCta
               variant="outline"
+              label={dict.common.freeLessonsCta}
               className="mt-3 w-full py-3 text-[15px]"
             />
             <p className="mt-2.5 text-center text-[13px] text-muted-foreground">
-              Watch the first {FREE_PREVIEW_LESSON_COUNT} lessons free — no
-              payment details required.
+              {copy.watchFree(FREE_PREVIEW_LESSON_COUNT)}
             </p>
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="size-4 text-primary" />
-                Lifetime access to this course
-              </li>
-              <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="size-4 text-primary" />
-                Self-paced, learn on any device
-              </li>
-              <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="size-4 text-primary" />
-                No prior experience required
-              </li>
-              <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="size-4 text-primary" />
-                One-time payment, no subscription
-              </li>
+              {copy.perks.map((perk) => (
+                <li key={perk} className="flex items-center gap-2.5">
+                  <CheckCircle2 className="size-4 text-primary" />
+                  {perk}
+                </li>
+              ))}
             </ul>
             <div className="mt-6 flex items-start gap-2.5 rounded-lg bg-secondary p-3.5">
               <ShieldCheck className="mt-0.5 size-4.5 shrink-0 text-primary" />
               <p className="text-[13px] leading-relaxed text-muted-foreground">
                 <span className="font-medium text-foreground">
-                  7-day money-back guarantee.
+                  {copy.guaranteeTitle}
                 </span>{" "}
-                Full refund within 7 days if the course isn&rsquo;t for you.{" "}
+                {copy.guaranteeBody}{" "}
                 <Link
-                  href="/refund-policy"
+                  href={localePath(locale, "/refund-policy")}
                   className="underline underline-offset-2 hover:text-foreground"
                 >
-                  Refund policy
+                  {copy.refundLink}
                 </Link>
               </p>
             </div>

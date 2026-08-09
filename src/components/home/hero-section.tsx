@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { FreePreviewCta } from "@/components/free-preview-cta";
+import { localePath, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { cn } from "@/lib/utils";
 
 const ACCENT = "#a8d878";
@@ -27,21 +29,12 @@ function HeadlineWord({
   );
 }
 
-const trustItems = ["Beginner Friendly", "Any Device", "6 Modules"];
-
 /** SVG-drawn potted seedlings: [height in px, tilt in deg, sway delay in ms]. */
 const sprouts: Array<[number, number, number]> = [
   [124, -4, 0],
   [152, -1.5, 900],
   [133, 2, 1700],
   [143, 5, 500],
-];
-
-const insideItems = [
-  { number: "01", title: "Seed starting & seedling care" },
-  { number: "02", title: "Light, temperature & humidity" },
-  { number: "03", title: "Watering, nutrients, pH & EC" },
-  { number: "04", title: "Flowering, fruiting & harvest" },
 ];
 
 function Sprout({
@@ -177,7 +170,16 @@ function Sprout({
   );
 }
 
-export function HeroSection() {
+export function HeroSection({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const copy = dict.hero;
+  const accent = new Set(copy.accentWords);
+
   return (
     <section id="top" className="relative">
       {/* left-side scrim so the copy never fights the photo */}
@@ -208,36 +210,34 @@ export function HeroSection() {
                 style={{ backgroundColor: ACCENT }}
               />
             </span>
-            Indoor Gardening Course
+            {copy.badge}
           </p>
 
           <h1 className="mb-10 font-display text-[clamp(34px,9vw,52px)] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]">
-            <HeadlineWord index={0}>Grow</HeadlineWord>{" "}
-            <HeadlineWord index={1}>indoors</HeadlineWord>{" "}
-            <HeadlineWord index={2}>with</HeadlineWord>
-            <br />
-            <HeadlineWord index={3} className={GRADIENT_WORD}>
-              confidence
-            </HeadlineWord>{" "}
-            <HeadlineWord index={4}>&mdash;</HeadlineWord>{" "}
-            <HeadlineWord index={5}>from</HeadlineWord>
-            <br />
-            <HeadlineWord index={6}>the</HeadlineWord>{" "}
-            <HeadlineWord index={7} className={GRADIENT_WORD}>
-              first seed
-            </HeadlineWord>{" "}
-            <HeadlineWord index={8}>on.</HeadlineWord>
+            {copy.headline.map((word, index) => (
+              <HeadlineWord
+                key={`${word}-${index}`}
+                index={index}
+                className={accent.has(index) ? GRADIENT_WORD : undefined}
+              >
+                {word}
+              </HeadlineWord>
+            )).reduce<React.ReactNode[]>((nodes, word, index) => {
+              if (index > 0) nodes.push(" ");
+              nodes.push(word);
+              return nodes;
+            }, [])}
           </h1>
 
           <p
             className="hero-enter flex flex-wrap items-baseline gap-x-3.5 gap-y-1"
             style={{ "--enter-delay": "160ms" } as React.CSSProperties}
           >
-            <s className="text-2xl font-medium text-white/50 sm:text-3xl">
-              $179
+            <s className="font-brand text-2xl font-medium text-white/50 sm:text-3xl">
+              {copy.oldPrice}
             </s>
-            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-display text-[64px] leading-none font-bold tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:text-[72px]">
-              $69
+            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-brand text-[64px] leading-none font-bold tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:text-[72px]">
+              {copy.price}
             </span>
             <span
               className="self-center rounded-full border-[0.5px] px-4 py-1.5 text-[14px] font-bold tracking-wide"
@@ -247,7 +247,7 @@ export function HeroSection() {
                 backgroundColor: "rgba(168,216,120,0.14)",
               }}
             >
-              &ndash;61%
+              {copy.discount}
             </span>
           </p>
 
@@ -255,8 +255,7 @@ export function HeroSection() {
             className="hero-enter mt-4 text-[16px] font-medium tracking-wide text-white/65"
             style={{ "--enter-delay": "220ms" } as React.CSSProperties}
           >
-            One-time payment &middot; Lifetime access &middot; 7-day
-            money-back
+            {copy.terms}
           </p>
 
           <p
@@ -265,12 +264,11 @@ export function HeroSection() {
               { color: ACCENT, "--enter-delay": "260ms" } as React.CSSProperties
             }
           >
-            &#10022; Includes exclusive discounts on indoor growing gear
-            &mdash; students save $200+ inside the course
+            {copy.perk}
           </p>
 
           <Link
-            href="/course/indoor-growing-for-beginners"
+            href={localePath(locale, "/course/indoor-growing-for-beginners")}
             className="hero-enter group relative isolate mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             style={{ "--enter-delay": "320ms" } as React.CSSProperties}
           >
@@ -279,7 +277,7 @@ export function HeroSection() {
               aria-hidden
               className="hero-cta-glow absolute -inset-1 -z-10 rounded-2xl bg-[#a8d878]/35 opacity-40 blur-lg"
             />
-            Let&apos;s Grow
+            {dict.common.letsGrow}
             <ArrowRight
               className="size-5.5 transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden
@@ -292,7 +290,7 @@ export function HeroSection() {
           >
             <FreePreviewCta
               variant="link-on-dark"
-              label="Not ready? Try 2 free lessons first"
+              label={copy.freePreviewLink}
             />
           </p>
 
@@ -300,7 +298,7 @@ export function HeroSection() {
             className="hero-enter flex flex-wrap items-center gap-2"
             style={{ "--enter-delay": "400ms" } as React.CSSProperties}
           >
-            {trustItems.map((item) => (
+            {copy.trustItems.map((item) => (
               <li
                 key={item}
                 className="inline-flex items-center gap-2 rounded-full border-[0.5px] border-white/15 bg-white/[0.07] px-4.5 py-2 text-[16px] font-medium text-white/90 backdrop-blur-sm"
@@ -344,10 +342,10 @@ export function HeroSection() {
                 ))}
               </div>
               <p className="mt-4.5 text-[16px] font-semibold text-white">
-                4 months of store-bought herbs
+                {copy.equationLeftTitle}
               </p>
               <p className="mt-1 text-[14px] text-white/45">
-                ~$69 &middot; gone every week
+                {copy.equationLeftNote}
               </p>
             </div>
 
@@ -364,40 +362,40 @@ export function HeroSection() {
                 className="pointer-events-none absolute -inset-x-2 -top-4 bottom-2 rounded-full bg-[radial-gradient(closest-side,rgba(168,216,120,0.15),transparent_72%)]"
               />
               <p
-                className="flex h-[120px] items-center font-display text-[52px] leading-none font-bold tracking-tight drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:h-[150px] sm:text-[72px]"
+                className="flex h-[120px] items-center font-brand text-[52px] leading-none font-bold tracking-tight drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:h-[150px] sm:text-[72px]"
                 style={{ color: ACCENT }}
               >
-                $69
+                {copy.price}
               </p>
               <p className="mt-4.5 text-[16px] font-semibold text-white">
-                this course
+                {copy.equationRightTitle}
               </p>
               <p className="mt-1 text-[14px] text-white/45">
-                grow your own &middot; season after season
+                {copy.equationRightNote}
               </p>
             </div>
           </div>
 
           <p className="mt-6 text-[15px] leading-[1.65] text-white/70">
-            For what you&rsquo;d spend on{" "}
+            {copy.equationSummary.before}
             <span className="font-semibold text-white">
-              a few months of supermarket herbs
-            </span>{" "}
-            you get a{" "}
+              {copy.equationSummary.highlightA}
+            </span>
+            {copy.equationSummary.middle}
             <span className="font-semibold text-white">
-              complete indoor growing education
-            </span>{" "}
-            &mdash; step by step, at your own pace.
+              {copy.equationSummary.highlightB}
+            </span>
+            {copy.equationSummary.after}
           </p>
 
           <div className="mt-6 border-t-[0.5px] border-white/15 pt-5">
             <p className="mb-4 text-[13px] font-semibold tracking-[0.16em] text-white/55 uppercase">
-              What&rsquo;s inside
+              {copy.insideLabel}
             </p>
             <div className="space-y-2">
-              {insideItems.map((item) => (
+              {copy.insideItems.map((title, index) => (
                 <h3
-                  key={item.number}
+                  key={title}
                   className="flex items-center gap-3 rounded-lg border-[0.5px] border-white/10 bg-white/[0.05] px-3.5 py-3 text-[16px] font-medium text-white/90"
                 >
                   <span
@@ -408,9 +406,9 @@ export function HeroSection() {
                       backgroundColor: "rgba(168,216,120,0.12)",
                     }}
                   >
-                    {item.number}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                  {item.title}
+                  {title}
                 </h3>
               ))}
             </div>

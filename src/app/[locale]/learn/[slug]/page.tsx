@@ -2,29 +2,42 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock } from "lucide-react";
-import { articles, getArticleBySlug } from "@/lib/articles";
+import { getArticleBySlug, getArticleSlugs } from "@/lib/articles";
 import { siteConfig } from "@/lib/site-config";
-
-interface ArticlePageProps {
-  params: Promise<{ slug: string }>;
-}
+import {
+  getDictionary,
+  isLocale,
+  localePath,
+  locales,
+  localeTags,
+} from "@/lib/i18n";
 
 export function generateStaticParams() {
-  return articles.map((article) => ({ slug: article.slug }));
+  return locales.flatMap((locale) =>
+    getArticleSlugs().map((slug) => ({ locale, slug }))
+  );
 }
 
 export async function generateMetadata({
   params,
-}: ArticlePageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const article = getArticleBySlug(slug);
+}: PageProps<"/[locale]/learn/[slug]">): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) return {};
 
+  const article = getArticleBySlug(locale, slug);
   if (!article) return {};
 
   return {
     title: article.title,
     description: article.excerpt,
-    alternates: { canonical: `/learn/${article.slug}` },
+    alternates: {
+      canonical: `/${locale}/learn/${article.slug}`,
+      languages: {
+        en: `/en/learn/${article.slug}`,
+        hy: `/hy/learn/${article.slug}`,
+        "x-default": `/en/learn/${article.slug}`,
+      },
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,
@@ -34,13 +47,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function ArticlePage({ params }: ArticlePageProps) {
-  const { slug } = await params;
-  const article = getArticleBySlug(slug);
+export default async function ArticlePage({ params }: PageProps<"/[locale]/learn/[slug]">) {
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) notFound();
 
+  const article = getArticleBySlug(locale, slug);
   if (!article) {
     notFound();
   }
+
+  const dict = getDictionary(locale);
+  const copy = dict.learn;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -48,8 +65,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     headline: article.title,
     description: article.excerpt,
     datePublished: article.publishedAt,
-    inLanguage: "en-US",
-    url: `${siteConfig.url}/learn/${article.slug}`,
+    inLanguage: localeTags[locale],
+    url: `${siteConfig.url}/${locale}/learn/${article.slug}`,
     author: {
       "@type": "Organization",
       name: siteConfig.name,
@@ -72,11 +89,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       />
 
       <Link
-        href="/learn"
+        href={localePath(locale, "/learn")}
         className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="size-4" />
-        All guides
+        {copy.allGuides}
       </Link>
 
       <article className="mt-8">
@@ -181,19 +198,16 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
       <aside className="mt-14 rounded-2xl bg-primary p-8 text-white">
         <h2 className="font-heading text-xl font-semibold tracking-tight text-balance">
-          Learn the whole process, in the right order
+          {copy.articleCtaHeading}
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-white/80">
-          This guide covers one stage of the journey. Indoor Growing for
-          Beginners walks you through all of them — 6 modules and 32 video
-          lessons from seed to harvest, with lifetime access and a 7-day
-          money-back guarantee.
+          {copy.articleCtaBody}
         </p>
         <Link
-          href="/course/indoor-growing-for-beginners"
+          href={localePath(locale, "/course/indoor-growing-for-beginners")}
           className="mt-5 inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
-          Explore the Course — $69
+          {copy.ctaButton}
         </Link>
       </aside>
     </div>

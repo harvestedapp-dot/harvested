@@ -7,10 +7,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/lib/site-config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function ContactSection() {
+export function ContactSection({
+  copy,
+}: {
+  copy: Dictionary["contact"];
+}) {
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -41,16 +46,12 @@ export function ContactSection() {
       <div className="mx-auto max-w-4xl px-6">
         <div className="text-center" data-reveal>
           <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-white/70 uppercase">
-            Contact
+            {copy.eyebrow}
           </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-white sm:text-[44px]">
-            Get in Touch
+            {copy.heading}
           </h2>
-          <p className="mt-4 text-lg text-white/65">
-            Questions about the indoor gardening course, enrollment, or the
-            platform? Send us a message and we&rsquo;ll get back to you within
-            one business day.
-          </p>
+          <p className="mt-4 text-lg text-white/65">{copy.body}</p>
         </div>
 
         <div
@@ -62,11 +63,10 @@ export function ContactSection() {
             <div className="flex flex-col items-center gap-3 py-10 text-center">
               <CheckCircle2 className="size-10 text-primary" />
               <p className="font-heading text-lg font-semibold text-foreground">
-                Message sent
+                {copy.sentTitle}
               </p>
               <p className="max-w-sm text-sm text-muted-foreground">
-                Thanks for reaching out. We&rsquo;ll reply to your email as
-                soon as possible.
+                {copy.sentBody}
               </p>
             </div>
           ) : (
@@ -74,7 +74,7 @@ export function ContactSection() {
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="grid gap-2.5">
                   <Label htmlFor="name" className="text-[16px]">
-                    Name
+                    {copy.name}
                   </Label>
                   <Input
                     id="name"
@@ -86,7 +86,7 @@ export function ContactSection() {
                 </div>
                 <div className="grid gap-2.5">
                   <Label htmlFor="email" className="text-[16px]">
-                    Email
+                    {copy.email}
                   </Label>
                   <Input
                     id="email"
@@ -100,7 +100,7 @@ export function ContactSection() {
               </div>
               <div className="grid gap-2.5">
                 <Label htmlFor="message" className="text-[16px]">
-                  Message
+                  {copy.message}
                 </Label>
                 <Textarea
                   id="message"
@@ -113,10 +113,7 @@ export function ContactSection() {
               </div>
 
               {status === "error" && (
-                <p className="text-sm text-destructive">
-                  Something went wrong. Please try again or email us
-                  directly.
-                </p>
+                <p className="text-sm text-destructive">{copy.error}</p>
               )}
 
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -129,10 +126,10 @@ export function ContactSection() {
                   {status === "submitting" ? (
                     <>
                       <Loader2 className="size-4 animate-spin" />
-                      Sending...
+                      {copy.sending}
                     </>
                   ) : (
-                    "Send Message"
+                    copy.send
                   )}
                 </Button>
                 <a

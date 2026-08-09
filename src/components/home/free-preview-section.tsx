@@ -3,20 +3,20 @@ import { CheckCircle2, Lock, Play } from "lucide-react";
 import { FreePreviewCta } from "@/components/free-preview-cta";
 import { getAvailableCourses } from "@/lib/courses";
 import { FREE_PREVIEW_LESSON_COUNT } from "@/lib/site-config";
+import { localePath, type Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
-const benefits = [
-  "Full-length lessons from the real course — not a trailer",
-  "No payment details required, just a free account",
-  "Your progress carries over if you decide to enroll",
-];
-
-export function FreePreviewSection() {
-  const course = getAvailableCourses()[0];
+export function FreePreviewSection({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const copy = dict.freePreview;
+  const course = getAvailableCourses(locale)[0];
   const firstModuleLessons = course?.curriculum?.[0]?.lessons ?? [];
-  const previewLessons = firstModuleLessons.slice(
-    0,
-    FREE_PREVIEW_LESSON_COUNT
-  );
+  const previewLessons = firstModuleLessons.slice(0, FREE_PREVIEW_LESSON_COUNT);
   const lockedLesson = firstModuleLessons[FREE_PREVIEW_LESSON_COUNT];
   const totalLessons =
     course?.curriculum?.reduce(
@@ -27,27 +27,24 @@ export function FreePreviewSection() {
   return (
     <section
       id="free-preview"
-      aria-label="Try the course for free"
+      aria-label={copy.ariaLabel}
       className="border-t border-border bg-white py-20 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-12 md:grid-cols-[1.1fr_1fr] md:gap-16">
           <div data-reveal>
             <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
-              Try Before You Buy
+              {copy.eyebrow}
             </p>
             <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-balance text-foreground sm:text-[44px]">
-              Watch the first two lessons free
+              {copy.heading}
             </h2>
             <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-              Not sure if an indoor growing course is right for you? Start
-              Indoor Growing for Beginners for free — no card, no commitment.
-              See the teaching style, the pace, and the production quality
-              before you spend a dollar.
+              {copy.body}
             </p>
 
             <ul className="mt-7 space-y-3">
-              {benefits.map((benefit) => (
+              {copy.benefits.map((benefit) => (
                 <li
                   key={benefit}
                   className="flex items-start gap-2.5 text-[16px] text-foreground"
@@ -62,16 +59,19 @@ export function FreePreviewSection() {
             </ul>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <FreePreviewCta variant="solid" />
+              <FreePreviewCta
+                variant="solid"
+                label={dict.common.freeLessonsCta}
+              />
               <Link
-                href="/#courses"
+                href={localePath(locale, "/#courses")}
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-card px-8 py-4 text-[17px] font-medium text-foreground transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
-                Browse All Courses
+                {copy.browseCourses}
               </Link>
             </div>
             <p className="mt-4 text-[14px] text-muted-foreground">
-              Free account &middot; No credit card &middot; Cancel anytime
+              {copy.fineprint}
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export function FreePreviewSection() {
           >
             <div className="rounded-2xl border border-border bg-card p-6 sm:p-7">
               <p className="text-[13px] font-medium tracking-[0.06em] text-muted-foreground uppercase">
-                Module 1 &middot; {course?.title}
+                {copy.moduleLabel} &middot; {course?.title}
               </p>
               <ul className="mt-5 space-y-2.5">
                 {previewLessons.map((lesson, index) => (
@@ -100,7 +100,7 @@ export function FreePreviewSection() {
                         {index + 1}. {lesson}
                       </span>
                       <span className="mt-0.5 block text-[13px] font-medium text-[#3B6D11]">
-                        Free preview
+                        {dict.common.freePreviewBadge}
                       </span>
                     </span>
                   </li>
@@ -118,14 +118,14 @@ export function FreePreviewSection() {
                         {FREE_PREVIEW_LESSON_COUNT + 1}. {lockedLesson}
                       </span>
                       <span className="mt-0.5 block text-[13px] text-muted-foreground">
-                        Unlocks with enrollment
+                        {copy.unlocksLabel}
                       </span>
                     </span>
                   </li>
                 )}
               </ul>
               <p className="mt-5 border-t border-border pt-4 text-[13px] text-muted-foreground">
-                {`${totalLessons} lessons total · enroll once to unlock everything, forever`}
+                {copy.totalLessons(totalLessons)}
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { FREE_PREVIEW_URL, FREE_PREVIEW_LESSON_COUNT } from "@/lib/site-config";
+import { FREE_PREVIEW_URL } from "@/lib/site-config";
 
 type FreePreviewCtaVariant = "solid" | "outline" | "link" | "link-on-dark";
 
@@ -14,11 +14,11 @@ interface FreePreviewCtaProps {
    * link-on-dark — inline text link for dark surfaces (e.g. hero).
    */
   variant?: FreePreviewCtaVariant;
-  label?: string;
+  /** Localized label — pass dict.common.freeLessonsCta unless a section
+   *  needs its own wording. */
+  label: string;
   className?: string;
 }
-
-const DEFAULT_LABEL = `Try ${FREE_PREVIEW_LESSON_COUNT} Free Lessons`;
 
 /**
  * Single CTA for the Thinkific Free Preview. Every free-preview button and
@@ -27,7 +27,7 @@ const DEFAULT_LABEL = `Try ${FREE_PREVIEW_LESSON_COUNT} Free Lessons`;
  */
 export function FreePreviewCta({
   variant = "outline",
-  label = DEFAULT_LABEL,
+  label,
   className,
 }: FreePreviewCtaProps) {
   // Once the placeholder becomes a real Thinkific URL, open the LMS in a
