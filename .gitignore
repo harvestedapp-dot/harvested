@@ -43,5 +43,13 @@ next-env.d.ts
 # claude local settings
 .claude/settings.local.json
 
+# offline article drafts for editing (source of truth is src/lib/articles.ts)
+/articles-export/
+
 .vercel
 .env*
+
+# agent tooling
+/.agents/
+/.claude/skills/
+/skills-lock.json
