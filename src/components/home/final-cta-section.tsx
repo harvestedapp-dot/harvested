@@ -7,7 +7,7 @@ export function FinalCtaSection() {
       className="border-t border-border bg-white py-20 sm:py-24"
     >
       <div className="mx-auto max-w-3xl px-6 text-center">
-        <h2 className="font-heading text-[44px] leading-[1.12] font-semibold tracking-tight text-balance text-foreground sm:text-[56px]">
+        <h2 className="font-display text-[44px] leading-[1.12] font-semibold tracking-tight text-balance text-foreground sm:text-[56px]">
           Your first harvest starts with the right foundation
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-xl text-muted-foreground">

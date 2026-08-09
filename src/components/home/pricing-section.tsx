@@ -25,7 +25,7 @@ export function PricingSection() {
               <p className="text-[14px] font-semibold tracking-wide text-white/70 uppercase">
                 Simple, honest pricing
               </p>
-              <h2 className="mt-3 font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-balance sm:text-[44px]">
+              <h2 className="mt-3 font-display text-[36px] leading-[1.15] font-semibold tracking-tight text-balance sm:text-[44px]">
                 Everything you need to grow, for less than a shelf of gear you
                 didn&rsquo;t need
               </h2>
@@ -56,11 +56,11 @@ export function PricingSection() {
               <p className="text-[16px] font-medium text-muted-foreground">
                 Indoor Growing for Beginners
               </p>
-              <p className="mt-2 flex flex-wrap items-baseline gap-x-2.5 font-heading">
-                <s className="text-[22px] font-normal text-muted-foreground/70">
+              <p className="mt-2 flex flex-wrap items-baseline gap-x-2.5">
+                <s className="font-display text-[22px] font-normal text-muted-foreground/70">
                   $179
                 </s>
-                <span className="text-[48px] leading-none font-semibold">
+                <span className="font-display text-[48px] leading-none font-semibold">
                   $69
                 </span>
                 <span className="text-[17px] font-normal text-muted-foreground">

@@ -13,9 +13,16 @@ const inter = Inter({
   display: "swap",
 });
 
+/**
+ * Burlesk is a heavy condensed display face: legible as a short, large
+ * statement, unreadable as running UI type. It is therefore exposed as
+ * `font-display` and used only on poster-scale headlines and figures —
+ * everything else (card titles, article headings, footer, legal pages)
+ * runs on Inter through `font-heading`.
+ */
 const burlesk = localFont({
   src: "./fonts/Burlesk-Regular.ttf",
-  variable: "--font-heading",
+  variable: "--font-display",
   weight: "100 900",
   display: "swap",
 });

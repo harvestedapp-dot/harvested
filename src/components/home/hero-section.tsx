@@ -211,7 +211,7 @@ export function HeroSection() {
             Indoor Gardening Course
           </p>
 
-          <h1 className="mb-10 font-heading text-[clamp(34px,9vw,52px)] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]">
+          <h1 className="mb-10 font-display text-[clamp(34px,9vw,52px)] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]">
             <HeadlineWord index={0}>Grow</HeadlineWord>{" "}
             <HeadlineWord index={1}>indoors</HeadlineWord>{" "}
             <HeadlineWord index={2}>with</HeadlineWord>
@@ -236,7 +236,7 @@ export function HeroSection() {
             <s className="text-2xl font-medium text-white/50 sm:text-3xl">
               $179
             </s>
-            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-heading text-[64px] leading-none font-bold tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:text-[72px]">
+            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-display text-[64px] leading-none font-bold tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:text-[72px]">
               $69
             </span>
             <span
@@ -364,7 +364,7 @@ export function HeroSection() {
                 className="pointer-events-none absolute -inset-x-2 -top-4 bottom-2 rounded-full bg-[radial-gradient(closest-side,rgba(168,216,120,0.15),transparent_72%)]"
               />
               <p
-                className="flex h-[120px] items-center font-heading text-[52px] leading-none font-bold tracking-tight drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:h-[150px] sm:text-[72px]"
+                className="flex h-[120px] items-center font-display text-[52px] leading-none font-bold tracking-tight drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:h-[150px] sm:text-[72px]"
                 style={{ color: ACCENT }}
               >
                 $69

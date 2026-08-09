@@ -22,7 +22,7 @@ export function TestimonialsSection() {
             <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
               Student Reviews
             </p>
-            <h2 className="mx-auto max-w-2xl font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-balance text-foreground sm:text-[44px]">
+            <h2 className="mx-auto max-w-2xl font-display text-[36px] leading-[1.15] font-semibold tracking-tight text-balance text-foreground sm:text-[44px]">
               Our first students are growing right now
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
@@ -109,7 +109,7 @@ export function TestimonialsSection() {
           <p className="mb-5 inline-block rounded-[20px] bg-[#EAF3DE] px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] text-[#3B6D11] uppercase">
             Student Reviews
           </p>
-          <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
+          <h2 className="font-display text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
             What students say about growing with us
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">

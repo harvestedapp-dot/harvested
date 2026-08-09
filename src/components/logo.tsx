@@ -8,7 +8,7 @@ export function Logo({ className }: { className?: string }) {
     <Link
       href="/"
       className={cn(
-        "flex items-center gap-2 font-heading text-lg font-semibold tracking-tight text-foreground",
+        "flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-foreground",
         className
       )}
     >

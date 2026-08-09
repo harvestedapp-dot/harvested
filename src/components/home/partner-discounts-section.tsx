@@ -33,7 +33,7 @@ export function PartnerDiscountsSection() {
             <p className="mb-5 inline-block rounded-full border-[0.5px] border-white/20 bg-white/10 px-5 py-2.5 text-[17px] font-medium tracking-[0.06em] uppercase text-white/70">
               Exclusive Partner Discounts
             </p>
-            <h2 className="mb-4 font-heading text-[36px] leading-[1.15] font-semibold text-white sm:text-[44px]">
+            <h2 className="mb-4 font-display text-[36px] leading-[1.15] font-semibold text-white sm:text-[44px]">
               The course pays for itself.
             </h2>
             <p className="mb-8 text-[18px] leading-[1.7] text-white/65">
@@ -46,7 +46,7 @@ export function PartnerDiscountsSection() {
                 to={200}
                 prefix="$"
                 suffix="+"
-                className="block font-heading text-[88px] leading-none font-semibold text-[#a8d878] sm:text-[112px]"
+                className="block font-display text-[88px] leading-none font-semibold text-[#a8d878] sm:text-[112px]"
               />
               <span className="mt-4 block max-w-[280px] text-[16px] leading-[1.5] text-white/50">
                 average savings on indoor growing gear for Harvested students

@@ -265,7 +265,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 key={stat.label}
                 className="rounded-xl border border-border bg-card px-4 py-4 text-center"
               >
-                <p className="font-heading text-[32px] leading-none font-semibold text-primary">
+                <p className="font-display text-[32px] leading-none font-semibold text-primary">
                   {typeof stat.value === "number" ? (
                     <CountUp to={stat.value} />
                   ) : (
@@ -549,9 +549,9 @@ export default async function CoursePage({ params }: CoursePageProps) {
             style={{ "--enter-delay": "200ms" } as React.CSSProperties}
           >
             {course.price && (
-              <p className="font-heading text-4xl font-semibold text-foreground">
-                ${course.price}
-                <span className="ml-1.5 text-base font-normal text-muted-foreground">
+              <p className="text-4xl font-semibold text-foreground">
+                <span className="font-display">${course.price}</span>
+                <span className="ml-1.5 font-sans text-base font-normal text-muted-foreground">
                   one-time
                 </span>
               </p>
