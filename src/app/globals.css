@@ -164,23 +164,35 @@
     }
   }
 
-  /* Hero "3–4 joints ≈ $69" visual: ember flicker + rising smoke wisps */
+  /* Hero "herbs ≈ $69" visual: seedlings swaying under a soft grow light */
   @media (prefers-reduced-motion: no-preference) {
-    .hero-joint-ember {
-      animation: hero-ember-flicker 2.6s ease-in-out infinite;
+    .hero-sprout-glow {
+      animation: hero-grow-light 4.2s ease-in-out infinite;
     }
-    .hero-joint-smoke {
-      animation: hero-smoke-rise 3.4s ease-in-out infinite;
+    .hero-sprout-sway {
+      animation: hero-sprout-sway 5.6s ease-in-out infinite;
     }
   }
 
-  @keyframes hero-ember-flicker {
+  @keyframes hero-grow-light {
     0%,
     100% {
-      box-shadow: 0 0 10px 1px rgba(236, 148, 88, 0.75);
+      opacity: 0.55;
+      transform: scale(0.96);
     }
     50% {
-      box-shadow: 0 0 18px 4px rgba(255, 168, 106, 0.95);
+      opacity: 0.9;
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes hero-sprout-sway {
+    0%,
+    100% {
+      transform: rotate(-1.6deg);
+    }
+    50% {
+      transform: rotate(1.6deg);
     }
   }
 
@@ -222,24 +234,6 @@
     50% {
       opacity: 0.8;
       transform: scale(1.02);
-    }
-  }
-
-  @keyframes hero-smoke-rise {
-    0% {
-      transform: translate3d(0, 4px, 0) scaleY(0.65);
-      opacity: 0;
-    }
-    30% {
-      opacity: 0.55;
-    }
-    65% {
-      transform: translate3d(-2.5px, -9px, 0) scaleY(1.05);
-      opacity: 0.4;
-    }
-    100% {
-      transform: translate3d(2px, -22px, 0) scaleY(1.3);
-      opacity: 0;
     }
   }
 

@@ -184,13 +184,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           Learn the whole process, in the right order
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-white/80">
-          This guide covers one stage of the journey. Basic Cannabis
-          Cultivation walks you through all of them — 6 modules and 32 video
-          lessons from seed to cured harvest, with lifetime access and a
-          7-day money-back guarantee.
+          This guide covers one stage of the journey. Indoor Growing for
+          Beginners walks you through all of them — 6 modules and 32 video
+          lessons from seed to harvest, with lifetime access and a 7-day
+          money-back guarantee.
         </p>
         <Link
-          href="/course/basic-cannabis-cultivation"
+          href="/course/indoor-growing-for-beginners"
           className="mt-5 inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Explore the Course — $69

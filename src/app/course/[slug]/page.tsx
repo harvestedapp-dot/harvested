@@ -53,22 +53,22 @@ const includedIcons = [
   RefreshCw,
 ];
 
-/** Photo strip: the grow journey at a glance. */
+/** Photo strip: the indoor grow journey at a glance. */
 const journeyImages = [
   {
-    src: "https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: "Cannabis seedling sprouting from soil — the first stage covered in the growing course",
+    src: "https://images.unsplash.com/photo-1779622520933-79b2926a97dd?auto=format&fit=crop&w=800&h=800&q=80",
+    alt: "Tiny seedlings sprouting from soil in a labelled seed tray — the first stage covered in the indoor growing course",
     label: "Seed & sprout",
   },
   {
-    src: "https://images.unsplash.com/photo-1626083541467-192e31f06e77?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: "Healthy cannabis plant in the vegetative growth stage under indoor grow lights",
-    label: "Veg & flower",
+    src: "https://images.unsplash.com/photo-1783759935182-6317f3988b0f?auto=format&fit=crop&w=800&h=800&q=80",
+    alt: "Young plants growing indoors under a pink LED grow light",
+    label: "Grow & feed",
   },
   {
-    src: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: "Harvested and cured cannabis buds stored in a glass jar after drying",
-    label: "Harvest & cure",
+    src: "https://images.unsplash.com/photo-1635774855717-0aec182f92cc?auto=format&fit=crop&w=800&h=800&q=80",
+    alt: "Basket of freshly harvested homegrown vegetables and salad leaves",
+    label: "Flower & harvest",
   },
 ];
 
@@ -85,18 +85,18 @@ export async function generateMetadata({
   if (!course || course.status !== "available") return {};
 
   return {
-    title: `${course.title} | Beginner Cannabis Growing Course Online`,
+    title: `${course.title} | Online Indoor Gardening Course`,
     description: course.heroDescription ?? course.shortDescription,
     keywords: [
-      "cannabis cultivation course",
-      "cannabis growing for beginners",
-      "learn to grow cannabis",
-      "online cannabis education",
+      "indoor gardening course",
+      "indoor growing for beginners",
+      "how to grow plants indoors",
+      "indoor horticulture education",
       "seed to harvest",
     ],
     alternates: { canonical: `/course/${course.slug}` },
     openGraph: {
-      title: `${course.title} | Beginner Cannabis Growing Course Online`,
+      title: `${course.title} | Online Indoor Gardening Course`,
       description: course.heroDescription ?? course.shortDescription,
       type: "website",
     },
@@ -233,8 +233,8 @@ export default async function CoursePage({ params }: CoursePageProps) {
           </div>
 
           <img
-            src="https://images.unsplash.com/photo-1598565296723-98537e27d824?auto=format&fit=crop&w=1200&h=675&q=80"
-            alt="Healthy young cannabis seedling growing in a clay pot at home — beginner indoor cannabis growing course from seed to harvest"
+            src="https://images.unsplash.com/photo-1638777922445-b17e22c87e70?auto=format&fit=crop&w=1200&h=675&q=80"
+            alt="Three young herb plants in pots on a tray, lit by sunlight indoors — beginner indoor gardening course from seed to harvest"
             width={1200}
             height={675}
             className="hero-enter mt-8 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
@@ -487,7 +487,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 <span className="font-semibold text-[#a8d878]">
                   {course.bonusResources.length} practical resources
                 </span>{" "}
-                covering every stage of the grow.
+                covering every stage of your indoor grow.
               </p>
               <ul className="mt-6 flex flex-wrap gap-2">
                 {course.bonusResources.map((resource) => (

@@ -7,29 +7,29 @@ import type { Article } from "@/lib/types";
  */
 export const articles: Article[] = [
   {
-    slug: "how-to-germinate-cannabis-seeds",
-    title: "How to Germinate Cannabis Seeds: A Step-by-Step Beginner's Guide",
+    slug: "how-to-start-seeds-indoors",
+    title: "How to Start Seeds Indoors: A Step-by-Step Beginner's Guide",
     excerpt:
-      "Germination is the first make-or-break moment of any grow. Learn the paper towel method, direct planting, and how to avoid the mistakes that kill seeds before they sprout.",
-    category: "Germination",
+      "Germination is the first make-or-break moment of any indoor grow. Learn the paper towel method, direct sowing, and how to avoid the mistakes that kill seeds before they sprout.",
+    category: "Seed Starting",
     publishedAt: "2026-07-03",
     readingTime: "6 min read",
     heroImage: {
-      src: "https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=1200&h=675&q=80",
-      alt: "Hands planting a freshly germinated cannabis seedling into moist soil",
+      src: "https://images.unsplash.com/photo-1779622520933-79b2926a97dd?auto=format&fit=crop&w=1200&h=675&q=80",
+      alt: "Tiny seedlings sprouting from soil in a labelled seed tray indoors",
       caption:
-        "A germinated seed goes into the soil taproot-down — the first hands-on step of every grow.",
+        "Seeds sown into a labelled tray — the first hands-on step of every indoor grow.",
     },
     intro: [
-      "Every successful harvest starts with a single germinated seed — and germination is where many first grows quietly fail. Seeds that never crack, taproots that snap during transplanting, seedlings that damp off in soggy soil: almost all of these losses are preventable with a little technique.",
-      "This guide covers what a cannabis seed needs to germinate, the two most reliable methods for beginners, and the early mistakes that cost new growers the most.",
+      "Every homegrown tomato, basil plant and lettuce head starts with a single germinated seed — and germination is where many first indoor grows quietly fail. Seeds that never crack, roots that snap during transplanting, seedlings that damp off in soggy soil: almost all of these losses are preventable with a little technique.",
+      "This guide covers what a seed needs to germinate indoors, the two most reliable methods for beginners, and the early mistakes that cost new growers the most.",
     ],
     sections: [
       {
-        heading: "What a cannabis seed needs to germinate",
+        heading: "What a seed needs to germinate",
         paragraphs: [
-          "A viable cannabis seed needs only three things to wake up: moisture, warmth, and darkness. Water penetrates the shell and signals the embryo to start growing; temperatures between roughly 70–85°F (21–29°C) keep that process moving; and until the taproot emerges, light plays no useful role.",
-          "Notice what's not on the list: nutrients. Seeds carry their own energy reserves for the first stage of life. Adding fertilizer during germination does nothing helpful and can burn the emerging taproot.",
+          "A viable seed needs only three things to wake up: moisture, warmth, and — for most common indoor crops — darkness. Water penetrates the seed coat and signals the embryo to start growing; temperatures between roughly 68–80°F (20–27°C) keep that process moving; and until the first root emerges, light plays no useful role.",
+          "Notice what's not on the list: nutrients. Seeds carry their own energy reserves for the first stage of life. Adding fertilizer during germination does nothing helpful and can burn the emerging root. (A handful of seeds — lettuce and some herbs among them — germinate better with light, so it's always worth reading the packet.)",
         ],
       },
       {
@@ -42,21 +42,21 @@ export const articles: Article[] = [
           "Place your seeds on one towel, spaced an inch apart, and cover with the second.",
           "Slide the towels between two plates (or into an open zip bag) to hold humidity.",
           "Keep them somewhere warm and dark — the top of a refrigerator works well.",
-          "Check daily and re-moisten if the towels start to dry. Most seeds crack within 24–72 hours; some take up to a week.",
-          "Once the taproot reaches about half an inch, plant the seed root-down, about half an inch deep, in lightly moist medium.",
+          "Check daily and re-moisten if the towels start to dry. Most seeds crack within 2–7 days depending on the crop.",
+          "Once the root reaches about half an inch, plant the seed root-down, roughly twice as deep as the seed is wide, in lightly moist medium.",
         ],
       },
       {
-        heading: "Method 2: Planting directly in the medium",
+        heading: "Method 2: Sowing directly in the medium",
         paragraphs: [
-          "Planting seeds straight into their starting medium skips the riskiest step of the paper towel method: handling a fragile taproot. Bury the seed about half an inch deep in pre-moistened, light soil or a starter plug, cover loosely, and keep the surface damp — never waterlogged — until the seedling emerges.",
+          "Sowing seeds straight into their starting medium skips the riskiest step of the paper towel method: handling a fragile root. Bury the seed in pre-moistened, light seed-starting mix or a starter plug, cover loosely, and keep the surface damp — never waterlogged — until the seedling emerges.",
           "The trade-off is visibility. You won't know whether a seed failed or is simply slow until several days have passed. For beginners with a limited number of seeds, this method is the gentler option; the paper towel method is better when you want certainty fast.",
         ],
         image: {
-          src: "https://images.unsplash.com/photo-1598565296723-98537e27d824?auto=format&fit=crop&w=1200&h=675&q=80",
-          alt: "Healthy young cannabis seedling with its first serrated leaves growing in a clay pot",
+          src: "https://images.unsplash.com/photo-1776604965126-86eed56418b9?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Young tomato seedlings with their first true leaves growing in pots on a windowsill",
           caption:
-            "A seedling that germinated directly in its pot — no fragile taproot handling required.",
+            "Seedlings that germinated directly in their pots — no fragile root handling required.",
         },
       },
       {
@@ -66,20 +66,21 @@ export const articles: Article[] = [
         ],
         list: [
           "Overwatering — a soaked medium suffocates the seed. Damp, not wet, always.",
-          "Touching the taproot — it's the most fragile tissue in the plant's entire life. Handle seeds by the shell, ideally with clean tweezers.",
-          "Planting too deep — deeper than an inch and many seedlings exhaust their reserves before reaching light.",
-          "Cold temperatures — a chilly windowsill in early spring can stall germination entirely.",
-          "Impatience — some perfectly healthy seeds take 7–10 days. Don't dig them up to check.",
+          "Touching the root — it's the most fragile tissue in the plant's entire life. Handle seeds by the shell, ideally with clean tweezers.",
+          "Planting too deep — a good rule is twice the seed's width; deeper than that and small seeds exhaust their reserves before reaching light.",
+          "Cold temperatures — a chilly windowsill in early spring can stall germination entirely. A warm shelf beats a cold sill.",
+          "Impatience — peppers can take two weeks. Don't dig seeds up to check on them.",
         ],
       },
       {
         heading: "What comes after germination",
         paragraphs: [
-          "Once your seedling breaks the surface and opens its first round cotyledon leaves, it enters the seedling stage — a period with its own rules for light, watering, and humidity. Getting those fundamentals right is exactly what a structured course is for: germination is lesson one of many, and each stage builds on the last.",
+          "Once your seedling breaks the surface and opens its first pair of seed leaves, it enters the seedling stage — a period with its own rules for light, watering, and humidity. Light matters immediately here: without enough of it, seedlings stretch into pale, floppy stems within days.",
+          "Getting those fundamentals right in order is exactly what a structured course is for: germination is lesson one of many, and each stage builds on the last.",
         ],
         image: {
-          src: "https://images.unsplash.com/photo-1598564461136-b8fa70685944?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
-          alt: "Top-down view of a young cannabis seedling with a symmetrical rosette of leaves in a pot of soil",
+          src: "https://images.unsplash.com/photo-1781231079074-7a5538b512b6?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
+          alt: "Close-up of young seedlings growing in a seed tray under indoor lighting",
           caption:
             "A few weeks after germination: the seedling stage, where light and watering rules take over.",
         },
@@ -87,233 +88,236 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "cannabis-light-cycles-explained",
-    title: "Cannabis Light Cycles Explained: 18/6, 12/12, and When to Switch",
+    slug: "grow-lights-for-indoor-plants",
+    title: "Grow Lights Explained: Intensity, Distance and Hours",
     excerpt:
-      "Light is the single most important input in cannabis cultivation. Understand photoperiods, why 12/12 triggers flowering, and the light mistakes that ruin otherwise healthy grows.",
-    category: "Vegetative Growth",
+      "Light is the single most important input in indoor growing. Understand how much light your plants need, how far to hang the lamp, how long to run it, and the light mistakes that ruin healthy plants.",
+    category: "Light & Environment",
     publishedAt: "2026-07-03",
     readingTime: "7 min read",
     heroImage: {
-      src: "https://images.unsplash.com/photo-1636775861341-9acbbdcdf976?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
-      alt: "Green cannabis plant in the vegetative stage growing under an LED panel light indoors",
+      src: "https://images.unsplash.com/photo-1783759935182-6317f3988b0f?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
+      alt: "Young plants growing indoors under a bright pink LED grow light",
       caption:
         "Indoors, your lamp and timer play the role of the sun — and the seasons.",
     },
     intro: [
-      "Cannabis is a photoperiod plant: it decides when to grow and when to flower based on how many hours of uninterrupted darkness it receives. That single fact explains most of what indoor growers do with their lights — and most of what goes wrong when a grow stalls or flowers too early.",
-      "This guide explains the standard light cycles, what actually happens inside the plant when you change them, and how to avoid the light-related mistakes that cost beginners entire harvests.",
+      "Indoors, you are the weather. Nothing you control matters more than light: it powers photosynthesis, sets the pace of growth, and decides whether a seedling turns stocky and green or pale and stretched.",
+      "This guide explains the three numbers that actually matter — intensity, distance and duration — plus the light problems beginners run into and how to read them off the plant itself.",
     ],
     sections: [
       {
-        heading: "Why darkness, not light, controls flowering",
+        heading: "A windowsill is rarely as bright as it looks",
         paragraphs: [
-          "It feels intuitive that more light equals more growth, but the flowering switch works the other way around. Cannabis measures the length of its nights. When darkness stretches past roughly 12 continuous hours, hormonal changes tell the plant that autumn is coming — time to reproduce, which for growers means time to produce buds.",
-          "This is why indoor growers speak in ratios: 18/6 means eighteen hours of light and six of darkness, while 12/12 means an even split. It's also why a single light leak during the dark period can confuse a flowering plant badly enough to stress it back toward vegetative growth.",
+          "Human eyes adapt so well that a room that feels bright to you can be nearly dark to a plant. Outdoor midday sun is enormously more intense than the light a few feet inside a window, and light falls off sharply with distance from the glass.",
+          "That's why herbs on a windowsill often survive but never thrive, and why a modest LED grow light usually outperforms the sunniest sill in a home. Leafy greens and herbs are the most forgiving; fruiting plants like tomatoes, peppers and strawberries need considerably more light to actually set fruit.",
         ],
       },
       {
-        heading: "18/6 — the vegetative standard",
+        heading: "Intensity: how much light your plants get",
         paragraphs: [
-          "During vegetative growth, most indoor growers run 18 hours of light and 6 of darkness. Long days keep the plant firmly in growth mode, building the roots, stems, and fan leaves that will later support heavy flowers.",
-          "Some growers run 20/4 or even 24/0 to push faster growth, but 18/6 remains the beginner-friendly default: plants get a genuine rest period, electricity costs stay manageable, and heat is easier to control.",
+          "Intensity is how much usable light lands on the leaves. Watts on the box tell you what the lamp consumes, not what your plant receives — two lamps with the same wattage can deliver very different results.",
+          "As a practical rule of thumb for beginners: leafy greens and herbs are happy with modest light, while fruiting crops want as much as you can reasonably give them. Rather than chasing numbers, watch the plant — it reports the result of your setup better than any spec sheet.",
         ],
         image: {
-          src: "https://images.unsplash.com/photo-1626083541467-192e31f06e77?auto=format&fit=crop&w=1200&h=675&q=80",
-          alt: "Cannabis plants in the vegetative stage under bright strip lights inside a reflective grow room",
+          src: "https://images.unsplash.com/photo-1784601758625-9dcefc5a2b71?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Rows of lettuce and leafy greens growing indoors on vertical racks under artificial light",
           caption:
-            "Vegetative plants under long light hours — 18/6 keeps them building roots, stems, and leaves.",
+            "Compact, deep-green growth is the sign that intensity and distance are about right.",
         },
       },
       {
-        heading: "12/12 — the flowering trigger",
+        heading: "Distance: the setting people get wrong most often",
         paragraphs: [
-          "Switching your timer to 12 hours on, 12 hours off is how indoor growers start flowering on demand. Within one to three weeks, plants show their sex and begin developing buds. From that point, the dark period is sacred: even brief interruptions from an unsealed tent zipper, an equipment LED, or an impatient peek with a flashlight can cause stress, delayed flowering, or hermaphroditism.",
-          "Outdoors, nature moves the switch for you — plants begin flowering as nights lengthen in late summer. That's also why growing outdoors requires planning around your local season rather than a timer.",
-        ],
-        image: {
-          src: "https://images.unsplash.com/photo-1693317436887-3cff65e4d17e?auto=format&fit=crop&w=1200&h=675&q=80",
-          alt: "Flowering cannabis plants developing buds under purple-red LED grow lights",
-          caption:
-            "After the flip to 12/12: buds form while the dark period stays strictly uninterrupted.",
-        },
-      },
-      {
-        heading: "When should you switch?",
-        paragraphs: [
-          "There's no single right answer — plants roughly double in height during the flowering stretch, so the real question is how much finished height your space can handle. As a rule of thumb, beginners in a standard grow tent flip to 12/12 when plants reach about half of the height they can accommodate.",
-          "Time matters too: most growers vegetate indoor plants for 4–8 weeks. Shorter veg means smaller plants and faster harvests; longer veg means bigger yields per plant but more time, water, and risk.",
+          "Light intensity drops sharply as the lamp moves away from the canopy — halve the distance and the plant receives dramatically more light. That makes lamp height the fastest, cheapest adjustment in your whole setup.",
+          "Too far and plants stretch: long gaps between leaves, thin stems, seedlings that lean and fall over. Too close and you see bleaching, curled or taco-shaped leaves, and crispy edges on the tips nearest the lamp. Start with the manufacturer's recommended distance, then let the plant's response move the lamp up or down an inch at a time.",
         ],
       },
       {
-        heading: "Common light cycle mistakes",
-        paragraphs: ["Watch for these — each one is easily avoided:"],
+        heading: "Duration: how many hours to run the light",
+        paragraphs: [
+          "Most common indoor crops do well with roughly 12–16 hours of light per day, and they genuinely need the dark period — plants use the night to move sugars around and grow. Running lights 24 hours a day is not a shortcut; for many plants it causes stress rather than faster growth.",
+          "A cheap mechanical or smart timer is one of the highest-value purchases in indoor growing. Consistency matters more than perfection: the same hours, every day, beats an irregular schedule you keep adjusting by hand.",
+        ],
         list: [
-          "Light leaks during the dark period, the classic cause of stressed or hermaphroditic flowering plants.",
-          "Cheap timers that drift or fail — a stuck timer can silently re-veg a flowering crop.",
-          "Switching to 12/12 too late and running out of vertical space during the stretch.",
-          "Forgetting that autoflowering strains ignore photoperiods entirely — they flower on age, not darkness, and are usually run at 18/6 from seed to harvest.",
+          "Seedlings and leafy greens: around 14–16 hours is a comfortable starting point.",
+          "Herbs: 12–16 hours, depending on how fast you want them to fill in.",
+          "Fruiting plants: long, bright days plus a genuine dark period every night.",
+          "Flowering houseplants: some are day-length sensitive — check the specific species before changing their schedule.",
         ],
       },
       {
-        heading: "Light cycles are one piece of a bigger system",
+        heading: "Reading light problems off the plant",
         paragraphs: [
-          "Photoperiod interacts with everything else in your grow: light intensity and distance, nutrient demands that change at the flip, training techniques that have to finish before stretch begins. Understanding each piece in sequence — rather than patching knowledge together from forum threads — is the difference between a stressful first grow and a confident one.",
+          "Your plants tell you what's wrong with the light long before they die of it. Watch for these:",
+        ],
+        list: [
+          "Long, bare stems with widely spaced leaves — not enough light, or the lamp is too far away.",
+          "Seedlings leaning hard toward a window — light is arriving from one side only; rotate the pot or add a lamp.",
+          "Pale, washed-out or bleached patches on the top leaves — too much intensity, or the lamp is too close.",
+          "Leaves curling upward or edges going crispy right under the lamp — heat and light stress; raise the fixture.",
+          "Healthy growth that suddenly stalls — check whether the timer failed before you start changing nutrients.",
+        ],
+      },
+      {
+        heading: "Light is one piece of a bigger system",
+        paragraphs: [
+          "Light interacts with everything else in your indoor garden: more light means more water use, higher nutrient demand, and more heat to manage with airflow. Turning one dial without watching the others is how beginners chase problems in circles.",
+          "Understanding each piece in sequence — rather than patching knowledge together from forum threads — is the difference between a stressful first grow and a confident one.",
         ],
       },
     ],
   },
   {
-    slug: "when-to-harvest-cannabis",
-    title: "When to Harvest Cannabis: Reading Trichomes and Pistils",
+    slug: "how-to-water-indoor-plants",
+    title: "How to Water Indoor Plants: Overwatering, Drainage and Timing",
     excerpt:
-      "Harvest a week early and you lose potency; a week late and the effect changes entirely. Learn to read trichomes and pistils so you pick the right window every time.",
-    category: "Harvest",
+      "Overwatering kills more indoor plants than any pest. Learn how to tell when a plant actually needs water, how much to give, and why drainage matters more than schedules.",
+    category: "Watering",
     publishedAt: "2026-07-03",
     readingTime: "6 min read",
     heroImage: {
-      src: "https://images.unsplash.com/photo-1569530162313-5d6cfaf19010?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
-      alt: "Mature cannabis cola covered in frosty trichomes approaching harvest time",
+      src: "https://images.unsplash.com/photo-1691290123815-cba16d4ed917?auto=format&fit=crop&crop=entropy&w=1200&h=675&q=80",
+      alt: "Watering a healthy leafy houseplant indoors with a small white watering can",
       caption:
-        "A ripening cola: the frosty coating is trichomes — your most reliable harvest signal.",
+        "Water the substrate, not the calendar: the medium tells you when it's time.",
     },
     intro: [
-      "After months of care, the harvest decision comes down to a window of about one to two weeks. Cut too early and the buds haven't reached full potency; wait too long and the chemical profile shifts toward a heavier, sleepier effect with degraded THC.",
-      "The good news: the plant tells you exactly when it's ready. You just need to know where to look — and a cheap magnifier to look with.",
+      "Ask any experienced grower what kills the most beginner plants and the answer is rarely pests or disease — it's water. Specifically, too much of it, too often, in pots that can't drain.",
+      "The good news: watering stops being guesswork the moment you stop watering on a schedule and start reading the substrate instead.",
     ],
     sections: [
       {
-        heading: "Trichomes: the most reliable signal",
+        heading: "Why overwatering is so dangerous",
         paragraphs: [
-          "Trichomes are the tiny, mushroom-shaped resin glands that coat mature buds and give them their frosty appearance. They're where cannabinoids are produced, and their color under magnification is the most accurate ripeness gauge available to a home grower.",
-          "Using a 30–60x jeweler's loupe or a macro phone lens, check the trichomes on several buds — not just the top cola — and read them like this:",
-        ],
-        list: [
-          "Clear trichomes — too early. Cannabinoid production is still ramping up.",
-          "Mostly cloudy/milky — peak THC. Harvesting now gives the most potent, energetic effect profile.",
-          "Cloudy with 10–30% amber — the classic harvest window for a balanced effect. This is where most growers aim.",
-          "Majority amber — past peak. THC is degrading into CBN; expect a heavier, more sedative result.",
+          "Roots need oxygen as much as they need water. Soil holds air in the gaps between its particles, and when those gaps stay filled with water, roots effectively suffocate. Constantly wet roots then rot, which is when the plant finally shows symptoms above the surface.",
+          "The cruel twist: an overwatered plant droops, exactly like a thirsty one. Beginners see the droop, add more water, and speed up the collapse. Before you reach for the watering can, always check the medium first.",
         ],
       },
       {
-        heading: "Pistils: the quick visual check",
+        heading: "How to tell when a plant actually needs water",
         paragraphs: [
-          "Pistils — the hair-like strands covering the buds — offer a rougher signal you can read without magnification. Early in flower they're white and stand straight out. As the plant matures they darken to orange-brown and curl inward.",
-          "A common rule of thumb: when 70–90% of pistils have darkened and curled, the plant is in or near its harvest window. Use pistils to know when to start checking trichomes, not as the final word — environmental stress can darken pistils early and mislead you.",
+          "You don't need a moisture meter. Three simple checks tell you almost everything:",
+        ],
+        list: [
+          "The finger test — push a finger 1–2 inches into the substrate. Dry at that depth for most plants means it's time; still damp means wait.",
+          "Pot weight — lift the pot after watering and again a few days later. The difference between heavy and light becomes obvious fast.",
+          "Surface colour — dry soil goes pale and pulls slightly away from the pot edge, though the top can look dry while the root zone is still wet.",
+          "The plant itself — a slight droop just before watering is normal; a droop in wet soil is a warning sign, not thirst.",
+        ],
+      },
+      {
+        heading: "How much to give, and how",
+        paragraphs: [
+          "When you water, water thoroughly: pour slowly and evenly across the whole surface until water runs out of the drainage holes. Light, frequent sips wet only the top layer and encourage shallow roots that dry out constantly.",
+          "Then let the excess drain away completely and empty the saucer. A pot standing in a puddle is an overwatered pot, however carefully you measured the water going in.",
         ],
         image: {
-          src: "https://images.unsplash.com/photo-1626083550733-dd013e97d2bd?auto=format&fit=crop&w=1200&h=675&q=80",
-          alt: "Cannabis buds with darkened orange pistils in a warm indoor grow room late in flowering",
+          src: "https://images.unsplash.com/photo-1638777922445-b17e22c87e70?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Three potted herb plants standing together on a drainage tray indoors",
           caption:
-            "Darkened, curled pistils like these mean it's time to get the loupe out and check trichomes.",
+            "Drainage holes plus an emptied saucer do more for root health than any watering schedule.",
         },
       },
       {
-        heading: "Other signs the window is close",
+        heading: "Drainage and substrate do half the work",
         paragraphs: [
-          "A few supporting signals tend to arrive alongside ripeness:",
+          "A pot without drainage holes makes overwatering almost inevitable — there is nowhere for excess water to go, so it sits at the bottom around the roots. Decorative pots are best used as outer covers for a plain nursery pot that drains freely.",
+          "Substrate matters just as much. Dense, heavy soil stays wet for days; a light, airy mix with perlite or coco drains quickly and refills with air. Pot size counts too: a small seedling in a huge pot sits in wet substrate it can't use, which is why growers pot up gradually.",
+        ],
+      },
+      {
+        heading: "Reading the signals",
+        paragraphs: [
+          "Water problems announce themselves clearly once you know the pattern:",
         ],
         list: [
-          "Fan leaves begin yellowing and dropping as the plant pulls stored nutrients into the buds.",
-          "Bud growth stops swelling and calyxes look fully inflated.",
-          "Aroma peaks — the terpene profile is at its strongest just before harvest.",
-          "Breeder flowering times (e.g. \"8–9 weeks\") come due — treat these as an estimate that tells you when to start inspecting, not when to cut.",
+          "Yellowing lower leaves plus consistently damp soil — overwatering.",
+          "Drooping that recovers within an hour of watering — genuine thirst.",
+          "Drooping in wet soil, sometimes with a sour smell — root rot; let it dry out and check the roots.",
+          "Crispy brown leaf edges with bone-dry, shrunken substrate — underwatering.",
+          "Fungus gnats hovering around the pot — the surface is staying wet too long.",
         ],
       },
       {
-        heading: "The most common harvest-timing mistakes",
+        heading: "Watering connects to everything else",
         paragraphs: [
-          "Impatience is the number one killer of otherwise excellent grows. After months of waiting, the urge to chop at the first sign of ripeness is strong — but a week of patience at the end can be the difference between mediocre and exceptional results.",
-          "The second mistake is judging the whole plant by its top cola. Buds lower on the plant ripen days later than the tops. Some growers even harvest in two passes: tops first, lower buds a week later once they've caught up.",
-        ],
-        image: {
-          src: "https://images.unsplash.com/photo-1672692757383-cf554b9268b6?auto=format&fit=crop&w=1200&h=675&q=80",
-          alt: "A canopy of flowering cannabis plants at different ripeness levels inside a grow tent",
-          caption:
-            "Tops ripen first: buds lower in the canopy can need several extra days to catch up.",
-        },
-      },
-      {
-        heading: "Harvest is only half the job",
-        paragraphs: [
-          "Cutting the plant at the perfect moment only pays off if you dry and cure it properly afterward — rush that stage and you can undo months of careful work in three days. Drying and curing deserve their own guide, and their own module in any serious cultivation course.",
+          "How often a plant drinks depends on light intensity, temperature, humidity, airflow, pot size and how big the plant has grown. That's why fixed schedules fail: the same plant might need water twice a week in winter and every day under strong light in summer.",
+          "Learning to read the whole system — rather than following a rule someone posted online — is what a structured course is for, and watering is one of its most important lessons.",
         ],
       },
     ],
   },
   {
-    slug: "how-to-dry-and-cure-cannabis",
-    title: "How to Dry and Cure Cannabis: Preserving Quality After Harvest",
+    slug: "ph-and-ec-for-beginners",
+    title: "pH and EC Explained: Feeding Indoor Plants with Confidence",
     excerpt:
-      "Drying and curing determine whether a perfect harvest stays perfect. Learn the right temperature, humidity, and timeline — and why rushing this stage ruins more crops than any pest.",
-    category: "Post-Harvest",
+      "pH decides which nutrients your plants can actually absorb, and EC tells you how strong your feed is. Learn what both numbers mean, when they matter, and how to use them without turning gardening into chemistry.",
+    category: "Nutrients",
     publishedAt: "2026-07-03",
     readingTime: "7 min read",
     heroImage: {
-      src: "https://images.unsplash.com/photo-1457573294499-86ac96b336ba?auto=format&fit=crop&w=1200&h=675&q=80",
-      alt: "Open glass jars filled with dried and cured cannabis buds",
+      src: "https://images.unsplash.com/photo-1778035121136-ecaefa3cac8f?auto=format&fit=crop&w=1200&h=675&q=80",
+      alt: "Potted plant with a measuring indicator beside bottles of plant nutrients",
       caption:
-        "Glass jars at 58–62% humidity: where a good harvest becomes a great one.",
+        "Two cheap meters remove most of the guesswork from feeding indoor plants.",
     },
     intro: [
-      "More quality is lost in the two weeks after harvest than in any other stage of cultivation. A grower can do everything right for four months and still end up with harsh, hay-smelling buds — because drying and curing are where aroma, smoothness, and shelf life are actually decided.",
-      "The process isn't difficult, but it punishes shortcuts. Here's how it works and how to get it right the first time.",
+      "Sooner or later every indoor grower meets a plant with yellowing leaves that gets fed more, and more, and only gets worse. Nine times out of ten the nutrients were there all along — the plant simply couldn't take them up.",
+      "That's what pH and EC are for. They're two simple readings that turn feeding from guesswork into something you can actually check.",
     ],
     sections: [
       {
-        heading: "Why drying and curing matter",
+        heading: "What pH actually means for your plants",
         paragraphs: [
-          "Freshly harvested cannabis is roughly 75–80% water. Drying removes most of that moisture slowly enough that the plant's enzymes can break down chlorophyll and sugars — the compounds responsible for the harsh, grassy taste of badly finished buds.",
-          "Curing continues that chemical refinement in a controlled, slightly humid environment. Terpenes stabilize, remaining chlorophyll degrades, and the final aroma develops. Skip the cure and even well-grown flower tastes unfinished.",
+          "pH measures how acidic or alkaline your water or substrate is, on a scale from 0 to 14, where 7 is neutral. Plants don't care about the number for its own sake — they care because pH controls which nutrients their roots can absorb.",
+          "Push the pH too far in either direction and specific nutrients become chemically locked out, even though they're physically present in the pot. The plant shows a deficiency, the grower adds more fertilizer, and the problem gets worse instead of better.",
+        ],
+        list: [
+          "Most plants in soil are happiest roughly between pH 6.0 and 7.0.",
+          "Soilless mixes and hydroponic setups usually run slightly lower, around 5.5–6.5.",
+          "Tap water is often alkaline; a cheap pH pen tells you where you're starting from.",
+          "Correct pH with proper pH-up/pH-down products rather than kitchen remedies, which are unstable.",
         ],
       },
       {
-        heading: "How to dry: slow and controlled",
+        heading: "What EC tells you",
         paragraphs: [
-          "The goal is a slow, even dry over 7–14 days. Faster than that and you're trapping chlorophyll and evaporating terpenes; slower risks mold.",
-        ],
-        list: [
-          "Hang whole branches (or lay trimmed buds on drying racks) in a dark room or tent.",
-          "Hold the environment near 60°F (15–16°C) and 55–60% relative humidity.",
-          "Keep air gently circulating with a fan pointed at a wall — never directly at the buds.",
-          "Keep the space dark; light degrades THC.",
-          "Test readiness with the snap test: small stems should snap rather than bend, typically after 7–14 days.",
+          "EC — electrical conductivity — measures how many dissolved salts are in your water or nutrient solution. In practice, it's a strength reading: the higher the EC, the more concentrated the feed.",
+          "EC doesn't tell you which nutrients are present, only how much total nutrition is dissolved. That's still enormously useful: it stops you feeding a delicate seedling the same strength solution as a heavy-fruiting tomato plant, which is one of the classic ways beginners burn young plants.",
         ],
         image: {
-          src: "https://images.unsplash.com/photo-1617101814633-c8a6cfd159cc?auto=format&fit=crop&w=1200&h=675&q=80",
-          alt: "Harvested cannabis branches with dense buds resting in a dark room",
+          src: "https://images.unsplash.com/photo-1536525357611-52585cdf7eaa?auto=format&fit=crop&w=1200&h=675&q=80",
+          alt: "Hand pouring a liquid feed onto a potted plant indoors",
           caption:
-            "Dark, cool, and slow: buds should lose their moisture over 7–14 days, never over a weekend.",
+            "Mix, measure, then feed — checking strength takes seconds and prevents nutrient burn.",
         },
       },
       {
-        heading: "How to cure: patience in a jar",
+        heading: "When measuring is actually worth it",
         paragraphs: [
-          "Once stems snap, trim the buds and place them loosely into airtight glass jars, filled about three-quarters full. Store the jars in a cool, dark place at roughly 58–62% relative humidity — small hygrometers that fit inside jars remove all the guesswork.",
-          "For the first week, open each jar once or twice a day for a few minutes. This 'burping' releases moisture and replenishes oxygen. After that, burp every few days. A minimum cure is two weeks; most connoisseur growers cure four to eight, and the improvement in smoothness and aroma is unmistakable.",
+          "You don't need meters to grow basil on a windowsill. They start earning their keep the moment you're feeding regularly, growing in a soilless mix, or troubleshooting a plant that isn't responding to care.",
+          "A practical approach for beginners: measure your tap water once so you know your baseline, then check pH and EC whenever you mix a feed. That habit alone prevents most nutrient problems people spend weeks chasing.",
         ],
-        image: {
-          src: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=1200&h=675&q=80",
-          alt: "Close-up of a properly dried and cured cannabis bud showing intact trichomes",
-          caption:
-            "The payoff of a patient cure: dense, aromatic buds with trichomes intact.",
-        },
       },
       {
-        heading: "Warning signs to catch early",
-        paragraphs: ["Check jars daily in the first week for these red flags:"],
+        heading: "Feeding without overdoing it",
+        paragraphs: [
+          "Seeds carry their own food, so young seedlings need nothing but water and light at first. Feeding starts gently once the first true leaves appear — typically at a fraction of the strength printed on the bottle — and increases gradually as the plant grows.",
+          "Less is safer than more. Underfed plants recover within days of a feed; overfed plants can suffer root damage that takes weeks to grow out of, if they recover at all.",
+        ],
         list: [
-          "An ammonia smell when opening a jar — buds were jarred too wet and anaerobic bacteria are at work. Remove and re-dry immediately.",
-          "Humidity readings above 65% — leave jars open for a few hours, then re-seal and re-check.",
-          "Buds that feel crispy and read below 55% — the cure has stalled; a small humidity pack can rescue it.",
-          "Any visible white fuzz — mold. Inspect closely and discard affected buds; mold is not worth the risk.",
+          "Start at roughly a quarter to half of the label strength for young plants.",
+          "Feed on a schedule you can observe — then adjust based on the plant's response, not the calendar.",
+          "Flush the substrate with plain, pH-corrected water if you see salt crust or signs of nutrient burn.",
+          "Change one variable at a time so you know what actually worked.",
         ],
       },
       {
-        heading: "The finish line — and the full picture",
+        heading: "Numbers support observation — they don't replace it",
         paragraphs: [
-          "Properly dried and cured cannabis, stored in sealed glass away from light and heat, keeps its quality for many months. Getting there consistently is a matter of process, not luck — the same environment targets, the same timeline, the same checks, every harvest.",
-          "That process mindset is exactly what separates structured cultivation education from scattered internet advice: every stage, from germinating a seed to sealing a cured jar, done deliberately and in order.",
+          "Meters are a diagnostic tool, not the goal. The best growers still make their first judgement with their eyes: leaf colour, new growth, how the plant holds itself. pH and EC then confirm or rule out a cause, quickly and cheaply.",
+          "That combination — careful observation backed by two simple measurements — is exactly the process a structured course teaches, stage by stage, so feeding stops feeling like chemistry and starts feeling like gardening.",
         ],
       },
     ],

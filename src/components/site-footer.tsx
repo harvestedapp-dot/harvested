@@ -14,15 +14,15 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-secondary">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-        <div className="flex flex-col gap-12 md:flex-row md:justify-between">
-          <div className="max-w-sm space-y-4">
+        <div className="flex flex-col gap-12 md:flex-row md:justify-between md:gap-10">
+          <div className="max-w-sm min-w-0 space-y-4">
             <Logo />
             <p className="text-[16px] leading-[1.6] text-muted-foreground">
               {siteConfig.description}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-14">
+          <div className="grid min-w-0 grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-10 lg:gap-14">
             <div className="space-y-4">
               <p className="font-heading text-[17px] font-semibold text-foreground">
                 Explore
@@ -67,7 +67,7 @@ export function SiteFooter() {
                 <li>
                   <a
                     href={`mailto:${siteConfig.contactEmail}`}
-                    className="transition-colors hover:text-foreground"
+                    className="break-words transition-colors hover:text-foreground"
                   >
                     {siteConfig.contactEmail}
                   </a>
@@ -81,7 +81,10 @@ export function SiteFooter() {
           <p>
             &copy; {year} {siteConfig.name}. All rights reserved.
           </p>
-          <p>Educational content only. Not intended for use by minors.</p>
+          <p>
+            Educational content only. Growing results depend on your space,
+            plants and care.
+          </p>
         </div>
       </div>
     </footer>

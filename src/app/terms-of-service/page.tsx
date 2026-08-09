@@ -19,20 +19,21 @@ export default function TermsOfServicePage() {
 
       <h2>Eligibility</h2>
       <p>
-        You must be at least 18 years old to enroll in or access any course.
-        By using the Service, you confirm that you meet this age requirement
-        and that you are legally permitted to access educational content
-        about cannabis cultivation in your jurisdiction.
+        You must be at least 18 years old to purchase a course. By using the
+        Service, you confirm that you meet this age requirement and that the
+        information you provide at checkout is accurate.
       </p>
 
       <h2>Educational Purpose Only</h2>
       <p>
         All content provided through {siteConfig.name} is for educational
-        purposes only. We do not sell, distribute, or ship cannabis, seeds,
-        or any controlled substances. Cannabis laws vary significantly by
-        state and country, and it is solely your responsibility to
-        understand and comply with the laws that apply to you. Nothing on
-        this Service constitutes legal advice.
+        purposes only. We teach indoor gardening &mdash; growing ordinary
+        plants such as herbs, leafy greens, vegetables, fruiting plants and
+        flowering houseplants in controlled indoor conditions. We do not sell,
+        distribute, or ship plants, seeds, substrates, or equipment. Rules on
+        importing seeds and plant material vary by country and region, and it
+        is your responsibility to understand and comply with the rules that
+        apply to you. Nothing on this Service constitutes legal advice.
       </p>
 
       <h2>Account and Access</h2>
@@ -71,7 +72,8 @@ export default function TermsOfServicePage() {
       <p>
         The Service and its content are provided &ldquo;as is&rdquo;
         without warranties of any kind. We do not guarantee any specific
-        cultivation results from following our courses.
+        growing results from following our courses &mdash; outcomes depend on
+        your space, equipment, plants and care.
       </p>
 
       <h2>Limitation of Liability</h2>

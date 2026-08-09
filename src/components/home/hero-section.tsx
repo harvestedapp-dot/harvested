@@ -29,22 +29,22 @@ function HeadlineWord({
 
 const trustItems = ["Beginner Friendly", "Any Device", "6 Modules"];
 
-/** SVG-drawn burning joints: [height in px, tilt in deg, animation delay in ms]. */
-const joints: Array<[number, number, number]> = [
-  [124, -8, 0],
-  [152, -2.5, 900],
-  [133, 3, 1700],
-  [143, 8.5, 500],
+/** SVG-drawn potted seedlings: [height in px, tilt in deg, sway delay in ms]. */
+const sprouts: Array<[number, number, number]> = [
+  [124, -4, 0],
+  [152, -1.5, 900],
+  [133, 2, 1700],
+  [143, 5, 500],
 ];
 
 const insideItems = [
-  { number: "01", title: "Germination & seedling care" },
-  { number: "02", title: "Vegetative growth stage" },
-  { number: "03", title: "Cannabis flowering stage" },
-  { number: "04", title: "Harvest, drying & curing" },
+  { number: "01", title: "Seed starting & seedling care" },
+  { number: "02", title: "Light, temperature & humidity" },
+  { number: "03", title: "Watering, nutrients, pH & EC" },
+  { number: "04", title: "Flowering, fruiting & harvest" },
 ];
 
-function Joint({
+function Sprout({
   height,
   tilt,
   delay,
@@ -55,128 +55,124 @@ function Joint({
   delay: number;
   uid: number;
 }) {
-  const mouthY = height - 2;
-  const paperTop = 17.5;
-  // herb speckles showing through the paper — deterministic per joint
-  const speckles = [0.3, 0.45, 0.6, 0.74, 0.86].map((t, i) => {
-    const halfWidth = 10.5 - 6 * t;
-    const offset = (((height * (i + 3)) % 7) / 7 - 0.5) * halfWidth * 1.4;
-    return {
-      cx: 15 + offset,
-      cy: paperTop + (mouthY - paperTop) * t,
-      r: 0.55 + ((height + i * 5) % 3) * 0.3,
-    };
-  });
-  const id = (name: string) => `joint-${uid}-${name}`;
+  const potTop = height - 24;
+  const soilY = potTop + 2.5;
+  const stemTop = 8;
+  const id = (name: string) => `sprout-${uid}-${name}`;
+
+  /** One leaf growing out of the stem at height `y`; dir -1 = left, 1 = right. */
+  const leaf = (y: number, dir: 1 | -1, len: number) =>
+    `M15 ${y} C ${15 + dir * len * 0.32} ${y - len * 0.52}, ${15 + dir * len * 0.9} ${y - len * 0.42}, ${15 + dir * len} ${y + 0.8} C ${15 + dir * len * 0.66} ${y + len * 0.34}, ${15 + dir * len * 0.24} ${y + len * 0.26}, 15 ${y}`;
+
+  // Leaf pairs climb the stem; the lowest pair is the largest.
+  const leafPairs = [0.28, 0.52, 0.76].map((t, i) => ({
+    y: soilY - (soilY - stemTop) * t,
+    len: 15.5 - i * 3.2,
+  }));
 
   return (
     <span
       className="relative flex flex-col items-center"
       style={{ transform: `rotate(${tilt}deg)` }}
     >
-      {/* rising smoke wisps */}
+      {/* soft grow-light pool falling on the leaves */}
       <span
         aria-hidden
-        className="hero-joint-smoke pointer-events-none absolute -top-9 h-8 w-[4px] rounded-full bg-white/50 blur-[2px]"
+        className="hero-sprout-glow pointer-events-none absolute -top-6 h-10 w-[26px] rounded-full bg-[#d3f2a6]/25 blur-[6px]"
         style={{ animationDelay: `${delay}ms` }}
       />
       <span
-        aria-hidden
-        className="hero-joint-smoke pointer-events-none absolute -top-8 ml-2 h-6 w-[3px] rounded-full bg-white/35 blur-[2px]"
-        style={{ animationDelay: `${delay + 1400}ms`, animationDuration: "4.6s" }}
-      />
-      {/* flickering heat glow over the cherry */}
-      <span
-        aria-hidden
-        className="hero-joint-ember absolute top-[10px] z-10 h-[6px] w-[15px] rounded-full bg-[#ff8a3c]/45 blur-[3px] sm:top-[13px]"
+        className="hero-sprout-sway block origin-bottom"
         style={{ animationDelay: `${delay}ms` }}
-      />
-      <svg
-        viewBox={`0 0 30 ${height}`}
-        height={height}
-        aria-hidden
-        className="block h-auto w-[24px] sm:w-[30px]"
       >
-        <defs>
-          <linearGradient id={id("paper")} x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#fbf6ea" />
-            <stop offset="55%" stopColor="#eee4cf" />
-            <stop offset="100%" stopColor="#c3b79c" />
-          </linearGradient>
-          <linearGradient id={id("char")} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(45,28,14,0.92)" />
-            <stop offset="55%" stopColor="rgba(72,45,22,0.4)" />
-            <stop offset="100%" stopColor="rgba(72,45,22,0)" />
-          </linearGradient>
-          <linearGradient id={id("ash")} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#f0eeea" />
-            <stop offset="50%" stopColor="#cecbc4" />
-            <stop offset="100%" stopColor="#a8a49b" />
-          </linearGradient>
-          <radialGradient id={id("ember")} cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#ffe2b3" />
-            <stop offset="45%" stopColor="#ff9a4a" />
-            <stop offset="78%" stopColor="#d84f1d" />
-            <stop offset="100%" stopColor="rgba(150,40,10,0)" />
-          </radialGradient>
-        </defs>
+        <svg
+          viewBox={`0 0 30 ${height}`}
+          height={height}
+          aria-hidden
+          className="block h-auto w-[24px] sm:w-[30px]"
+        >
+          <defs>
+            <linearGradient id={id("leaf")} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#d3f2a6" />
+              <stop offset="55%" stopColor="#8ec95f" />
+              <stop offset="100%" stopColor="#4e8a35" />
+            </linearGradient>
+            <linearGradient id={id("pot")} x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#d79a6d" />
+              <stop offset="55%" stopColor="#bd7a4d" />
+              <stop offset="100%" stopColor="#8a5433" />
+            </linearGradient>
+            <linearGradient id={id("soil")} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#4a3423" />
+              <stop offset="100%" stopColor="#2c1f14" />
+            </linearGradient>
+          </defs>
 
-        {/* paper cone with a rounded mouth end */}
-        <path
-          d={`M4.5 ${paperTop} L25.5 ${paperTop} L19.2 ${mouthY - 1} Q15 ${mouthY + 1} 10.8 ${mouthY - 1} Z`}
-          fill={`url(#${id("paper")})`}
-        />
-        {/* rolling seam */}
-        <path
-          d={`M13.2 ${paperTop + 5} L11.6 ${mouthY - 6}`}
-          stroke="rgba(120,90,55,0.2)"
-          strokeWidth="0.8"
-        />
-        {speckles.map((s, i) => (
-          <circle
-            key={i}
-            cx={s.cx}
-            cy={s.cy}
-            r={s.r}
-            fill="rgba(105,78,45,0.16)"
+          {/* stem */}
+          <path
+            d={`M15 ${soilY} C 13.6 ${soilY - (soilY - stemTop) * 0.4}, 16.4 ${soilY - (soilY - stemTop) * 0.7}, 15 ${stemTop}`}
+            stroke="#6faa46"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            fill="none"
           />
-        ))}
-        {/* scorched band right under the cherry */}
-        <path
-          d={`M4.5 ${paperTop} L25.5 ${paperTop} L23.6 ${paperTop + 10} L6.4 ${paperTop + 10} Z`}
-          fill={`url(#${id("char")})`}
-        />
-        {/* burning cherry */}
-        <ellipse
-          cx="15"
-          cy={paperTop + 0.5}
-          rx="9.8"
-          ry="3.2"
-          fill={`url(#${id("ember")})`}
-        />
-        {/* ash tip: continues the cone taper, crumbly jagged crown */}
-        <path
-          d="M6.8 17 L6.3 10.5 Q6.9 6.6 9.2 4.8 Q10.6 5.6 11.9 3.8 Q13.5 2.6 15.3 3.2 Q17.1 2.6 18.7 4.1 Q20.5 4.3 21.7 6.6 Q23.2 8.8 23.5 11.2 L23.2 17 Z"
-          fill={`url(#${id("ash")})`}
-        />
-        <ellipse cx="11" cy="9.4" rx="2.4" ry="1.5" fill="#a29d93" opacity="0.32" />
-        <ellipse cx="18.2" cy="12" rx="2.7" ry="1.7" fill="#96918a" opacity="0.28" />
-        <ellipse cx="14.6" cy="6" rx="2" ry="1.1" fill="#f7f6f3" opacity="0.55" />
-        <path
-          d="M9.6 14 L11.8 11.2 M16.8 14.4 L19 11.6 M13 13 L14.2 10.8"
-          stroke="#8b867d"
-          strokeWidth="0.55"
-          opacity="0.45"
-        />
-        <path
-          d="M8.4 16.2 L21.8 16.2"
-          stroke="#ff7a2e"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          strokeDasharray="2.4 1.6"
-          opacity="0.55"
-        />
-      </svg>
+
+          {/* leaves */}
+          {leafPairs.map((pair, i) => (
+            <g key={i}>
+              <path d={leaf(pair.y, -1, pair.len)} fill={`url(#${id("leaf")})`} />
+              <path d={leaf(pair.y, 1, pair.len)} fill={`url(#${id("leaf")})`} />
+              <path
+                d={`M15 ${pair.y} L ${15 - pair.len * 0.72} ${pair.y + 0.4}`}
+                stroke="rgba(38,74,24,0.35)"
+                strokeWidth="0.5"
+              />
+              <path
+                d={`M15 ${pair.y} L ${15 + pair.len * 0.72} ${pair.y + 0.4}`}
+                stroke="rgba(38,74,24,0.35)"
+                strokeWidth="0.5"
+              />
+            </g>
+          ))}
+
+          {/* unfurling tip */}
+          <path
+            d={`M15 ${stemTop} C 12.6 ${stemTop - 1}, 12.2 ${stemTop - 5}, 15 ${stemTop - 6} C 17.8 ${stemTop - 5}, 17.4 ${stemTop - 1}, 15 ${stemTop}`}
+            fill={`url(#${id("leaf")})`}
+          />
+
+          {/* soil surface */}
+          <ellipse
+            cx="15"
+            cy={soilY}
+            rx="9.6"
+            ry="2.4"
+            fill={`url(#${id("soil")})`}
+          />
+          <circle cx="11.4" cy={soilY - 0.4} r="0.5" fill="#6b4d33" />
+          <circle cx="18.2" cy={soilY + 0.5} r="0.45" fill="#6b4d33" />
+
+          {/* terracotta pot: rim + tapered body */}
+          <rect
+            x="3.6"
+            y={potTop}
+            width="22.8"
+            height="5.2"
+            rx="1.4"
+            fill={`url(#${id("pot")})`}
+          />
+          <path
+            d={`M5.4 ${potTop + 5.2} L24.6 ${potTop + 5.2} L21.6 ${height - 1} Q15 ${height + 1} 8.4 ${height - 1} Z`}
+            fill={`url(#${id("pot")})`}
+          />
+          <path
+            d={`M9.2 ${potTop + 7} L7.6 ${height - 3}`}
+            stroke="rgba(255,255,255,0.22)"
+            strokeWidth="0.9"
+            strokeLinecap="round"
+          />
+        </svg>
+      </span>
     </span>
   );
 }
@@ -212,25 +208,25 @@ export function HeroSection() {
                 style={{ backgroundColor: ACCENT }}
               />
             </span>
-            Cannabis Cultivation Course
+            Indoor Gardening Course
           </p>
 
           <h1 className="mb-10 font-heading text-[clamp(34px,9vw,52px)] leading-[1.12] font-semibold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.5)] sm:text-[64px]">
-            <HeadlineWord index={0}>Stop</HeadlineWord>{" "}
-            <HeadlineWord index={1}>buying</HeadlineWord>{" "}
-            <HeadlineWord index={2}>joints.</HeadlineWord>
+            <HeadlineWord index={0}>Grow</HeadlineWord>{" "}
+            <HeadlineWord index={1}>indoors</HeadlineWord>{" "}
+            <HeadlineWord index={2}>with</HeadlineWord>
             <br />
             <HeadlineWord index={3} className={GRADIENT_WORD}>
-              Grow
+              confidence
             </HeadlineWord>{" "}
-            <HeadlineWord index={4} className={GRADIENT_WORD}>
-              your
-            </HeadlineWord>{" "}
-            <HeadlineWord index={5} className={GRADIENT_WORD}>
-              own<span className="sr-only"> cannabis</span>
-            </HeadlineWord>
+            <HeadlineWord index={4}>&mdash;</HeadlineWord>{" "}
+            <HeadlineWord index={5}>from</HeadlineWord>
             <br />
-            <HeadlineWord index={6}>&mdash; forever.</HeadlineWord>
+            <HeadlineWord index={6}>the</HeadlineWord>{" "}
+            <HeadlineWord index={7} className={GRADIENT_WORD}>
+              first seed
+            </HeadlineWord>{" "}
+            <HeadlineWord index={8}>on.</HeadlineWord>
           </h1>
 
           <p
@@ -269,12 +265,12 @@ export function HeroSection() {
               { color: ACCENT, "--enter-delay": "260ms" } as React.CSSProperties
             }
           >
-            &#10022; Includes exclusive discounts on grow equipment &mdash;
-            students save $200+ inside the course
+            &#10022; Includes exclusive discounts on indoor growing gear
+            &mdash; students save $200+ inside the course
           </p>
 
           <Link
-            href="/course/basic-cannabis-cultivation"
+            href="/course/indoor-growing-for-beginners"
             className="hero-enter group relative isolate mb-7 flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-[#bde692] to-[#9ecf6c] py-5 text-[18px] font-bold text-[#0f2312] shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_8px_32px_rgba(168,216,120,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_14px_44px_rgba(168,216,120,0.42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             style={{ "--enter-delay": "320ms" } as React.CSSProperties}
           >
@@ -329,16 +325,16 @@ export function HeroSection() {
             className="pointer-events-none absolute -top-24 -right-20 size-64 rounded-full bg-[radial-gradient(closest-side,rgba(168,216,120,0.16),transparent_70%)] blur-2xl"
           />
 
-          {/* The core hook, drawn as an equation: 3–4 joints ≈ the whole course */}
+          {/* The core hook, drawn as an equation: 4 supermarket herb pots ≈ the whole course */}
           <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-2xl border-[0.5px] border-white/10 bg-[#081408]/45 px-2.5 py-6 sm:gap-6 sm:px-5 sm:py-7">
             <div className="relative flex flex-col items-center">
               <span
                 aria-hidden
-                className="pointer-events-none absolute -inset-x-2 -top-4 bottom-2 rounded-full bg-[radial-gradient(closest-side,rgba(232,147,90,0.14),transparent_72%)]"
+                className="pointer-events-none absolute -inset-x-2 -top-4 bottom-2 rounded-full bg-[radial-gradient(closest-side,rgba(232,190,90,0.12),transparent_72%)]"
               />
               <div aria-hidden className="flex items-end gap-2 pt-5 sm:gap-3.5">
-                {joints.map(([height, tilt, delay], index) => (
-                  <Joint
+                {sprouts.map(([height, tilt, delay], index) => (
+                  <Sprout
                     key={index}
                     height={height}
                     tilt={tilt}
@@ -348,10 +344,10 @@ export function HeroSection() {
                 ))}
               </div>
               <p className="mt-4.5 text-[16px] font-semibold text-white">
-                3&ndash;4 joints
+                4 months of store-bought herbs
               </p>
               <p className="mt-1 text-[14px] text-white/45">
-                ~$69 &middot; up in smoke
+                ~$69 &middot; gone every week
               </p>
             </div>
 
@@ -377,17 +373,19 @@ export function HeroSection() {
                 this course
               </p>
               <p className="mt-1 text-[14px] text-white/45">
-                grow your own &middot; forever
+                grow your own &middot; season after season
               </p>
             </div>
           </div>
 
           <p className="mt-6 text-[15px] leading-[1.65] text-white/70">
-            For the price of{" "}
-            <span className="font-semibold text-white">3&ndash;4 joints</span>{" "}
+            For what you&rsquo;d spend on{" "}
+            <span className="font-semibold text-white">
+              a few months of supermarket herbs
+            </span>{" "}
             you get a{" "}
             <span className="font-semibold text-white">
-              complete cannabis growing education
+              complete indoor growing education
             </span>{" "}
             &mdash; step by step, at your own pace.
           </p>

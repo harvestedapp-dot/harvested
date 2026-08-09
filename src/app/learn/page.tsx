@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Clock } from "lucide-react";
 import { articles } from "@/lib/articles";
 
-const title = "Cannabis Growing Guides | Free Cultivation Articles";
+const title = "Indoor Gardening Guides | Free Growing Articles";
 const description =
-  "Free, science-based cannabis cultivation guides from Harvested — germination, light cycles, harvest timing, drying and curing, and more.";
+  "Free, practical indoor gardening guides from Harvested — seed starting, grow lights, watering, plant nutrition, pH and EC, and reading your plant's signals.";
 
 export const metadata: Metadata = {
   title,
@@ -21,11 +21,11 @@ export default function LearnIndexPage() {
         Free Guides
       </p>
       <h1 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-        Cannabis Growing Guides
+        Indoor Gardening Guides
       </h1>
       <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
-        Practical, science-based guides on cannabis cultivation — the same
-        structured approach we teach in our courses, free to read.
+        Practical guides on growing plants indoors — the same structured
+        approach we teach in our courses, free to read.
       </p>
 
       <ul className="mt-12 grid gap-6 sm:grid-cols-2">
@@ -77,11 +77,11 @@ export default function LearnIndexPage() {
           Ready to go beyond free guides?
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-white/80">
-          Basic Cannabis Cultivation covers the entire journey — 6 modules and
-          32 lessons from seed to cured harvest, in the right order.
+          Indoor Growing for Beginners covers the entire journey — 6 modules
+          and 32 lessons from seed to harvest, in the right order.
         </p>
         <Link
-          href="/course/basic-cannabis-cultivation"
+          href="/course/indoor-growing-for-beginners"
           className="mt-6 inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-[15px] font-medium text-primary transition-colors hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Explore the Course — $69

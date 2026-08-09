@@ -6,7 +6,7 @@ const steps = [
     step: "Step 1",
     title: "Enroll in minutes",
     description:
-      "One payment of $69 unlocks the full Basic Cannabis Cultivation course — every module, every lesson, every guide. No subscription, no upsells.",
+      "One payment of $69 unlocks the full Indoor Growing for Beginners course — every module, every lesson, every guide. No subscription, no upsells.",
   },
   {
     icon: GraduationCap,
@@ -20,7 +20,7 @@ const steps = [
     step: "Step 3",
     title: "Grow with confidence",
     description:
-      "Apply what you learn to your first grow, from germinating your first seed to drying and curing a harvest you can be proud of.",
+      "Apply what you learn to your first indoor grow, from germinating your first seed to harvesting herbs, greens, fruit or flowers you grew yourself.",
   },
 ];
 
@@ -36,11 +36,11 @@ export function HowItWorksSection() {
             How It Works
           </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
-            From enrollment to harvest in three steps
+            From enrollment to first harvest in three steps
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             No prerequisites, no equipment needed to start — just a clear
-            path from complete beginner to confident grower.
+            path from complete beginner to confident indoor grower.
           </p>
         </div>
 

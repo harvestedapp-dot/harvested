@@ -9,22 +9,22 @@ const equipmentItems = [
   },
   {
     emoji: "\u{1F331}",
-    title: "Nutrients & Soil",
+    title: "Nutrients, Soil & Substrates",
     description:
-      "Partner codes for premium cannabis nutrients and growing media",
+      "Partner codes for quality plant nutrients, soil and growing media",
   },
   {
     emoji: "⛺",
     title: "Tents & Equipment",
     description:
-      "Discounts on grow tents, fans, filters, and environmental controls",
+      "Discounts on grow tents, fans, pots, meters, and environmental controls",
   },
 ];
 
 export function PartnerDiscountsSection() {
   return (
     <section
-      aria-label="Cannabis grow equipment discounts included with Harvested course"
+      aria-label="Indoor growing equipment discounts included with the Harvested course"
       className="bg-[#1a3320] px-5 py-20 sm:px-10 sm:py-28"
     >
       <div className="mx-auto max-w-[1280px]">
@@ -39,7 +39,7 @@ export function PartnerDiscountsSection() {
             <p className="mb-8 text-[18px] leading-[1.7] text-white/65">
               Inside every module we&rsquo;ve included exclusive discount codes
               from our equipment partners. Students save an average of $200+ on
-              grow lights, nutrients, tents, and more.
+              grow lights, nutrients, tents, meters, and more.
             </p>
             <p>
               <CountUp
@@ -49,7 +49,7 @@ export function PartnerDiscountsSection() {
                 className="block font-heading text-[88px] leading-none font-semibold text-[#a8d878] sm:text-[112px]"
               />
               <span className="mt-4 block max-w-[280px] text-[16px] leading-[1.5] text-white/50">
-                average savings on grow equipment for Harvested students
+                average savings on indoor growing gear for Harvested students
               </span>
             </p>
           </div>

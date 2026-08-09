@@ -1,27 +1,27 @@
 import Link from "next/link";
 
 const pains = [
-  "No idea where to start growing cannabis — too much conflicting information online",
-  "Weak harvests or sick plants with no clear understanding of what went wrong",
-  "Reddit says one thing, YouTube says another — zero structured guidance",
-  "Money wasted on seeds and equipment with nothing to show for it",
-  "Missed the perfect cannabis harvest window — picked too early or too late",
-  "Poor smell and low potency after months of cannabis growing work",
+  "No idea where to start growing indoors — too much conflicting information online",
+  "Yellowing, drooping, sick plants with no clear understanding of what went wrong",
+  "Overwatered roots one week, bone-dry soil the next",
+  "Money wasted on lights, pots and gear you never actually needed",
+  "Leggy, stretched seedlings and no idea whether it's the light or the room",
+  "Nutrients, pH and EC that feel like chemistry class instead of gardening",
 ];
 
 const solutions = [
-  "One clear path from seed to harvest — structured, sequential, science-based",
-  "Science-based cannabis cultivation methods that diagnose and fix problems fast",
-  "One trusted source — no more guessing between contradicting advice",
+  "One clear path from seed to harvest — structured, sequential, practical",
+  "Learn to read leaves, colour and growth so you catch problems early",
+  "Know exactly when your plant needs water — and when it doesn't",
   "Equipment guide inside the course — spend only on what actually matters",
-  "Know exactly when to harvest every cannabis plant, every time",
-  "Proper cannabis drying and curing for maximum flavor and potency",
+  "Set light distance, intensity and hours correctly from day one",
+  "pH, EC and feeding explained in plain English, step by step",
 ];
 
 export function ProblemsSection() {
   return (
     <section
-      aria-label="Common cannabis growing problems solved by Harvested course"
+      aria-label="Common indoor growing problems solved by the Harvested course"
       className="bg-[#f5f4f0] px-5 py-10 sm:px-10 sm:py-20"
     >
       <div className="mx-auto max-w-[1280px]">
@@ -30,7 +30,7 @@ export function ProblemsSection() {
             Sound familiar?
           </p>
           <h2 className="mb-4 text-[36px] leading-[1.15] font-medium tracking-tight text-[#1a1a19] sm:text-[44px]">
-            Every grower hits these walls.
+            Every new indoor grower hits these walls.
           </h2>
           <p className="text-[16px] leading-[1.65] text-[#52514e]">
             If any of these sound like you &mdash; Harvested was built exactly
@@ -44,7 +44,7 @@ export function ProblemsSection() {
             data-reveal
           >
             <h3 className="mb-6 text-[14px] font-medium tracking-[0.06em] text-[#52514e] uppercase">
-              &#10007; Growing cannabis without Harvested
+              &#10007; Growing indoors without Harvested
             </h3>
             <ul>
               {pains.map((pain) => (
@@ -72,7 +72,7 @@ export function ProblemsSection() {
             style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
           >
             <h3 className="mb-6 text-[14px] font-medium tracking-[0.06em] text-[#a8d878] uppercase">
-              &#10003; Growing cannabis with Harvested
+              &#10003; Growing indoors with Harvested
             </h3>
             <ul>
               {solutions.map((solution) => (
@@ -97,7 +97,7 @@ export function ProblemsSection() {
 
         <div className="mt-10 text-center" data-reveal>
           <Link
-            href="/course/basic-cannabis-cultivation"
+            href="/course/indoor-growing-for-beginners"
             className="inline-block w-full rounded-lg bg-[#1a3320] px-10 py-4 text-[17px] font-medium text-white transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#254a2e] sm:w-auto"
           >
             Enroll Now &mdash; $69

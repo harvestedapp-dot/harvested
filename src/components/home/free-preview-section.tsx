@@ -40,10 +40,10 @@ export function FreePreviewSection() {
               Watch the first two lessons free
             </h2>
             <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-              Not sure if a growing course is right for you? Start Basic
-              Cannabis Cultivation for free — no card, no commitment. See the
-              teaching style, the pace, and the production quality before you
-              spend a dollar.
+              Not sure if an indoor growing course is right for you? Start
+              Indoor Growing for Beginners for free — no card, no commitment.
+              See the teaching style, the pace, and the production quality
+              before you spend a dollar.
             </p>
 
             <ul className="mt-7 space-y-3">

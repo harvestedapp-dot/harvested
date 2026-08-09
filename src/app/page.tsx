@@ -12,19 +12,19 @@ import { FaqSection } from "@/components/home/faq-section";
 import { ContactSection } from "@/components/home/contact-section";
 
 const title =
-  "Learn Cannabis Cultivation Online | Seed to Harvest Course | Harvested";
+  "Learn Indoor Gardening Online | Seed to Harvest Course | Harvested";
 const description =
-  "Master cannabis growing with a step-by-step online course designed for beginners in the US. Learn germination, vegetative growth, flowering, harvesting, drying, and curing — all at your own pace.";
+  "Learn how to grow healthy plants indoors with a step-by-step online course for beginners. Seed starting, grow lights, watering, nutrients, pH and EC, plant health, flowering and harvest — all at your own pace.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords: [
-    "cannabis cultivation course",
-    "how to grow cannabis",
+    "indoor gardening course",
+    "how to grow plants indoors",
     "seed to harvest",
-    "cannabis growing for beginners",
-    "online cannabis course USA",
+    "indoor growing for beginners",
+    "online indoor horticulture course",
   ],
   openGraph: { title, description },
   twitter: { title, description },
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
 const courseJsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
-  name: "Cannabis Cultivation: Seed to Harvest",
+  name: "Indoor Growing for Beginners: Seed to Harvest",
   description,
-  url: "https://www.harvested.app/course/basic-cannabis-cultivation",
+  url: "https://www.harvested.app/course/indoor-growing-for-beginners",
   provider: {
     "@type": "Organization",
     name: "Harvested",
@@ -45,12 +45,13 @@ const courseJsonLd = {
   inLanguage: "en-US",
   educationalLevel: "Beginner",
   teaches: [
-    "Germination",
-    "Vegetative Growth",
-    "Flowering Stage",
-    "Harvest",
-    "Drying",
-    "Curing",
+    "Seed Starting and Germination",
+    "Indoor Grow Space Setup",
+    "Grow Lights and Environment",
+    "Watering and Plant Nutrition",
+    "pH and EC",
+    "Plant Health and Problem Diagnosis",
+    "Flowering, Fruiting and Harvest",
   ],
   offers: {
     "@type": "Offer",
@@ -75,7 +76,7 @@ export default function Home() {
       />
       <div aria-hidden className="fixed inset-0 -z-10">
         <img
-          src="https://images.unsplash.com/photo-1498671546682-94a232c26d17?w=1600&q=80"
+          src="https://images.unsplash.com/photo-1774291981971-ec2ec7a8cd0e?w=1600&q=80"
           alt=""
           fetchPriority="high"
           decoding="async"

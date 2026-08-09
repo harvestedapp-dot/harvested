@@ -23,7 +23,7 @@ export function TestimonialsSection() {
               Student Reviews
             </p>
             <h2 className="mx-auto max-w-2xl font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-balance text-foreground sm:text-[44px]">
-              Our first students are in the grow room right now
+              Our first students are growing right now
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
               The course has just launched, and honest reviews take a full
@@ -65,8 +65,8 @@ export function TestimonialsSection() {
       ? {
           "@context": "https://schema.org",
           "@type": "Course",
-          name: "Basic Cannabis Cultivation",
-          url: `${siteConfig.url}/course/basic-cannabis-cultivation`,
+          name: "Indoor Growing for Beginners",
+          url: `${siteConfig.url}/course/indoor-growing-for-beginners`,
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: (
@@ -114,7 +114,7 @@ export function TestimonialsSection() {
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Real feedback from real students &mdash; unedited, straight from
-            their first grows.
+            their first indoor grows.
           </p>
         </div>
 

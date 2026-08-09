@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Harvested — Learn Cannabis Cultivation from Seed to Harvest";
+  "Harvested — Learn Indoor Gardening from Seed to Harvest";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -53,7 +53,7 @@ export default function OpengraphImage() {
               maxWidth: 950,
             }}
           >
-            Learn Cannabis Cultivation from Seed to Harvest
+            Learn Indoor Gardening from Seed to Harvest
           </div>
           <div
             style={{
@@ -62,8 +62,8 @@ export default function OpengraphImage() {
               maxWidth: 850,
             }}
           >
-            A structured, science-based online course for beginners — 6
-            modules, lifetime access, $69 one-time.
+            A practical, step-by-step online course for beginners — 6 modules,
+            lifetime access, $69 one-time.
           </div>
         </div>
 

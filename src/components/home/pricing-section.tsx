@@ -3,7 +3,7 @@ import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { FreePreviewCta } from "@/components/free-preview-cta";
 
 const included = [
-  "6 structured modules, from germination to curing",
+  "6 structured modules, from seed to harvest",
   "32 on-demand video lessons you can rewatch anytime",
   "Downloadable guides and checklists for every stage",
   "Equipment recommendations for every budget",
@@ -26,14 +26,14 @@ export function PricingSection() {
                 Simple, honest pricing
               </p>
               <h2 className="mt-3 font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-balance sm:text-[44px]">
-                Everything you need to grow, for less than a single failed
-                harvest
+                Everything you need to grow, for less than a shelf of gear you
+                didn&rsquo;t need
               </h2>
               <p className="mt-4 max-w-xl text-lg text-white/80">
-                One mistake with lighting, watering, or timing can cost you an
-                entire crop and hundreds of dollars in wasted equipment and
-                seeds. Basic Cannabis Cultivation teaches you to get it right
-                the first time.
+                One mistake with lighting, watering, or feeding can cost you a
+                whole crop of plants and hundreds of dollars in equipment you
+                never needed. Indoor Growing for Beginners teaches you to get
+                it right the first time.
               </p>
 
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -54,7 +54,7 @@ export function PricingSection() {
 
             <div className="rounded-2xl bg-white p-9 text-foreground sm:p-10">
               <p className="text-[16px] font-medium text-muted-foreground">
-                Basic Cannabis Cultivation
+                Indoor Growing for Beginners
               </p>
               <p className="mt-2 flex flex-wrap items-baseline gap-x-2.5 font-heading">
                 <s className="text-[22px] font-normal text-muted-foreground/70">
@@ -71,7 +71,7 @@ export function PricingSection() {
                 No subscription. No hidden fees. Yours forever.
               </p>
               <Link
-                href="/course/basic-cannabis-cultivation"
+                href="/course/indoor-growing-for-beginners"
                 className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-8 py-4 text-[17px] font-medium text-white transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#254a2e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Let&apos;s Grow

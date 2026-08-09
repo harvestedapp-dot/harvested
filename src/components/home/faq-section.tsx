@@ -7,19 +7,24 @@ import {
 
 const faqs = [
   {
-    question: "Do I need any prior growing experience?",
+    question: "Is this course suitable for beginners?",
     answer:
-      "No. Basic Cannabis Cultivation is a cannabis growing course built for complete beginners — it walks you through every stage of the process step by step, from germination to curing.",
+      "Yes. Indoor Growing for Beginners is designed for people starting from zero — it walks you through every stage step by step, from choosing a spot in your home and germinating your first seed to flowering, fruiting and harvest.",
+  },
+  {
+    question: "What plants can I grow indoors?",
+    answer:
+      "The principles apply to many indoor crops, including herbs like basil, leafy greens and lettuce, tomatoes, peppers, strawberries, compact fruiting plants and indoor flowering plants. The course teaches the system, and you choose the plant that fits your space and light.",
   },
   {
     question: "Can I try the course before buying?",
     answer:
-      "Yes. The first two lessons of Basic Cannabis Cultivation are completely free. You can watch them start to finish before deciding whether to enroll — no payment details required.",
+      "Yes. The first two lessons of Indoor Growing for Beginners are completely free. You can watch them start to finish before deciding whether to enroll — no payment details required.",
   },
   {
     question: "How many free lessons are included?",
     answer:
-      "Two full lessons from Module 1 are free: the course welcome and a realistic look at what your first grow involves and costs. They're the same full-length lessons paying students get, not a trailer.",
+      "Two full lessons from Module 1 are free: the course welcome and a realistic look at the time, cost and effort your first indoor grow involves. They're the same full-length lessons paying students get, not a trailer.",
   },
   {
     question: "Do I need to create an account to watch the free lessons?",
@@ -37,14 +42,29 @@ const faqs = [
       "Nothing happens automatically — you'll never be charged without enrolling. If you enjoyed the lessons, you can unlock the remaining 30 lessons with a one-time $69 payment. If not, you simply walk away.",
   },
   {
-    question: "Is this course legal to take?",
+    question: "Do I need expensive equipment?",
     answer:
-      "Yes. Harvested provides educational content only. Cannabis laws vary by state and country, so it's your responsibility to understand and follow the regulations that apply to you.",
+      "No. The course explains what equipment is genuinely essential, what is optional, and what you can skip entirely — so you can start on a windowsill or a shelf and only upgrade when there's a reason to.",
+  },
+  {
+    question: "Do I need a grow tent?",
+    answer:
+      "Not always. A tent helps you control light, temperature and humidity, but plenty of plants grow well on a shelf, in a cabinet or on a bright windowsill. The course walks through the different indoor setups and their trade-offs.",
+  },
+  {
+    question: "Will I learn about lighting?",
+    answer:
+      "Yes. Lighting is one of the core topics: how to choose a grow light, how far to hang it, how many hours to run it, and how to recognize the signs of too much or too little light.",
+  },
+  {
+    question: "Does the course cover watering and nutrients?",
+    answer:
+      "Yes. You'll learn when and how much to water, how to avoid overwatering and underwatering, how plant nutrition works, when to start feeding, and the basics of pH and EC for water and nutrient solutions.",
   },
   {
     question: "How long do I have access to the course?",
     answer:
-      "Once enrolled, you have lifetime access to Basic Cannabis Cultivation, including any future updates we make to the content.",
+      "Once enrolled, you have lifetime access to Indoor Growing for Beginners, including any future updates we make to the content.",
   },
   {
     question: "What equipment do I need to get started?",
@@ -67,9 +87,14 @@ const faqs = [
       "The course includes roughly 8 hours of video lessons across 6 modules. Because it's fully self-paced, you can finish it in a focused weekend or spread it over several weeks alongside your first grow.",
   },
   {
-    question: "Does the course cover indoor and outdoor growing?",
+    question: "How much space do I need?",
     answer:
-      "Yes. The course covers the fundamentals that apply to both, then walks through the trade-offs of indoor and outdoor setups so you can choose the approach that fits your space, climate, and budget.",
+      "Less than most people expect. A single shelf, a corner of a room, a cabinet or a bright windowsill is enough for herbs, greens and compact plants. The course helps you pick the right spot in your home and match your plants to it.",
+  },
+  {
+    question: "Will I learn how to diagnose plant problems?",
+    answer:
+      "Yes. A full part of the course is dedicated to reading your plant's signals — leaf colour, spots, curling, drooping, slow growth — and tracing them back to light, water, nutrients, temperature, humidity or pests.",
   },
   {
     question: "How do I access the course after enrolling?",
@@ -79,7 +104,7 @@ const faqs = [
   {
     question: "Will more courses be added in the future?",
     answer:
-      "Yes. Basic Cannabis Cultivation is the first course in a growing library that will include Advanced Cultivation, Diagnostics, Genetics, Breeding, and Post Harvest Mastery.",
+      "Yes. Indoor Growing for Beginners is the first course in a growing library that will include Pests and Diseases, Plant Nutrition Basics, Seed Starting & Propagation, Hydroponics for Beginners, and Harvest and Storage.",
   },
 ];
 

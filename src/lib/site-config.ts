@@ -13,7 +13,7 @@ export const siteConfig = {
   name: "Harvested",
   url: "https://www.harvested.app",
   description:
-    "Master cannabis cultivation with a structured online course designed for beginners. Learn everything from germination and plant care to harvesting, drying and curing.",
+    "Learn indoor gardening with a structured online course designed for beginners. Grow healthy plants at home — from seed and germination to light, watering, nutrition and harvest.",
   contactEmail: "hello@harvested.app",
   nav: [
     { label: "Home", href: "/#top" },

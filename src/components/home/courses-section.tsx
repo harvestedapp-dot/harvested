@@ -11,17 +11,17 @@ import {
 import { courses } from "@/lib/courses";
 
 const courseImages: Record<string, { src: string; alt: string }> = {
-  "basic-cannabis-cultivation": {
-    src: "https://images.unsplash.com/photo-1598565296723-98537e27d824?auto=format&fit=crop&w=800&q=80",
-    alt: "Healthy young cannabis seedling growing in a clay pot at home — beginner indoor cannabis growing course from seed to harvest",
+  "indoor-growing-for-beginners": {
+    src: "https://images.unsplash.com/photo-1776604965126-86eed56418b9?auto=format&fit=crop&w=800&q=80",
+    alt: "Young tomato plants growing in pots on a sunny windowsill — beginner indoor gardening course from seed to harvest",
   },
-  "advanced-cannabis-cultivation": {
-    src: "https://images.unsplash.com/photo-1758930879074-1dcd817e6cf6?auto=format&fit=crop&w=800&q=80",
-    alt: "Cannabis bud overtaken by white webbing and mold — learn to spot and stop pests and diseases before they ruin your harvest",
+  "pests-and-diseases": {
+    src: "https://images.unsplash.com/photo-1671970798775-4d8bd1cb5198?auto=format&fit=crop&w=800&q=80",
+    alt: "Green leaves chewed and spotted by pests — learn to spot and stop indoor plant problems early",
   },
-  "cannabis-diagnostics": {
-    src: "https://images.unsplash.com/photo-1626083552642-07aa4eb867e7?auto=format&fit=crop&w=800&q=80",
-    alt: "Indoor cannabis plants in pots with drip irrigation feed lines delivering nutrients — cannabis nutrition and feeding basics course",
+  "plant-nutrition-basics": {
+    src: "https://images.unsplash.com/photo-1778035121136-ecaefa3cac8f?auto=format&fit=crop&w=800&q=80",
+    alt: "Potted plant beside nutrient bottles and a measuring label — plant nutrition, pH and EC basics course",
   },
 };
 
@@ -34,12 +34,11 @@ export function CoursesSection() {
             Course Library
           </p>
           <h2 className="font-heading text-[36px] leading-[1.15] font-semibold tracking-tight text-foreground sm:text-[44px]">
-            Cannabis Cultivation Courses
+            Indoor Gardening Courses
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Start growing your skills with our beginner course today. New
-            cannabis growing courses join the library as they&rsquo;re
-            released.
+            indoor growing courses join the library as they&rsquo;re released.
           </p>
         </div>
 

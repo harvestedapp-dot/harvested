@@ -47,9 +47,9 @@ export function ContactSection() {
             Get in Touch
           </h2>
           <p className="mt-4 text-lg text-white/65">
-            Questions about the cannabis cultivation course, enrollment, or
-            the platform? Send us a message and we&rsquo;ll get back to you
-            within one business day.
+            Questions about the indoor gardening course, enrollment, or the
+            platform? Send us a message and we&rsquo;ll get back to you within
+            one business day.
           </p>
         </div>
 

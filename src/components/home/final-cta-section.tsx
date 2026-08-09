@@ -11,13 +11,12 @@ export function FinalCtaSection() {
           Your first harvest starts with the right foundation
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-xl text-muted-foreground">
-          Stop piecing together conflicting forum advice. Learn cannabis
-          cultivation the structured way — one lesson at a time, at your own
-          pace.
+          Stop piecing together conflicting forum advice. Learn indoor growing
+          the structured way — one lesson at a time, at your own pace.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
-            href="/course/basic-cannabis-cultivation"
+            href="/course/indoor-growing-for-beginners"
             className="inline-flex items-center justify-center rounded-lg bg-primary px-9 py-4 text-[17px] font-medium text-white transition-colors hover:bg-[#254a2e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             Enroll Now — $69
