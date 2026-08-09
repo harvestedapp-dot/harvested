@@ -17,7 +17,7 @@ in full and can be restored at any time.
 ## Indoor gardening website
 
 - **Branch:** `indoor-gardening-version`
-- **Commit:** `INDOOR_COMMIT_HASH`
+- **Commit:** `1a9f093e7c88aaa8751eb6eaf0f516d64a38a50c`
 - **Status:** Indoor gardening / indoor horticulture version. Same design
   system, architecture and components; content, visuals, positioning, SEO and
   metadata rewritten for teaching beginners how to grow ordinary plants
