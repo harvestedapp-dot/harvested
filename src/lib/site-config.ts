@@ -11,7 +11,11 @@ export const FREE_PREVIEW_LESSON_COUNT = 2;
 
 export const siteConfig = {
   name: "Harvested",
-  url: "https://www.harvested.app",
+  /**
+   * Canonical origin, used for canonical tags, hreflang, Open Graph, JSON-LD
+   * and the sitemap. The apex is the primary address; www redirects to it.
+   */
+  url: "https://start-growing.com",
   description:
     "Learn indoor gardening with a structured online course designed for beginners. Grow healthy plants at home — from seed and germination to light, watering, nutrition and harvest.",
   contactEmail: "hello@harvested.app",

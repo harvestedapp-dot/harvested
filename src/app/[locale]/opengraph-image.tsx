@@ -104,7 +104,7 @@ export default async function OpengraphImage({
           <div>·</div>
           <div>{text.trust[2]}</div>
           <div>·</div>
-          <div>harvested.app</div>
+          <div>start-growing.com</div>
         </div>
       </div>
     ),
