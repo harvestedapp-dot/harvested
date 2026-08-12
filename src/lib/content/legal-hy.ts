@@ -38,6 +38,7 @@ export const legalHy: LegalDocuments = {
           "Հարկ վճարողի յաշուառման համար (ՀՎՀՀ)՝ 40311316",
           `Արձանագրուած հասցէ՝ ${POSTAL_ADDRESS_SHORT}`,
           "Ելեկտրոնային հասցէ՝ {email}",
+          "Հեռաձայն՝ {phone}",
         ],
       },
 
@@ -309,6 +310,7 @@ export const legalHy: LegalDocuments = {
         ],
         list: [
           `Ելեկտրոնային նամակով՝ {email}`,
+          `Հեռաձայնով՝ {phone}`,
           `Փոստով՝ ${POSTAL_ADDRESS}`,
         ],
       },
@@ -574,6 +576,7 @@ export const legalHy: LegalDocuments = {
         ],
         list: [
           `Ելեկտրոնային նամակով՝ {email}`,
+          `Հեռաձայնով՝ {phone}`,
           `Փոստով՝ ${POSTAL_ADDRESS}`,
         ],
       },

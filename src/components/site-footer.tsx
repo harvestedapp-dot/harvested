@@ -76,6 +76,14 @@ export function SiteFooter({
                     {siteConfig.contactEmail}
                   </a>
                 </li>
+                <li>
+                  <a
+                    href={`tel:${siteConfig.contactPhoneHref}`}
+                    className="whitespace-nowrap transition-colors hover:text-foreground"
+                  >
+                    {siteConfig.contactPhone}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

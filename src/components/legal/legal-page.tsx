@@ -7,7 +7,7 @@ import type { LegalDocument } from "@/lib/legal";
  * Text may contain `{name}` (the brand) and `{email}` (rendered as a mailto
  * link); bare http(s) URLs are turned into links as well.
  */
-const TOKEN = /\{email\}|https?:\/\/[^\s,)]+[^\s,.)]/g;
+const TOKEN = /\{email\}|\{phone\}|https?:\/\/[^\s,)]+[^\s,.)]/g;
 
 function withPlaceholders(text: string): ReactNode[] {
   const nodes: ReactNode[] = [];
@@ -27,6 +27,12 @@ function withPlaceholders(text: string): ReactNode[] {
       nodes.push(
         <a key={`l${start}`} href={`mailto:${siteConfig.contactEmail}`}>
           {siteConfig.contactEmail}
+        </a>
+      );
+    } else if (match[0] === "{phone}") {
+      nodes.push(
+        <a key={`l${start}`} href={`tel:${siteConfig.contactPhoneHref}`}>
+          {siteConfig.contactPhone}
         </a>
       );
     } else {

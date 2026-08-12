@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, Loader2, Mail } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -132,13 +132,22 @@ export function ContactSection({
                     copy.send
                   )}
                 </Button>
-                <a
-                  href={`mailto:${siteConfig.contactEmail}`}
-                  className="inline-flex items-center gap-2 text-[16px] font-medium text-[#3B6D11] hover:text-[#1a3320]"
-                >
-                  <Mail className="size-4.5" />
-                  {siteConfig.contactEmail}
-                </a>
+                <div className="flex flex-col gap-2.5 sm:items-end">
+                  <a
+                    href={`mailto:${siteConfig.contactEmail}`}
+                    className="inline-flex items-center gap-2 text-[16px] font-medium text-[#3B6D11] hover:text-[#1a3320]"
+                  >
+                    <Mail className="size-4.5" />
+                    {siteConfig.contactEmail}
+                  </a>
+                  <a
+                    href={`tel:${siteConfig.contactPhoneHref}`}
+                    className="inline-flex items-center gap-2 text-[16px] font-medium text-[#3B6D11] hover:text-[#1a3320]"
+                  >
+                    <Phone className="size-4.5" />
+                    {siteConfig.contactPhone}
+                  </a>
+                </div>
               </div>
             </form>
           )}

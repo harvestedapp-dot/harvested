@@ -19,6 +19,14 @@ export const siteConfig = {
   description:
     "Learn indoor gardening with a structured online course designed for beginners. Grow healthy plants at home — from seed and germination to light, watering, nutrition and harvest.",
   contactEmail: "harvested.app@gmail.com",
+  /**
+   * Shown as written; `contactPhoneHref` is the same number without spaces
+   * for `tel:` links. Card acquirers expect a reachable phone number on the
+   * site, so it appears in the footer, the contact section and the legal
+   * documents.
+   */
+  contactPhone: "+374 55 623 244",
+  contactPhoneHref: "+37455623244",
   nav: [
     { label: "Home", href: "/#top" },
     { label: "Courses", href: "/#courses" },

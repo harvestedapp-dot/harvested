@@ -65,6 +65,7 @@ export const legalEn: LegalDocuments = {
           "Taxpayer identification number (TIN/HVHH): 40311316",
           `Registered address: ${POSTAL_ADDRESS_SHORT}`,
           "Email: {email}",
+          "Phone: {phone}",
         ],
       },
 
@@ -330,7 +331,11 @@ export const legalEn: LegalDocuments = {
         paragraphs: [
           "If you have any questions about this Privacy Policy, or wish to exercise any of Your privacy rights, You can contact us:",
         ],
-        list: [`By email: {email}`, `By post: ${POSTAL_ADDRESS}`],
+        list: [
+          `By email: {email}`,
+          `By phone: {phone}`,
+          `By post: ${POSTAL_ADDRESS}`,
+        ],
       },
     ],
   },
@@ -592,7 +597,11 @@ export const legalEn: LegalDocuments = {
         paragraphs: [
           "If you have any questions about these Terms of Service, You can contact us:",
         ],
-        list: [`By email: {email}`, `By post: ${POSTAL_ADDRESS}`],
+        list: [
+          `By email: {email}`,
+          `By phone: {phone}`,
+          `By post: ${POSTAL_ADDRESS}`,
+        ],
       },
     ],
   },

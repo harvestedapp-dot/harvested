@@ -127,6 +127,7 @@ function organizationJsonLd(locale: Locale) {
     url: `${siteConfig.url}/${locale}`,
     description: dict.siteDescription,
     email: siteConfig.contactEmail,
+    telephone: siteConfig.contactPhone,
     inLanguage: localeTags[locale],
     knowsAbout:
       locale === "hy"
