@@ -18,7 +18,7 @@ export const siteConfig = {
   url: "https://start-growing.com",
   description:
     "Learn indoor gardening with a structured online course designed for beginners. Grow healthy plants at home — from seed and germination to light, watering, nutrition and harvest.",
-  contactEmail: "hello@harvested.app",
+  contactEmail: "harvested.app@gmail.com",
   nav: [
     { label: "Home", href: "/#top" },
     { label: "Courses", href: "/#courses" },

@@ -1,23 +1,57 @@
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import { siteConfig } from "@/lib/site-config";
 import type { LegalDocument } from "@/lib/legal";
 
 /**
  * Renders a legal document from data so both locales share one layout.
- * Paragraphs may contain `{name}` (the brand) and `{email}` (rendered as a
- * mailto link).
+ * Text may contain `{name}` (the brand) and `{email}` (rendered as a mailto
+ * link); bare http(s) URLs are turned into links as well.
  */
-function withPlaceholders(text: string) {
-  return text.split("{email}").map((chunk, index, chunks) => (
-    <Fragment key={index}>
-      {chunk.replaceAll("{name}", siteConfig.name)}
-      {index < chunks.length - 1 && (
-        <a href={`mailto:${siteConfig.contactEmail}`}>
+const TOKEN = /\{email\}|https?:\/\/[^\s,)]+[^\s,.)]/g;
+
+function withPlaceholders(text: string): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+
+  for (const match of text.matchAll(TOKEN)) {
+    const start = match.index;
+    if (start > cursor) {
+      nodes.push(
+        <Fragment key={`t${cursor}`}>
+          {text.slice(cursor, start).replaceAll("{name}", siteConfig.name)}
+        </Fragment>
+      );
+    }
+
+    if (match[0] === "{email}") {
+      nodes.push(
+        <a key={`l${start}`} href={`mailto:${siteConfig.contactEmail}`}>
           {siteConfig.contactEmail}
         </a>
-      )}
+      );
+    } else {
+      nodes.push(
+        <a
+          key={`l${start}`}
+          href={match[0]}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {match[0]}
+        </a>
+      );
+    }
+
+    cursor = start + match[0].length;
+  }
+
+  nodes.push(
+    <Fragment key={`t${cursor}`}>
+      {text.slice(cursor).replaceAll("{name}", siteConfig.name)}
     </Fragment>
-  ));
+  );
+
+  return nodes;
 }
 
 export function LegalPage({
@@ -36,9 +70,23 @@ export function LegalPage({
         {lastUpdatedLabel}: {document.lastUpdated}
       </p>
       <div className="legal-content mt-8">
-        {document.sections.map((section) => (
-          <section key={section.heading}>
-            <h2>{section.heading}</h2>
+        {document.sections.map((section, index) => (
+          <section
+            key={section.heading ?? `section-${index}`}
+            className={
+              !section.heading
+                ? "legal-cont"
+                : section.level === 3
+                  ? "legal-sub"
+                  : undefined
+            }
+          >
+            {section.heading &&
+              (section.level === 3 ? (
+                <h3>{section.heading}</h3>
+              ) : (
+                <h2>{section.heading}</h2>
+              ))}
             {section.paragraphs?.map((paragraph) => (
               <p key={paragraph}>{withPlaceholders(paragraph)}</p>
             ))}

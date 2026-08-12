@@ -50,6 +50,26 @@ version redirect into `/en`.
   equivalents in `next.config.ts`, so existing links and search results keep
   working.
 
+### Full legal documents (2026-08-12)
+
+The placeholder Privacy Policy and Terms of Service were replaced with the
+full drafted documents (source `.docx` files in `privacy/`), in both locales:
+
+- `src/lib/content/legal-en.ts` — Privacy Policy and Terms of Service in full,
+  naming the operating entity, the Armenian acquiring bank, Google Analytics,
+  GDPR legal bases, retention periods and Armenian governing law.
+- `src/lib/content/legal-hy.ts` — clause-by-clause Western Armenian
+  translation. Per the Terms' own "Translation" clause, the English text
+  prevails in a dispute.
+- `LegalSection` gained an optional `heading` (a headingless section continues
+  the one above it, for text that follows a bulleted list) and `level: 3` for
+  subheadings; `LegalPage` now also turns bare http(s) URLs into links.
+- The Refund Policy is unchanged and is still the document the Terms
+  incorporate by reference.
+
+Footer links to all three documents and the `/[locale]/…` routes already
+existed and were left as they were.
+
 ## How to restore the original version
 
 None of these steps are performed automatically — they are here so the

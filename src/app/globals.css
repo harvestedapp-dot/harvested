@@ -261,8 +261,22 @@
     display: none;
   }
 
+  /* Spacing lives on the section so headingless continuation blocks (a
+     paragraph that follows a list) sit closer than a new top-level section. */
+  .legal-content section + section {
+    @apply mt-10;
+  }
+  .legal-content section + section.legal-sub {
+    @apply mt-8;
+  }
+  .legal-content section + section.legal-cont {
+    @apply mt-4;
+  }
   .legal-content h2 {
-    @apply mt-10 font-heading text-xl font-semibold text-foreground first:mt-0;
+    @apply font-heading text-xl font-semibold text-foreground;
+  }
+  .legal-content h3 {
+    @apply font-heading text-lg font-semibold text-foreground;
   }
   .legal-content p {
     @apply mt-3 leading-relaxed text-muted-foreground;
