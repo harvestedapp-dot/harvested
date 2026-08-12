@@ -24,7 +24,9 @@ export function SiteFooter({
             </p>
           </div>
 
-          <div className="grid min-w-0 grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-10 lg:gap-14">
+          {/* The contact column sizes to its content so the email address,
+              which has no break opportunities, never splits mid-word. */}
+          <div className="grid min-w-0 grid-cols-2 gap-10 sm:grid-cols-[1fr_1fr_auto] sm:gap-10 lg:gap-14">
             <div className="space-y-4">
               <p className="font-heading text-[17px] font-semibold text-foreground">
                 {dict.footer.explore}
@@ -79,11 +81,16 @@ export function SiteFooter({
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2.5 border-t border-border pt-8 text-[14px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            &copy; {year} {siteConfig.name}. {dict.footer.rights}
+        <div className="mt-14 border-t border-border pt-8 text-[14px] text-muted-foreground">
+          <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              &copy; {year} {siteConfig.name}. {dict.footer.rights}
+            </p>
+            <p>{dict.footer.disclaimer}</p>
+          </div>
+          <p className="mt-5 text-[13px] leading-[1.6] text-muted-foreground/80">
+            {dict.footer.legalEntity}
           </p>
-          <p>{dict.footer.disclaimer}</p>
         </div>
       </div>
     </footer>

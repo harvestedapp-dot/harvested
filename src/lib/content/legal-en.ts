@@ -27,22 +27,44 @@ export interface LegalDocuments {
   refund: LegalDocument;
 }
 
-const POSTAL_ADDRESS =
-  "Individual Entrepreneur Ekaterina Lashko, 26A Khorenatsi Street, office 201, Kentron, 0010 Yerevan, Republic of Armenia";
+const POSTAL_ADDRESS_SHORT =
+  "26A Khorenatsi Street, office 201, Kentron, 0010 Yerevan, Republic of Armenia";
+
+const POSTAL_ADDRESS = `Individual Entrepreneur Ekaterina Lashko, ${POSTAL_ADDRESS_SHORT}`;
 
 const COMPANY_DEFINITION =
   "Company (referred to as either “the Company”, “We”, “Us” or “Our”) refers to Individual Entrepreneur Ekaterina Lashko, registered in the Republic of Armenia (state registration number 286.1471569, dated 5 August 2025; taxpayer identification number (TIN/HVHH) 40311316), registered address: 26A Khorenatsi Street, office 201, Kentron, 0010 Yerevan, Republic of Armenia, operating under the trade name “{name}”.";
 
 export const legalEn: LegalDocuments = {
   privacy: {
-    title: "Privacy Policy",
-    metaDescription: "How {name} collects, uses, and protects your information.",
+    /**
+     * Named for both documents an acquirer's checklist asks for: the two are
+     * one and the same text here, so there is no second policy to drift out
+     * of sync with this one.
+     */
+    title: "Privacy Policy and Personal Data Processing Policy",
+    metaDescription:
+      "How {name} collects, processes, and protects your personal data.",
     lastUpdated: "August 12, 2026",
     sections: [
       {
         paragraphs: [
-          "This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service, and tells You about Your privacy rights and how the law protects You.",
+          "This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service, and tells You about Your privacy rights and how the law protects You. It also serves as Our personal data processing policy: it sets out who processes Your Personal Data, on what grounds, for what purposes, and for how long.",
           "We use Your Personal Data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.",
+        ],
+      },
+
+      {
+        heading: "Data Controller",
+        paragraphs: [
+          "The controller responsible for processing Your Personal Data is:",
+        ],
+        list: [
+          "Individual Entrepreneur Ekaterina Lashko, operating under the trade name “{name}”",
+          "State registration number: 286.1471569, dated 5 August 2025",
+          "Taxpayer identification number (TIN/HVHH): 40311316",
+          `Registered address: ${POSTAL_ADDRESS_SHORT}`,
+          "Email: {email}",
         ],
       },
 

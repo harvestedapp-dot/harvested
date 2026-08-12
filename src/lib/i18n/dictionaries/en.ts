@@ -365,8 +365,15 @@ export const en = {
     rights: "All rights reserved.",
     disclaimer:
       "Educational content only. Growing results depend on your space, plants and care.",
+    /**
+     * Trading entity behind the site. Card acquirers require the merchant's
+     * registered details to be visible on the site itself, not only inside
+     * the legal documents.
+     */
+    legalEntity:
+      "Individual Entrepreneur Ekaterina Lashko · State registration number 286.1471569 · TIN (HVHH) 40311316 · 26A Khorenatsi Street, office 201, Kentron, 0010 Yerevan, Republic of Armenia",
     links: [
-      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Privacy & Personal Data Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms-of-service" },
       { label: "Refund Policy", href: "/refund-policy" },
     ],
