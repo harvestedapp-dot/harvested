@@ -13,7 +13,7 @@ export interface Course {
   title: string;
   shortDescription: string;
   status: CourseStatus;
-  /** One-time price in USD. Only set for available courses. */
+  /** One-time price in AMD. Only set for available courses. */
   price?: number;
   level?: string;
   duration?: string;

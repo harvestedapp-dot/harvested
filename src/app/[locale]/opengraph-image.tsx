@@ -1,5 +1,8 @@
 import { ImageResponse } from "next/og";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
+import { COURSE_PRICE_AMD, formatAmd } from "@/lib/pricing";
+
+const PRICE = formatAmd(COURSE_PRICE_AMD);
 
 export const alt = "Harvested — Indoor Gardening Course";
 export const size = { width: 1200, height: 630 };
@@ -12,12 +15,12 @@ export function generateStaticParams() {
 const copy: Record<Locale, { headline: string; sub: string; trust: string[] }> = {
   en: {
     headline: "Learn Indoor Gardening from Seed to Harvest",
-    sub: "A practical, step-by-step online course for beginners — 6 modules, lifetime access, $69 one-time.",
+    sub: `A practical, step-by-step online course for beginners — 6 modules, lifetime access, ${PRICE} one-time.`,
     trust: ["Beginner Friendly", "Self-Paced", "7-Day Guarantee"],
   },
   hy: {
     headline: "Սորվէ ներսի պարտիզպանութիւն՝ սերմէն մինչեւ բերք",
-    sub: "Գործնական, քայլ առ քայլ առցանց դասընթաց սկսնակներու համար — 6 բաժին, ցմահ մուտք, $69 մէկանգամեայ։",
+    sub: `Գործնական, քայլ առ քայլ առցանց դասընթաց սկսնակներու համար — 6 բաժին, ցմահ մուտք, ${PRICE} մէկանգամեայ։`,
     trust: ["Սկսնակներու համար", "Ինքնաշխատ", "7-օրեայ երաշխիք"],
   },
 };

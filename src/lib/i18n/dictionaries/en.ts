@@ -1,3 +1,16 @@
+import {
+  COURSE_LIST_PRICE_AMD,
+  COURSE_PRICE_AMD,
+  PARTNER_SAVINGS_AMD,
+  formatAmd,
+  formatAmdPlus,
+} from "@/lib/pricing";
+
+/** Every price in the copy below is rendered from `@/lib/pricing`. */
+const PRICE = formatAmd(COURSE_PRICE_AMD);
+const LIST_PRICE = formatAmd(COURSE_LIST_PRICE_AMD);
+const PARTNER_SAVINGS = formatAmdPlus(PARTNER_SAVINGS_AMD);
+
 /**
  * English UI copy. This object is the shape every other locale must match —
  * `Dictionary` is inferred from it, so a missing key in another locale is a
@@ -25,6 +38,7 @@ export const en = {
     learnMore: "Learn More",
     readGuide: "Read the guide",
     minRead: "min read",
+    paymentsAccepted: "Payments accepted",
   },
 
   siteDescription:
@@ -45,16 +59,15 @@ export const en = {
     ],
     /** Indexes of `headline` words painted in the accent gradient. */
     accentWords: [3, 7],
-    oldPrice: "$179",
-    price: "$69",
+    oldPrice: LIST_PRICE,
+    price: PRICE,
     discount: "–61%",
     terms: "One-time payment · Lifetime access · 7-day money-back",
-    perk:
-      "✦ Includes exclusive discounts on indoor growing gear — students save $200+ inside the course",
+    perk: `✦ Includes exclusive discounts on indoor growing gear — students save ${PARTNER_SAVINGS} inside the course`,
     freePreviewLink: "Not ready? Try 2 free lessons first",
     trustItems: ["Beginner Friendly", "Any Device", "6 Modules"],
     equationLeftTitle: "4 months of store-bought herbs",
-    equationLeftNote: "~$69 · gone every week",
+    equationLeftNote: `~${PRICE} · gone every week`,
     equationRightTitle: "this course",
     equationRightNote: "grow your own · season after season",
     equationSummary: {
@@ -117,7 +130,7 @@ export const en = {
       {
         title: "Enroll in minutes",
         description:
-          "One payment of $69 unlocks the full Indoor Growing for Beginners course — every module, every lesson, every guide. No subscription, no upsells.",
+          `One payment of ${PRICE} unlocks the full Indoor Growing for Beginners course — every module, every lesson, every guide. No subscription, no upsells.`,
       },
       {
         title: "Learn at your own pace",
@@ -148,7 +161,7 @@ export const en = {
     eyebrow: "Exclusive Partner Discounts",
     heading: "The course pays for itself.",
     body:
-      "Inside every module we've included exclusive discount codes from our equipment partners. Students save an average of $200+ on grow lights, nutrients, tents, meters, and more.",
+      `Inside every module we've included exclusive discount codes from our equipment partners. Students save an average of ${PARTNER_SAVINGS} on grow lights, nutrients, tents, meters, and more.`,
     statCaption: "average savings on indoor growing gear for Harvested students",
     note:
       "Partner discount codes are delivered inside the course modules — available immediately after enrollment.",
@@ -196,7 +209,7 @@ export const en = {
     eyebrow: "Try Before You Buy",
     heading: "Watch the first two lessons free",
     body:
-      "Not sure if an indoor growing course is right for you? Start Indoor Growing for Beginners for free — no card, no commitment. See the teaching style, the pace, and the production quality before you spend a dollar.",
+      "Not sure if an indoor growing course is right for you? Start Indoor Growing for Beginners for free — no card, no commitment. See the teaching style, the pace, and the production quality before you spend a dram.",
     benefits: [
       "Full-length lessons from the real course — not a trailer",
       "No payment details required, just a free account",
@@ -216,7 +229,7 @@ export const en = {
     heading:
       "Everything you need to grow, for less than a shelf of gear you didn't need",
     body:
-      "One mistake with lighting, watering, or feeding can cost you a whole crop of plants and hundreds of dollars in equipment you never needed. Indoor Growing for Beginners teaches you to get it right the first time.",
+      "One mistake with lighting, watering, or feeding can cost you a whole crop of plants and tens of thousands of drams in equipment you never needed. Indoor Growing for Beginners teaches you to get it right the first time.",
     included: [
       "6 structured modules, from seed to harvest",
       "32 on-demand video lessons you can rewatch anytime",
@@ -272,7 +285,7 @@ export const en = {
       {
         question: "What happens after I finish the free lessons?",
         answer:
-          "Nothing happens automatically — you'll never be charged without enrolling. If you enjoyed the lessons, you can unlock the remaining 30 lessons with a one-time $69 payment. If not, you simply walk away.",
+          `Nothing happens automatically — you'll never be charged without enrolling. If you enjoyed the lessons, you can unlock the remaining 30 lessons with a one-time ${PRICE} payment. If not, you simply walk away.`,
       },
       {
         question: "Do I need expensive equipment?",
@@ -305,9 +318,9 @@ export const en = {
           "None to begin learning. The course covers equipment options at every budget so you can decide what setup makes sense for you before you buy anything.",
       },
       {
-        question: "Is the $69 payment one-time or recurring?",
+        question: `Is the ${PRICE} payment one-time or recurring?`,
         answer:
-          "It's a single one-time payment of $69. There are no subscriptions or recurring charges for this course.",
+          `It's a single one-time payment of ${PRICE}. There are no subscriptions or recurring charges for this course.`,
       },
       {
         question: "What if the course isn't for me?",
@@ -356,6 +369,9 @@ export const en = {
     sentBody:
       "Thanks for reaching out. We'll reply to your email as soon as possible.",
     error: "Something went wrong. Please try again or email us directly.",
+    /** Trading address, shown next to the phone number and email. */
+    address:
+      "26A Khorenatsi Street, office 201, Kentron, 0010 Yerevan, Republic of Armenia",
   },
 
   footer: {
@@ -372,6 +388,15 @@ export const en = {
      */
     legalEntity:
       "Individual Entrepreneur Ekaterina Lashko · State registration number 286.1471569 · TIN (HVHH) 40311316 · 26A Khorenatsi Street, office 201, Kentron, 0010 Yerevan, Republic of Armenia",
+    /**
+     * The same trading address as `legalEntity`, split for the contact column
+     * so it is readable at body size rather than only in the fine print.
+     */
+    addressLines: [
+      "26A Khorenatsi Street, office 201",
+      "Kentron, 0010 Yerevan",
+      "Republic of Armenia",
+    ],
     links: [
       { label: "Privacy & Personal Data Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms-of-service" },
@@ -430,7 +455,7 @@ export const en = {
     ctaHeading: "Ready to go beyond free guides?",
     ctaBody:
       "Indoor Growing for Beginners covers the entire journey — 6 modules and 32 lessons from seed to harvest, in the right order.",
-    ctaButton: "Explore the Course — $69",
+    ctaButton: `Explore the Course — ${PRICE}`,
     allGuides: "All guides",
     articleCtaHeading: "Learn the whole process, in the right order",
     articleCtaBody:

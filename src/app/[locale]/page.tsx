@@ -11,6 +11,7 @@ import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { PricingSection } from "@/components/home/pricing-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { ContactSection } from "@/components/home/contact-section";
+import { COURSE_PRICE_AMD, PRICE_CURRENCY } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site-config";
 import { getDictionary, isLocale, localeTags, type Locale } from "@/lib/i18n";
 
@@ -92,8 +93,8 @@ export default async function Home({
     teaches: dict.hero.insideItems,
     offers: {
       "@type": "Offer",
-      price: 69,
-      priceCurrency: "USD",
+      price: COURSE_PRICE_AMD,
+      priceCurrency: PRICE_CURRENCY,
       category: "Paid",
       availability: "https://schema.org/InStock",
     },

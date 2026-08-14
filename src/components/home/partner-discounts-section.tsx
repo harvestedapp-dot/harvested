@@ -1,4 +1,5 @@
 import { CountUp } from "@/components/count-up";
+import { PARTNER_SAVINGS_AMD, PRICE_CURRENCY } from "@/lib/pricing";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
 const emojis = ["\u{1F4A1}", "\u{1F331}", "⛺"];
@@ -24,12 +25,17 @@ export function PartnerDiscountsSection({ dict }: { dict: Dictionary }) {
               {copy.body}
             </p>
             <p>
-              <CountUp
-                to={200}
-                prefix="$"
-                suffix="+"
-                className="block font-brand text-[88px] leading-none font-semibold text-[#a8d878] sm:text-[112px]"
-              />
+              <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <CountUp
+                  to={PARTNER_SAVINGS_AMD}
+                  groupThousands
+                  suffix="+"
+                  className="font-brand text-[64px] leading-none font-semibold text-[#a8d878] sm:text-[88px]"
+                />
+                <span className="font-brand text-[28px] leading-none font-semibold text-[#a8d878]/75 sm:text-[36px]">
+                  {PRICE_CURRENCY}
+                </span>
+              </span>
               <span className="mt-4 block max-w-[280px] text-[16px] leading-[1.5] text-white/50">
                 {copy.statCaption}
               </span>

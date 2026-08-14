@@ -70,6 +70,27 @@ full drafted documents (source `.docx` files in `privacy/`), in both locales:
 Footer links to all three documents and the `/[locale]/…` routes already
 existed and were left as they were.
 
+### Acquiring bank requirements (2026-08-14)
+
+Three changes requested by the acquiring bank before it reviews the merchant
+application:
+
+- **Prices in AMD.** `src/lib/pricing.ts` is now the single source of truth:
+  the course costs **25,000 AMD** (reference price 65,000 AMD), converted from
+  the previous $69 / $179 at ≈366 AMD per USD. Every price on the site reads
+  from that file — hero, pricing card, course page, structured data
+  (`priceCurrency: "AMD"`), the OG image and both dictionaries. Partner savings
+  are advertised as 70,000+ AMD, and the Terms now say prices are displayed and
+  charged in Armenian drams (liability cap restated as 35,000 AMD).
+- **Card scheme logos.** `src/components/payment-marks.tsx` renders the Visa,
+  Mastercard and ArCa marks as inline SVG (official artwork and colours) under
+  a "Payments accepted" caption, in the footer, on the pricing card and on the
+  course enrolment card.
+- **Address and phone in plain sight.** The trading address moved out of the
+  fine print: it now appears at body size in the footer contact column
+  (`footer.addressLines`) and in the contact section next to the phone number
+  and email (`contact.address`), in both locales.
+
 ## How to restore the original version
 
 None of these steps are performed automatically — they are here so the

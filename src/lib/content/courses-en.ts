@@ -1,3 +1,4 @@
+import { COURSE_PRICE_AMD } from "@/lib/pricing";
 import type { Course } from "@/lib/types";
 
 /** English course catalogue. Slugs are shared across locales. */
@@ -8,7 +9,7 @@ export const coursesEn: Course[] = [
     shortDescription:
       "A complete foundation in indoor gardening, from seed to harvest, built for absolute beginners.",
     status: "available",
-    price: 69,
+    price: COURSE_PRICE_AMD,
     level: "Beginner",
     duration: "6-8 hours of self-paced lessons",
     format: "On-demand video lessons and downloadable guides",

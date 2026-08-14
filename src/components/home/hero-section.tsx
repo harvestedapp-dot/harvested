@@ -236,7 +236,9 @@ export function HeroSection({
             <s className="font-brand text-2xl font-medium text-white/50 sm:text-3xl">
               {copy.oldPrice}
             </s>
-            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-brand text-[64px] leading-none font-bold tracking-tight text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:text-[72px]">
+            {/* The dram amount is a longer string than a dollar one, so it
+                stays on one line and steps down a size on narrow screens. */}
+            <span className="bg-gradient-to-b from-[#d3f2a6] to-[#93cc61] bg-clip-text font-brand text-[42px] leading-none font-bold tracking-tight whitespace-nowrap text-transparent drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:text-[56px] lg:text-[64px]">
               {copy.price}
             </span>
             <span
@@ -362,7 +364,7 @@ export function HeroSection({
                 className="pointer-events-none absolute -inset-x-2 -top-4 bottom-2 rounded-full bg-[radial-gradient(closest-side,rgba(168,216,120,0.15),transparent_72%)]"
               />
               <p
-                className="flex h-[120px] items-center font-brand text-[52px] leading-none font-bold tracking-tight drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:h-[150px] sm:text-[72px]"
+                className="flex h-[120px] items-center font-brand text-[32px] leading-none font-bold tracking-tight whitespace-nowrap drop-shadow-[0_0_24px_rgba(168,216,120,0.35)] sm:h-[150px] sm:text-[48px]"
                 style={{ color: ACCENT }}
               >
                 {copy.price}

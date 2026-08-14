@@ -23,6 +23,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { CountUp } from "@/components/count-up";
 import { FreePreviewCta } from "@/components/free-preview-cta";
+import { PaymentMarks } from "@/components/payment-marks";
+import { PRICE_CURRENCY, formatAmd } from "@/lib/pricing";
 import {
   FREE_PREVIEW_LESSON_COUNT,
   FREE_PREVIEW_URL,
@@ -172,7 +174,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
       ? {
           "@type": "Offer",
           price: course.price,
-          priceCurrency: "USD",
+          priceCurrency: PRICE_CURRENCY,
           category: "Paid",
           availability: "https://schema.org/InStock",
         }
@@ -587,8 +589,10 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
             style={{ "--enter-delay": "200ms" } as React.CSSProperties}
           >
             {course.price && (
-              <p className="text-4xl font-semibold text-foreground">
-                <span className="font-brand">${course.price}</span>
+              <p className="text-3xl font-semibold text-foreground">
+                <span className="font-brand whitespace-nowrap">
+                  {formatAmd(course.price)}
+                </span>
                 <span className="ml-1.5 font-sans text-base font-normal text-muted-foreground">
                   {copy.oneTime}
                 </span>
@@ -633,6 +637,10 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
                 </Link>
               </p>
             </div>
+            <PaymentMarks
+              label={dict.common.paymentsAccepted}
+              className="mt-6"
+            />
           </div>
         </aside>
       </div>

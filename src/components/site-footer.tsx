@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
+import { PaymentMarks } from "@/components/payment-marks";
 import { siteConfig } from "@/lib/site-config";
 import { localePath, type Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
@@ -84,12 +85,27 @@ export function SiteFooter({
                     {siteConfig.contactPhone}
                   </a>
                 </li>
+                {/* Card acquirers expect the trading address at readable body
+                    size, not only inside the fine print below. */}
+                <li>
+                  <address className="not-italic">
+                    {dict.footer.addressLines.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </address>
+                </li>
               </ul>
             </div>
           </div>
         </div>
 
         <div className="mt-14 border-t border-border pt-8 text-[14px] text-muted-foreground">
+          <PaymentMarks
+            label={dict.common.paymentsAccepted}
+            className="mb-8"
+          />
           <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
             <p>
               &copy; {year} {siteConfig.name}. {dict.footer.rights}

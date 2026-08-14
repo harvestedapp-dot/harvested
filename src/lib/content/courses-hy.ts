@@ -1,3 +1,4 @@
+import { COURSE_PRICE_AMD } from "@/lib/pricing";
 import type { Course } from "@/lib/types";
 
 /**
@@ -12,7 +13,7 @@ export const coursesHy: Course[] = [
     shortDescription:
       "Ներսի պարտիզպանութեան ամբողջական հիմք՝ սերմէն մինչեւ բերք, բոլորովին սկսնակներու համար։",
     status: "available",
-    price: 69,
+    price: COURSE_PRICE_AMD,
     level: "Սկսնակ",
     duration: "6-8 ժամ ինքնաշխատ դասեր",
     format: "Ըստ պահանջի տեսադասեր եւ ներբեռնելի ուղեցոյցներ",

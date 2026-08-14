@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { FreePreviewCta } from "@/components/free-preview-cta";
+import { PaymentMarks } from "@/components/payment-marks";
 import { getAvailableCourses } from "@/lib/courses";
 import { localePath, type Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
@@ -55,10 +56,10 @@ export function PricingSection({
               </p>
               <p className="mt-2 flex flex-wrap items-baseline gap-x-2.5">
                 <s className="font-brand text-[22px] font-normal text-muted-foreground/70">
-                  $179
+                  {dict.hero.oldPrice}
                 </s>
-                <span className="font-brand text-[48px] leading-none font-semibold">
-                  $69
+                <span className="font-brand text-[34px] leading-none font-semibold whitespace-nowrap sm:text-[40px]">
+                  {dict.hero.price}
                 </span>
                 <span className="text-[17px] font-normal text-muted-foreground">
                   {copy.oneTime}
@@ -97,6 +98,11 @@ export function PricingSection({
                   </Link>
                 </p>
               </div>
+              <PaymentMarks
+                label={dict.common.paymentsAccepted}
+                align="center"
+                className="mt-6"
+              />
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, Loader2, Mail, Phone } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -147,6 +147,10 @@ export function ContactSection({
                     <Phone className="size-4.5" />
                     {siteConfig.contactPhone}
                   </a>
+                  <address className="flex items-start gap-2 text-[15px] not-italic text-muted-foreground sm:max-w-xs sm:text-right">
+                    <MapPin className="mt-0.5 size-4.5 shrink-0 sm:order-2" />
+                    <span>{copy.address}</span>
+                  </address>
                 </div>
               </div>
             </form>
