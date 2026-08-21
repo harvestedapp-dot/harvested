@@ -12,9 +12,9 @@ const pageCopy = {
       "Free, practical indoor gardening guides from Harvested — seed starting, grow lights, watering, plant nutrition, pH and EC, and reading your plant's signals.",
   },
   hy: {
-    title: "Ներսի պարտիզպանութեան ուղեցոյցներ | Ձրի յօդուածներ",
+    title: "Տնային այգեգործության ուղեցույցներ | Անվճար հոդվածներ",
     description:
-      "Ձրի, գործնական ուղեցոյցներ Harvested-էն — սերմի ցանք, աճի լոյսեր, ջրում, բոյսի սնուցում, pH եւ EC, եւ բոյսիդ նշանները կարդալ։",
+      "Անվճար, գործնական ուղեցույցներ Harvested-ից — սերմի ցանք, աճեցման լամպեր, ջրում, բույսի սնուցում, pH և EC, և բույսիդ նշանները կարդալ։",
   },
 };
 

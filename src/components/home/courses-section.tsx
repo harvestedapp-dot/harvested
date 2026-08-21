@@ -21,21 +21,21 @@ const courseImages: Record<
     src: "https://images.unsplash.com/photo-1776604965126-86eed56418b9?auto=format&fit=crop&w=800&q=80",
     alt: {
       en: "Young tomato plants growing in pots on a sunny windowsill — beginner indoor gardening course from seed to harvest",
-      hy: "Երիտասարդ լոլիկի բոյսեր՝ ամաններու մէջ, արեւոտ պատուհանի եզրին — ներսի պարտիզպանութեան դասընթաց սկսնակներու համար",
+      hy: "Երիտասարդ լոլիկի բույսեր՝ ծաղկամաններում, արևոտ պատուհանագոգին — տնային այգեգործության դասընթաց սկսնակների համար",
     },
   },
   "pests-and-diseases": {
     src: "https://images.unsplash.com/photo-1671970798775-4d8bd1cb5198?auto=format&fit=crop&w=800&q=80",
     alt: {
       en: "Green leaves chewed and spotted by pests — learn to spot and stop indoor plant problems early",
-      hy: "Վնասատուներէ ծակծկուած եւ բծաւոր կանաչ տերեւներ — սորվէ՛ կանուխ ճանչնալ ներսի բոյսերու դժուարութիւնները",
+      hy: "Վնասատուներից ծակծկված և բծավոր կանաչ տերևներ — սովորի՛ր վաղ ճանաչել ներսի բույսերի դժվարությունները",
     },
   },
   "plant-nutrition-basics": {
     src: "https://images.unsplash.com/photo-1778035121136-ecaefa3cac8f?auto=format&fit=crop&w=800&q=80",
     alt: {
       en: "Potted plant beside nutrient bottles and a measuring label — plant nutrition, pH and EC basics course",
-      hy: "Ամանի մէջ բոյս՝ սնուցիչի շիշերու եւ չափիչ ցուցիչի կողքին — սնուցումի, pH-ի եւ EC-ի հիմունքներու դասընթաց",
+      hy: "Ծաղկամանում բույս՝ պարարտանյութի շշերի և չափիչ սարքի կողքին — սնուցման, pH-ի և EC-ի հիմունքների դասընթաց",
     },
   },
 };

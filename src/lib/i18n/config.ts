@@ -1,9 +1,11 @@
 /**
  * Locale configuration shared by routing, metadata and the language switcher.
  *
- * `hy` is Western Armenian in classical orthography (արեւմտահայերէն,
- * դասական ուղղագրութիւն) — not the Eastern standard, so translations use
- * -ութիւն endings, կը/կ՚ for the present tense and պիտի for the future.
+ * `hy` is Eastern Armenian in reformed orthography (արևելահայերեն,
+ * ռեֆորմացված ուղղագրություն) — the standard of the Republic of Armenia, which
+ * is what the acquiring bank and Armenian customers expect. Translations use
+ * -ություն endings, the և ligature, the -ում present tense and the կ- future
+ * prefix. Do not reintroduce Western forms (-ութիւն, կը/կ՚, պիտի).
  */
 export const locales = ["en", "hy"] as const;
 
@@ -18,7 +20,7 @@ export function isLocale(value: string): value is Locale {
 /** Language names shown in the switcher, each written in its own language. */
 export const localeNames: Record<Locale, string> = {
   en: "English",
-  hy: "Հայերէն",
+  hy: "Հայերեն",
 };
 
 /** Short labels for the compact switcher control. */

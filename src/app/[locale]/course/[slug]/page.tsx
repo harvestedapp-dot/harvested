@@ -65,21 +65,21 @@ const journeyImages = [
     src: "https://images.unsplash.com/photo-1779622520933-79b2926a97dd?auto=format&fit=crop&w=800&h=800&q=80",
     alt: {
       en: "Tiny seedlings sprouting from soil in a labelled seed tray — the first stage covered in the indoor growing course",
-      hy: "Փոքրիկ ծիլեր կը բուսնին հողէն՝ պիտակուած սերմի սկուտեղի մը մէջ — դասընթացին առաջին փուլը",
+      hy: "Փոքրիկ ծիլեր բուսնում են հողից՝ պիտակավորված սերմի սկուտեղում — դասընթացի առաջին փուլը",
     },
   },
   {
     src: "https://images.unsplash.com/photo-1783759935182-6317f3988b0f?auto=format&fit=crop&w=800&h=800&q=80",
     alt: {
       en: "Young plants growing indoors under a pink LED grow light",
-      hy: "Երիտասարդ բոյսեր կ՚աճին ներսը՝ վարդագոյն LED աճի լոյսի տակ",
+      hy: "Երիտասարդ բույսեր աճում են ներսում՝ վարդագույն LED աճեցման լամպի տակ",
     },
   },
   {
     src: "https://images.unsplash.com/photo-1635774855717-0aec182f92cc?auto=format&fit=crop&w=800&h=800&q=80",
     alt: {
       en: "Basket of freshly harvested homegrown vegetables and salad leaves",
-      hy: "Զամբիւղ մը՝ նոր հաւաքուած տնական բանջարեղէնով եւ կանաչեղէնով",
+      hy: "Զամբյուղ՝ նոր հավաքված տնական բանջարեղենով և կանաչիով",
     },
   },
 ];
@@ -101,7 +101,7 @@ export async function generateMetadata({
 
   const title =
     locale === "hy"
-      ? `${course.title} | Ներսի պարտիզպանութեան առցանց դասընթաց`
+      ? `${course.title} | Տնային այգեգործության առցանց դասընթաց`
       : `${course.title} | Online Indoor Gardening Course`;
   const description = course.heroDescription ?? course.shortDescription;
 
@@ -111,10 +111,10 @@ export async function generateMetadata({
     keywords:
       locale === "hy"
         ? [
-            "ներսի պարտիզպանութեան դասընթաց",
-            "ներսը բոյս աճեցնել",
-            "պարտիզպանութիւն սկսնակներու համար",
-            "սերմէն մինչեւ բերք",
+            "տնային այգեգործության դասընթաց",
+            "բույս աճեցնել տանը",
+            "այգեգործություն սկսնակների համար",
+            "սերմից մինչև բերք",
           ]
         : [
             "indoor gardening course",
@@ -272,7 +272,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
             src="https://images.unsplash.com/photo-1638777922445-b17e22c87e70?auto=format&fit=crop&w=1200&h=675&q=80"
             alt={
               locale === "hy"
-                ? "Երեք երիտասարդ խոտաբոյս՝ ամաններու մէջ, ափսէի վրայ, ներսի արեւի լոյսին տակ"
+                ? "Երեք երիտասարդ համեմունքային բույս՝ ծաղկամաններում, սկուտեղի վրա, ներսի արևի լույսի տակ"
                 : "Three young herb plants in pots on a tray, lit by sunlight indoors — beginner indoor gardening course from seed to harvest"
             }
             width={1200}

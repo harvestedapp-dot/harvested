@@ -26,8 +26,8 @@ in full and can be restored at any time.
 
 ### Bilingual EN / HY (2026-08-09)
 
-The indoor gardening site is now bilingual: English at `/en`, Western
-Armenian (classical orthography) at `/hy`. Routes live under
+The indoor gardening site is now bilingual: English at `/en`, Eastern
+Armenian (reformed orthography) at `/hy`. Routes live under
 `src/app/[locale]`, copy lives in `src/lib/i18n/dictionaries` and per-locale
 content files under `src/lib/content`. Prefix-less URLs from the earlier
 version redirect into `/en`.
@@ -58,7 +58,7 @@ full drafted documents (source `.docx` files in `privacy/`), in both locales:
 - `src/lib/content/legal-en.ts` — Privacy Policy and Terms of Service in full,
   naming the operating entity, the Armenian acquiring bank, Google Analytics,
   GDPR legal bases, retention periods and Armenian governing law.
-- `src/lib/content/legal-hy.ts` — clause-by-clause Western Armenian
+- `src/lib/content/legal-hy.ts` — clause-by-clause Eastern Armenian
   translation. Per the Terms' own "Translation" clause, the English text
   prevails in a dispute.
 - `LegalSection` gained an optional `heading` (a headingless section continues
@@ -132,3 +132,28 @@ git checkout original-site-before-indoor-gardening -- src/lib/courses.ts
 - Do not delete or move `backup/original-site-before-indoor-gardening`.
 - Do not delete or re-point the tag `original-site-before-indoor-gardening`.
 - Do not rewrite history or force-push either of them.
+
+### Armenian switched to the Eastern standard (2026-08-21)
+
+The acquiring bank rejected the application because the Armenian read as
+"completely wrong" to a reviewer in Yerevan: the site had been written in
+Western Armenian in classical orthography (the diaspora variety), while the
+Republic of Armenia's state standard is Eastern Armenian in reformed
+orthography. Every Armenian string was rewritten to the Eastern standard —
+`-ություն` endings, the `և` ligature, the `-ում` present tense and the `կ-`
+future prefix — across:
+
+- `src/lib/i18n/dictionaries/hy.ts` (all UI copy and the 20-item FAQ)
+- `src/lib/content/courses-hy.ts`, `articles-hy.ts`, `legal-hy.ts`
+- `src/lib/testimonials.ts` (the Armenian renderings only; the English
+  originals and the ratings are untouched)
+- Inline `hy` metadata, JSON-LD `knowsAbout`, keywords and image alt text in
+  `src/app/[locale]/**` and `src/components/home/courses-section.tsx`
+- `localeNames.hy` is now `Հայերեն`
+
+Register: informal `դու` in marketing copy, formal `Դուք` in the three legal
+documents, which is the convention in Armenian legal texts. Terminology was
+localised too, not just transliterated — `Հեռաձայն` → `Հեռախոս`,
+`Ելեկտրոնային` → `Էլեկտրոնային`, `Կեդրոն` → `Կենտրոն`, `դրամատուն` → `բանկ`,
+`ձրի` → `անվճար`, `պարտիզպանութիւն` → `այգեգործություն`. Document titles now
+use the RA-standard `քաղաքականություն` rather than `կանոններ`.
