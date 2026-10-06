@@ -15,6 +15,13 @@ for (const locale of ["en", "hy"]) {
       assert.match(html, new RegExp(`<html[^>]+lang="${locale === "en" ? "en-US" : "hy"}"`));
       assert.match(html, /<h1/);
       assert.doesNotMatch(html, /<a[^>]+href="#"[^>]*data-free-preview/);
+      assert.ok(html.includes("21"));
+      assert.ok(html.includes('data-payment-status="not-connected"'));
+      assert.doesNotMatch(html, /aria-label="(?:Visa|Mastercard|ArCa)"/);
+      if (path === "/privacy-policy" || path === "/terms-of-service") {
+        assert.doesNotMatch(html, /3-D Secure|virtual POS|վիրտուալ POS/);
+        assert.doesNotMatch(html, /under 18|age of 18|18 years old|18 տարեկան|18 տարեկանից/);
+      }
     });
   }
 

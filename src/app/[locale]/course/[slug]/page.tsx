@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getCurrentPolicy } from "@/lib/current-policy";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -105,6 +106,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
 
   const dict = getDictionary(locale);
   const copy = dict.coursePage;
+  const policy = getCurrentPolicy(locale);
 
   const enrollHref = `mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent(
     `Enroll in ${course.title}`
@@ -495,13 +497,14 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
                 </span>
               </p>
             )}
+            <p className="mt-4 text-sm font-medium text-foreground">{policy.age}</p>
             <Button
               size="lg"
               className="mt-5 w-full text-base transition duration-200 ease-out motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.99]"
               nativeButton={false}
               render={<a href={enrollHref} />}
             >
-              {dict.common.letsGrow}
+              {policy.inquiry}
             </Button>
             <FreePreviewCta unavailableLabel={dict.common.freePreviewUnavailable}
               variant="outline"

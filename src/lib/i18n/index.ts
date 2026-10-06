@@ -2,6 +2,8 @@ import { en, type Dictionary } from "@/lib/i18n/dictionaries/en";
 import { hy } from "@/lib/i18n/dictionaries/hy";
 import type { Locale } from "@/lib/i18n/config";
 
+import { applyMarketingPolicy } from "@/lib/current-policy";
+
 const dictionaries: Record<Locale, Dictionary> = { en, hy };
 
 /**
@@ -10,7 +12,7 @@ const dictionaries: Record<Locale, Dictionary> = { en, hy };
  * read copy without awaiting.
  */
 export function getDictionary(locale: Locale): Dictionary {
-  return dictionaries[locale];
+  return applyMarketingPolicy(dictionaries[locale], locale);
 }
 
 export type { Dictionary };

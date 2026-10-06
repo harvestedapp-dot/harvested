@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getCurrentPolicy } from "@/lib/current-policy";
 import { Logo } from "@/components/logo";
 import { PaymentMarks } from "@/components/payment-marks";
 import { siteConfig } from "@/lib/site-config";
@@ -102,6 +103,7 @@ export function SiteFooter({
         </div>
 
         <div className="mt-14 border-t border-border pt-8 text-[14px] text-muted-foreground">
+          <p className="mb-4 font-medium text-foreground">{getCurrentPolicy(locale).age}</p>
           <PaymentMarks
             label={dict.common.paymentsAccepted}
             className="mb-8"
