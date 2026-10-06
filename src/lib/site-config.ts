@@ -1,10 +1,9 @@
 /**
- * Thinkific Free Preview link. When the LMS is connected, replace "#" with
- * the real Thinkific Free Preview URL — every free-preview CTA on the site
- * reads this single value through <FreePreviewCta />, so no page needs to
- * change.
+ * Verified course-platform free-preview URL. Leave null until the actual
+ * destination is supplied. A placeholder must not render as a working link.
+ * All preview CTAs share this value, independently of the platform vendor.
  */
-export const FREE_PREVIEW_URL = "#";
+export const FREE_PREVIEW_URL: string | null = null;
 
 /** Number of lessons included in the free preview, used in CTA copy. */
 export const FREE_PREVIEW_LESSON_COUNT = 2;
@@ -17,7 +16,7 @@ export const siteConfig = {
    */
   url: "https://start-growing.com",
   description:
-    "Learn indoor gardening with a structured online course designed for beginners. Grow healthy plants at home — from seed and germination to light, watering, nutrition and harvest.",
+    "Basic Cannabis Cultivation: an introductory online course with six modules, English-language video lessons and supporting learning materials.",
   contactEmail: "harvested.app@gmail.com",
   /**
    * Shown as written; `contactPhoneHref` is the same number without spaces

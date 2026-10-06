@@ -117,7 +117,7 @@ export default async function LearnIndexPage({
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-white/80">{copy.ctaBody}</p>
         <Link
-          href={localePath(locale, "/course/indoor-growing-for-beginners")}
+          href={localePath(locale, "/course/basic-cannabis-cultivation")}
           className="mt-6 inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-[15px] font-medium text-primary transition-colors hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           {copy.ctaButton}

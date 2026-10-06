@@ -59,7 +59,7 @@ export function FreePreviewSection({
             </ul>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <FreePreviewCta
+              <FreePreviewCta unavailableLabel={dict.common.freePreviewUnavailable}
                 variant="solid"
                 label={dict.common.freeLessonsCta}
               />
@@ -83,6 +83,9 @@ export function FreePreviewSection({
               <p className="text-[13px] font-medium tracking-[0.06em] text-muted-foreground uppercase">
                 {copy.moduleLabel} &middot; {course?.title}
               </p>
+              {previewLessons.length === 0 && (
+                <p className="mt-5 text-[16px] text-muted-foreground">{dict.common.freePreviewUnavailable}</p>
+              )}
               <ul className="mt-5 space-y-2.5">
                 {previewLessons.map((lesson, index) => (
                   <li
@@ -124,9 +127,11 @@ export function FreePreviewSection({
                   </li>
                 )}
               </ul>
-              <p className="mt-5 border-t border-border pt-4 text-[13px] text-muted-foreground">
-                {copy.totalLessons(totalLessons)}
-              </p>
+              {totalLessons > 0 && (
+                <p className="mt-5 border-t border-border pt-4 text-[13px] text-muted-foreground">
+                  {copy.totalLessons(totalLessons)}
+                </p>
+              )}
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Lock, Play } from "lucide-react";
+import { ArrowRight, BookOpen, Lock, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getCourses } from "@/lib/courses";
+import { getAvailableCourses } from "@/lib/courses";
 import { localePath, type Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
@@ -17,13 +17,6 @@ const courseImages: Record<
   string,
   { src: string; alt: Record<Locale, string> }
 > = {
-  "indoor-growing-for-beginners": {
-    src: "https://images.unsplash.com/photo-1776604965126-86eed56418b9?auto=format&fit=crop&w=800&q=80",
-    alt: {
-      en: "Young tomato plants growing in pots on a sunny windowsill — beginner indoor gardening course from seed to harvest",
-      hy: "Երիտասարդ լոլիկի բույսեր՝ ծաղկամաններում, արևոտ պատուհանագոգին — տնային այգեգործության դասընթաց սկսնակների համար",
-    },
-  },
   "pests-and-diseases": {
     src: "https://images.unsplash.com/photo-1671970798775-4d8bd1cb5198?auto=format&fit=crop&w=800&q=80",
     alt: {
@@ -47,7 +40,7 @@ export function CoursesSection({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const courses = getCourses(locale);
+  const courses = getAvailableCourses(locale);
   const copy = dict.coursesSection;
 
   return (
@@ -63,7 +56,7 @@ export function CoursesSection({
           <p className="mt-4 text-lg text-muted-foreground">{copy.subheading}</p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-2xl gap-6">
           {courses.slice(0, 3).map((course, index) => {
             const isAvailable = course.status === "available";
             const image = courseImages[course.slug];
@@ -76,6 +69,11 @@ export function CoursesSection({
                     : "h-full pt-0 opacity-70"
                 }
               >
+                {!image && (
+                  <div className="flex h-40 items-center justify-center rounded-t-xl bg-secondary">
+                    <BookOpen className="size-12 text-primary" aria-hidden />
+                  </div>
+                )}
                 {image && (
                   <div className="relative overflow-hidden rounded-t-xl">
                     <img

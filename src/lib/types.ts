@@ -17,6 +17,10 @@ export interface Course {
   price?: number;
   level?: string;
   duration?: string;
+  /** Verified module count, independent of an unpublished detailed curriculum. */
+  moduleCount?: number;
+  /** Actual teaching language, distinct from the marketing-page locale. */
+  instructionLanguage?: string;
   format?: string;
   heroDescription?: string;
   /** Overview paragraphs shown under the title on the detail page. */

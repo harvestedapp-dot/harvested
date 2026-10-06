@@ -21,9 +21,9 @@ import {
   Video,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CountUp } from "@/components/count-up";
 import { FreePreviewCta } from "@/components/free-preview-cta";
 import { PaymentMarks } from "@/components/payment-marks";
+import { PurchasePolicyLinks } from "@/components/purchase-policy-links";
 import { PRICE_CURRENCY, formatAmd } from "@/lib/pricing";
 import {
   FREE_PREVIEW_LESSON_COUNT,
@@ -42,7 +42,6 @@ import {
   isLocale,
   localePath,
   locales,
-  localeTags,
 } from "@/lib/i18n";
 
 /** Icons for the "What's Included" cards, matched to the data order. */
@@ -56,32 +55,6 @@ const includedIcons = [
   Lightbulb,
   InfinityIcon,
   RefreshCw,
-];
-
-/** Photo strip: the indoor grow journey at a glance. Labels come from the
- *  dictionary so they follow the visitor's locale. */
-const journeyImages = [
-  {
-    src: "https://images.unsplash.com/photo-1779622520933-79b2926a97dd?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: {
-      en: "Tiny seedlings sprouting from soil in a labelled seed tray — the first stage covered in the indoor growing course",
-      hy: "Փոքրիկ ծիլեր բուսնում են հողից՝ պիտակավորված սերմի սկուտեղում — դասընթացի առաջին փուլը",
-    },
-  },
-  {
-    src: "https://images.unsplash.com/photo-1783759935182-6317f3988b0f?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: {
-      en: "Young plants growing indoors under a pink LED grow light",
-      hy: "Երիտասարդ բույսեր աճում են ներսում՝ վարդագույն LED աճեցման լամպի տակ",
-    },
-  },
-  {
-    src: "https://images.unsplash.com/photo-1635774855717-0aec182f92cc?auto=format&fit=crop&w=800&h=800&q=80",
-    alt: {
-      en: "Basket of freshly harvested homegrown vegetables and salad leaves",
-      hy: "Զամբյուղ՝ նոր հավաքված տնական բանջարեղենով և կանաչիով",
-    },
-  },
 ];
 
 export function generateStaticParams() {
@@ -101,28 +74,14 @@ export async function generateMetadata({
 
   const title =
     locale === "hy"
-      ? `${course.title} | Տնային այգեգործության առցանց դասընթաց`
-      : `${course.title} | Online Indoor Gardening Course`;
+      ? `${course.title} | Առցանց դասընթաց`
+      : `${course.title} | Online Course`;
   const description = course.heroDescription ?? course.shortDescription;
 
   return {
     title,
     description,
-    keywords:
-      locale === "hy"
-        ? [
-            "տնային այգեգործության դասընթաց",
-            "բույս աճեցնել տանը",
-            "այգեգործություն սկսնակների համար",
-            "սերմից մինչև բերք",
-          ]
-        : [
-            "indoor gardening course",
-            "indoor growing for beginners",
-            "how to grow plants indoors",
-            "indoor horticulture education",
-            "seed to harvest",
-          ],
+    keywords: [course.title, locale === "hy" ? "առցանց դասընթաց" : "online course"],
     alternates: {
       canonical: `/${locale}/course/${course.slug}`,
       languages: {
@@ -157,7 +116,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
     name: course.title,
     description: course.heroDescription ?? course.shortDescription,
     url: `${siteConfig.url}/${locale}/course/${course.slug}`,
-    inLanguage: localeTags[locale],
+    inLanguage: course.instructionLanguage ?? "en",
     educationalLevel: course.level,
     teaches: course.curriculum?.map((unit) => unit.title),
     provider: {
@@ -168,7 +127,6 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "Online",
-      courseWorkload: "PT8H",
     },
     offers: course.price
       ? {
@@ -268,56 +226,21 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
             )}
           </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1638777922445-b17e22c87e70?auto=format&fit=crop&w=1200&h=675&q=80"
-            alt={
-              locale === "hy"
-                ? "Երեք երիտասարդ համեմունքային բույս՝ ծաղկամաններում, սկուտեղի վրա, ներսի արևի լույսի տակ"
-                : "Three young herb plants in pots on a tray, lit by sunlight indoors — beginner indoor gardening course from seed to harvest"
-            }
-            width={1200}
-            height={675}
-            className="hero-enter mt-8 aspect-[16/9] w-full rounded-2xl border border-border object-cover shadow-sm"
-            style={{ "--enter-delay": "240ms" } as React.CSSProperties}
-          />
-
-          <div
-            className="hero-enter mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4"
-            style={{ "--enter-delay": "320ms" } as React.CSSProperties}
-          >
-            {[
-              { value: course.curriculum?.length ?? 0, label: copy.stats.modules },
-              {
-                value:
-                  course.curriculum?.reduce(
-                    (total, unit) => total + unit.lessons.length,
-                    0
-                  ) ?? 0,
-                label: copy.stats.lessons,
-              },
-              {
-                value: course.bonusResources?.length ?? 0,
-                label: copy.stats.bonus,
-              },
-              { value: "∞", label: copy.stats.lifetime },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-xl border border-border bg-card px-4 py-4 text-center"
-              >
-                <p className="font-brand text-[32px] leading-none font-semibold text-primary">
-                  {typeof stat.value === "number" ? (
-                    <CountUp to={stat.value} />
-                  ) : (
-                    stat.value
-                  )}
-                </p>
-                <p className="mt-1.5 text-[13px] text-muted-foreground">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          <div className="hero-enter mt-8 flex aspect-[16/9] flex-col items-center justify-center gap-4 rounded-2xl border border-primary/20 bg-secondary p-8 text-center" style={{ "--enter-delay": "240ms" } as React.CSSProperties}>
+            <BookOpen className="size-12 text-primary" aria-hidden />
+            <p className="font-heading text-2xl font-semibold text-foreground">{course.title}</p>
+            <p className="max-w-md text-muted-foreground">{course.format}</p>
           </div>
+          <dl className="mt-6 grid grid-cols-2 gap-3">
+            <div className="rounded-xl border border-border bg-card p-4 text-center">
+              <dt className="text-sm text-muted-foreground">{copy.stats.modules}</dt>
+              <dd className="mt-1 font-brand text-3xl text-primary">{course.moduleCount}</dd>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-4 text-center">
+              <dt className="text-sm text-muted-foreground">{locale === "hy" ? "Ուսուցման լեզու" : "Teaching language"}</dt>
+              <dd className="mt-2 text-lg font-semibold text-primary">{locale === "hy" ? "Անգլերեն" : "English"}</dd>
+            </div>
+          </dl>
 
           {course.outcomes && course.outcomes.length > 0 && (
             <section className="mt-12" data-reveal>
@@ -343,32 +266,6 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
               </ul>
             </section>
           )}
-
-          <div className="mt-12 grid grid-cols-3 gap-3">
-            {journeyImages.map((image, index) => (
-              <figure
-                key={image.src}
-                data-reveal
-                style={
-                  { "--reveal-delay": `${index * 90}ms` } as React.CSSProperties
-                }
-              >
-                <span className="block overflow-hidden rounded-xl border border-border">
-                  <img
-                    src={image.src}
-                    alt={image.alt[locale]}
-                    width={800}
-                    height={800}
-                    loading="lazy"
-                    className="aspect-square w-full object-cover transition duration-300 ease-out motion-safe:hover:scale-[1.04]"
-                  />
-                </span>
-                <figcaption className="mt-2 text-center text-[13px] font-medium text-muted-foreground">
-                  {copy.journeyLabels[index]}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
 
           {course.included && course.included.length > 0 && (
             <section className="mt-12">
@@ -456,7 +353,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
                               <span className="w-5 shrink-0 text-right tabular-nums">
                                 {lessonIndex + 1}.
                               </span>
-                              {isFreePreview ? (
+                              {isFreePreview && FREE_PREVIEW_URL && FREE_PREVIEW_URL !== "#" ? (
                                 <a
                                   href={FREE_PREVIEW_URL}
                                   data-free-preview
@@ -504,7 +401,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
             <p className="mx-auto mt-2 max-w-md text-[16px] text-muted-foreground">
               {copy.stillNotSureBody(FREE_PREVIEW_LESSON_COUNT)}
             </p>
-            <FreePreviewCta
+            <FreePreviewCta unavailableLabel={dict.common.freePreviewUnavailable}
               variant="solid"
               label={copy.startFreeLessons}
               className="mt-6"
@@ -606,7 +503,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
             >
               {dict.common.letsGrow}
             </Button>
-            <FreePreviewCta
+            <FreePreviewCta unavailableLabel={dict.common.freePreviewUnavailable}
               variant="outline"
               label={dict.common.freeLessonsCta}
               className="mt-3 w-full py-3 text-[15px]"
@@ -641,6 +538,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
               label={dict.common.paymentsAccepted}
               className="mt-6"
             />
+            <PurchasePolicyLinks locale={locale} dict={dict} />
           </div>
         </aside>
       </div>

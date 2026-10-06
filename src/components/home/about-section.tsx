@@ -28,7 +28,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
           style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         >
           <CountUp
-            to={32}
+            to={6}
             className="block text-[72px] leading-none font-bold text-[#a8d878] sm:text-[96px]"
           />
           <span className="mt-4 block text-[18px] text-white/50">

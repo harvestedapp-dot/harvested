@@ -55,31 +55,12 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
 
   const dict = getDictionary(locale);
-  const title =
-    locale === "hy"
-      ? `${siteConfig.name} | Տնային այգեգործության դասընթաց սկսնակների համար`
-      : `${siteConfig.name} | Indoor Gardening Course for Beginners`;
-
-  const keywords =
-    locale === "hy"
-      ? [
-          "տնային այգեգործություն",
-          "բույս աճեցնել տանը",
-          "այգեգործության դասընթաց",
-          "բույսերի խնամք",
-          "սերմից մինչև բերք",
-          "աճեցման լամպ",
-          "հայերեն առցանց դասընթաց",
-        ]
-      : [
-          "indoor gardening course",
-          "indoor growing for beginners",
-          "how to grow plants indoors",
-          "indoor horticulture education",
-          "growing plants from seed",
-          "indoor garden setup",
-          "seed to harvest",
-        ];
+  const title = locale === "hy"
+    ? `${siteConfig.name} | Կանեփի աճեցման հիմունքներ`
+    : `${siteConfig.name} | Basic Cannabis Cultivation`;
+  const keywords = locale === "hy"
+    ? ["Կանեփի աճեցման հիմունքներ", "առցանց դասընթաց", "անգլերեն ուսուցում"]
+    : ["Basic Cannabis Cultivation", "cannabis education", "online course"];
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -129,29 +110,7 @@ function organizationJsonLd(locale: Locale) {
     email: siteConfig.contactEmail,
     telephone: siteConfig.contactPhone,
     inLanguage: localeTags[locale],
-    knowsAbout:
-      locale === "hy"
-        ? [
-            "Տնային այգեգործություն",
-            "Տանը բույս աճեցնել սկսնակների համար",
-            "Սերմի ցանք և ծլում",
-            "Աճեցման լամպեր և ներսի լուսավորություն",
-            "Ջրում և բույսի սնուցում",
-            "pH-ի և EC-ի չափում",
-            "Ջերմաստիճան, խոնավություն և օդափոխություն",
-            "Ծաղկում, պտղաբերում և բերքահավաք",
-          ]
-        : [
-            "Indoor gardening",
-            "Indoor horticulture",
-            "Growing plants indoors for beginners",
-            "Seed starting and germination",
-            "Grow lights and indoor lighting",
-            "Watering and plant nutrition",
-            "pH and EC measurement",
-            "Temperature, humidity and airflow",
-            "Flowering, fruiting and harvest",
-          ],
+    knowsAbout: locale === "hy" ? ["Կանեփի մասին կրթություն"] : ["Cannabis education"],
   };
 }
 

@@ -4,7 +4,7 @@ import { COURSE_PRICE_AMD, formatAmd } from "@/lib/pricing";
 
 const PRICE = formatAmd(COURSE_PRICE_AMD);
 
-export const alt = "Harvested — Indoor Gardening Course";
+export const alt = "Harvested — Basic Cannabis Cultivation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,13 +14,13 @@ export function generateStaticParams() {
 
 const copy: Record<Locale, { headline: string; sub: string; trust: string[] }> = {
   en: {
-    headline: "Learn Indoor Gardening from Seed to Harvest",
-    sub: `A practical, step-by-step online course for beginners — 6 modules, lifetime access, ${PRICE} one-time.`,
+    headline: "Basic Cannabis Cultivation",
+    sub: `An introductory online course taught in English — 6 modules, ${PRICE} one-time.`,
     trust: ["Beginner Friendly", "Self-Paced", "7-Day Guarantee"],
   },
   hy: {
-    headline: "Սովորի՛ր տնային այգեգործություն՝ սերմից մինչև բերք",
-    sub: `Գործնական, քայլ առ քայլ առցանց դասընթաց սկսնակների համար — 6 բաժին, ցմահ հասանելիություն, ${PRICE} միանվագ։`,
+    headline: "Կանեփի աճեցման հիմունքներ",
+    sub: `Ներածական առցանց դասընթաց՝ անգլերեն ուսուցմամբ — 6 բաժին, ${PRICE} միանվագ։`,
     trust: ["Սկսնակների համար", "Ինքնուրույն տեմպով", "7-օրյա երաշխիք"],
   },
 };

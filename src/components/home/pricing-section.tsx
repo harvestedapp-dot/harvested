@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { FreePreviewCta } from "@/components/free-preview-cta";
 import { PaymentMarks } from "@/components/payment-marks";
+import { PurchasePolicyLinks } from "@/components/purchase-policy-links";
 import { getAvailableCourses } from "@/lib/courses";
 import { localePath, type Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
@@ -71,14 +72,14 @@ export function PricingSection({
               <Link
                 href={localePath(
                   locale,
-                  "/course/indoor-growing-for-beginners"
+                  "/course/basic-cannabis-cultivation"
                 )}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-8 py-4 text-[17px] font-medium text-white transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#254a2e] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {dict.common.letsGrow}
               </Link>
               <p className="mt-3.5 text-center">
-                <FreePreviewCta variant="link" label={copy.tryFirst} />
+                <FreePreviewCta unavailableLabel={dict.common.freePreviewUnavailable} variant="link" label={copy.tryFirst} />
               </p>
               <div className="mt-6 flex items-start gap-2.5 rounded-lg bg-secondary p-4.5">
                 <ShieldCheck
@@ -103,6 +104,7 @@ export function PricingSection({
                 align="center"
                 className="mt-6"
               />
+              <PurchasePolicyLinks locale={locale} dict={dict} />
             </div>
           </div>
         </div>

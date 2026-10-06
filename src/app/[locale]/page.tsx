@@ -13,33 +13,18 @@ import { FaqSection } from "@/components/home/faq-section";
 import { ContactSection } from "@/components/home/contact-section";
 import { COURSE_PRICE_AMD, PRICE_CURRENCY } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site-config";
-import { getDictionary, isLocale, localeTags, type Locale } from "@/lib/i18n";
+import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 
 const pageCopy: Record<Locale, { title: string; description: string; keywords: string[] }> = {
   en: {
-    title: "Learn Indoor Gardening Online | Seed to Harvest Course | Harvested",
-    description:
-      "Learn how to grow healthy plants indoors with a step-by-step online course for beginners. Seed starting, grow lights, watering, nutrients, pH and EC, plant health, flowering and harvest — all at your own pace.",
-    keywords: [
-      "indoor gardening course",
-      "how to grow plants indoors",
-      "seed to harvest",
-      "indoor growing for beginners",
-      "online indoor horticulture course",
-    ],
+    title: "Basic Cannabis Cultivation | Harvested",
+    description: "An introductory online course about cannabis cultivation for beginners. Six modules with English-language video lessons and supporting learning materials. Digital educational content only.",
+    keywords: ["Basic Cannabis Cultivation", "cannabis education", "online course"],
   },
   hy: {
-    title:
-      "Սովորի՛ր տնային այգեգործություն առցանց | Սերմից մինչև բերք | Harvested",
-    description:
-      "Սովորի՛ր, թե ինչպես տանը առողջ բույսեր աճեցնել՝ սկսնակների համար քայլ առ քայլ առցանց դասընթացով։ Սերմի ցանք, աճեցման լամպեր, ջրում, սնուցում, pH և EC, բույսի առողջություն, ծաղկում և բերքահավաք՝ քո տեմպով։",
-    keywords: [
-      "տնային այգեգործության դասընթաց",
-      "ինչպես բույս աճեցնել տանը",
-      "սերմից մինչև բերք",
-      "այգեգործություն սկսնակների համար",
-      "առցանց դասընթաց հայերեն",
-    ],
+    title: "Կանեփի աճեցման հիմունքներ | Harvested",
+    description: "Կանեփի աճեցման մասին ներածական առցանց դասընթաց՝ սկսնակների համար։ Վեց բաժին՝ տեսադասերով և օժանդակ ուսումնական նյութերով։ Ուսուցման հիմնական լեզուն անգլերենն է։",
+    keywords: ["Կանեփի աճեցման հիմունքներ", "առցանց դասընթաց", "անգլերեն ուսուցում"],
   },
 };
 
@@ -78,17 +63,17 @@ export default async function Home({
     "@type": "Course",
     name:
       locale === "hy"
-        ? "Տնային աճեցում սկսնակների համար՝ սերմից մինչև բերք"
-        : "Indoor Growing for Beginners: Seed to Harvest",
+        ? "Կանեփի աճեցման հիմունքներ"
+        : "Basic Cannabis Cultivation",
     description,
-    url: `${siteConfig.url}/${locale}/course/indoor-growing-for-beginners`,
+    url: `${siteConfig.url}/${locale}/course/basic-cannabis-cultivation`,
     provider: {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
     },
     courseMode: "online",
-    inLanguage: localeTags[locale],
+    inLanguage: "en",
     educationalLevel: "Beginner",
     teaches: dict.hero.insideItems,
     offers: {
@@ -101,7 +86,6 @@ export default async function Home({
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "Online",
-      courseWorkload: "PT8H",
     },
   };
 

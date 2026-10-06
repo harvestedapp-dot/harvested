@@ -17,21 +17,39 @@ interface FreePreviewCtaProps {
   /** Localized label — pass dict.common.freeLessonsCta unless a section
    *  needs its own wording. */
   label: string;
+  /** Honest localized fallback when the preview URL has not been configured. */
+  unavailableLabel: string;
   className?: string;
 }
 
 /**
- * Single CTA for the Thinkific Free Preview. Every free-preview button and
+ * Single CTA for the course-platform free preview. Every free-preview button and
  * link on the site renders through this component, so swapping
  * FREE_PREVIEW_URL in site-config.ts updates all of them at once.
  */
 export function FreePreviewCta({
   variant = "outline",
   label,
+  unavailableLabel,
   className,
 }: FreePreviewCtaProps) {
-  // Once the placeholder becomes a real Thinkific URL, open the LMS in a
-  // new tab so visitors keep their place on the marketing site.
+  if (!FREE_PREVIEW_URL || FREE_PREVIEW_URL === "#") {
+    return (
+      <span
+        data-free-preview-unavailable
+        className={cn(
+          "inline-flex items-center justify-center gap-2 text-[15px] font-medium",
+          variant === "link-on-dark" ? "text-white/80" : "text-muted-foreground",
+          variant !== "link" && variant !== "link-on-dark" &&
+            "rounded-lg border border-border px-6 py-4 text-center",
+          className
+        )}
+      >
+        {unavailableLabel}
+      </span>
+    );
+  }
+
   const isExternal = FREE_PREVIEW_URL.startsWith("http");
   const externalProps = isExternal
     ? { target: "_blank", rel: "noopener noreferrer" }

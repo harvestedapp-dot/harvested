@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 interface ContactPayload {
   name?: unknown;
   email?: unknown;
@@ -15,15 +13,22 @@ export async function POST(request: Request) {
   const email = typeof body?.email === "string" ? body.email.trim() : "";
   const message = typeof body?.message === "string" ? body.message.trim() : "";
 
-  if (!name || !email || !message || !EMAIL_PATTERN.test(email)) {
-    return NextResponse.json(
+  if (
+    !name || name.length > 120 ||
+    !email || email.length > 200 || !EMAIL_PATTERN.test(email) ||
+    !message || message.length > 2000
+  ) {
+    return Response.json(
       { error: "Please provide a valid name, email, and message." },
       { status: 400 }
     );
   }
 
-  // TODO: wire up to a real email/CRM provider. Logged only for now.
-  console.log("Contact form submission:", { name, email, message });
-
-  return NextResponse.json({ success: true });
+  // A successful response must mean a delivery provider accepted the
+  // message. Until that integration exists, do not claim delivery or retain
+  // visitors' personal messages in server logs.
+  return Response.json(
+    { error: "CONTACT_DELIVERY_UNAVAILABLE" },
+    { status: 503, headers: { "Cache-Control": "no-store" } }
+  );
 }

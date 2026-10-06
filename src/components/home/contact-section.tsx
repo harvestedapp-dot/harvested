@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/lib/site-config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "error" | "unavailable";
 
 export function ContactSection({
   copy,
@@ -20,6 +20,7 @@ export function ContactSection({
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (status === "submitting") return;
     setStatus("submitting");
 
     const form = event.currentTarget;
@@ -32,7 +33,14 @@ export function ContactSection({
         body: JSON.stringify(data),
       });
 
+      if (response.status === 503) {
+        setStatus("unavailable");
+        return;
+      }
       if (!response.ok) throw new Error("Request failed");
+
+      const result = await response.json();
+      if (result.success !== true) throw new Error("Delivery not confirmed");
 
       setStatus("success");
       form.reset();
@@ -60,7 +68,7 @@ export function ContactSection({
           style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
         >
           {status === "success" ? (
-            <div className="flex flex-col items-center gap-3 py-10 text-center">
+            <div role="status" className="flex flex-col items-center gap-3 py-10 text-center">
               <CheckCircle2 className="size-10 text-primary" />
               <p className="font-heading text-lg font-semibold text-foreground">
                 {copy.sentTitle}
@@ -112,8 +120,10 @@ export function ContactSection({
                 />
               </div>
 
-              {status === "error" && (
-                <p className="text-sm text-destructive">{copy.error}</p>
+              {(status === "error" || status === "unavailable") && (
+                <p role="alert" className="text-sm text-destructive">
+                  {status === "unavailable" ? copy.unavailable : copy.error}
+                </p>
               )}
 
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">

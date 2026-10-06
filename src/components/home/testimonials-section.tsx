@@ -53,7 +53,7 @@ export function TestimonialsSection({
               </p>
             </div>
             <div className="mt-9">
-              <FreePreviewCta variant="solid" label={copy.emptyCta} />
+              <FreePreviewCta unavailableLabel={dict.common.freePreviewUnavailable} variant="solid" label={copy.emptyCta} />
             </div>
           </div>
         </div>
@@ -70,8 +70,8 @@ export function TestimonialsSection({
       ? {
           "@context": "https://schema.org",
           "@type": "Course",
-          name: "Indoor Growing for Beginners",
-          url: `${siteConfig.url}/${locale}/course/indoor-growing-for-beginners`,
+          name: "Basic Cannabis Cultivation",
+          url: `${siteConfig.url}/${locale}/course/basic-cannabis-cultivation`,
           inLanguage: localeTags[locale],
           aggregateRating: {
             "@type": "AggregateRating",

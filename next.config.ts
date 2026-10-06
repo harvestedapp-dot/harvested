@@ -6,7 +6,7 @@ import type { NextConfig } from "next";
  * locale, so links already in the wild land on the equivalent page.
  */
 const legacyTopicRedirects = [
-  ["/course/basic-cannabis-cultivation", "/en/course/indoor-growing-for-beginners"],
+  ["/course/basic-cannabis-cultivation", "/en/course/basic-cannabis-cultivation"],
   ["/course/advanced-cannabis-cultivation", "/en/#courses"],
   ["/course/cannabis-diagnostics", "/en/#courses"],
   ["/course/cannabis-genetics", "/en/#courses"],
@@ -20,6 +20,9 @@ const legacyTopicRedirects = [
 
 /** Prefix-less paths from before the EN/HY split. */
 const preI18nRedirects = [
+  ["/en/course/indoor-growing-for-beginners", "/en/course/basic-cannabis-cultivation"],
+  ["/hy/course/indoor-growing-for-beginners", "/hy/course/basic-cannabis-cultivation"],
+  ["/course/indoor-growing-for-beginners", "/en/course/basic-cannabis-cultivation"],
   ["/", "/en"],
   ["/learn", "/en/learn"],
   ["/learn/:slug", "/en/learn/:slug"],

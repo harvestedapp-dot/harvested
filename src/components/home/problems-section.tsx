@@ -88,7 +88,7 @@ export function ProblemsSection({
 
         <div className="mt-10 text-center" data-reveal>
           <Link
-            href={localePath(locale, "/course/indoor-growing-for-beginners")}
+            href={localePath(locale, "/course/basic-cannabis-cultivation")}
             className="inline-block w-full rounded-lg bg-[#1a3320] px-10 py-4 text-[17px] font-medium text-white transition-[background-color,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#254a2e] sm:w-auto"
           >
             {dict.common.enrollNow} &mdash; {dict.hero.price}
